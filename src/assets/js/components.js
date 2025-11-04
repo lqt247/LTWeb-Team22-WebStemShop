@@ -20,7 +20,9 @@ async function loadComponent(id, filePath) {
 // 🧭 Thêm đoạn này — Tự động tính basePath phù hợp (tránh lỗi 404)
 function getBasePath() {
     const path = window.location.pathname.split("/src/")[1];
-    if (!path) return "./"; // đang ở index.html
+    // Nếu không có phần sau /src/ thì đang ở index (hoặc file ở root)
+    // Trường hợp đó, trả về 'src/' để load các component từ '/src/components/...'
+    if (!path) return "src/";
     const depth = path.split("/").length - 1; // đếm số cấp sau /src/
     return "../".repeat(depth);
 }
