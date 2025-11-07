@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng ký Workshop</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/pages/register.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div id="header"></div>
+
+  <main class="register">
+    <section class="register__container">
+      <div class="register__image">
+        <img src="../../assets/images/workshop/dangky.jpg" alt="Workshop vui nhộn" />
+      </div>
+
+      <div class="register__form">
+        <h1 class="register__title"><i class="fa-solid fa-pen-to-square"></i> Đăng ký tham gia Workshop</h1>
+        <p class="register__desc">
+          Hãy điền thông tin để cùng bé tham gia những buổi học STEM đầy sáng tạo và niềm vui nhé!
+        </p>
+
+        <form class="register__content">
+          <label for="name"><i class="fa-solid fa-child"></i> Họ và tên bé:</label>
+          <input type="text" id="name" placeholder="Nhập tên bé..."  />
+
+          <label for="age"><i class="fa-solid fa-cake-candles"></i> Tuổi:</label>
+          <input type="number" id="age" placeholder="Nhập tuổi..."  />
+
+          <label for="event"><i class="fa-solid fa-flask"></i> Chọn workshop:</label>
+          <select id="event" >
+            <option value="">-- Chọn workshop --</option>
+            <option>Học làm Robot mini 🤖</option>
+            <option>Thí nghiệm Khoa học Vui 🧪</option>
+            <option>Khám phá Không gian 🚀</option>
+            <option>Nghệ thuật Sáng tạo 🎨</option>
+          </select>
+
+          <label for="parent"><i class="fa-solid fa-user-group"></i> Phụ huynh liên hệ:</label>
+          <input type="text" id="parent" placeholder="Tên phụ huynh..."  />
+
+          <label for="phone"><i class="fa-solid fa-phone"></i> Số điện thoại:</label>
+          <input type="tel" id="phone" placeholder="Nhập số điện thoại..."  />
+
+          <button type="submit" class="register__btn">
+            <i class="fa-solid fa-paper-plane"></i> Gửi đăng ký
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../../assets/js/components.js"></script>
+</body>
+</html>
