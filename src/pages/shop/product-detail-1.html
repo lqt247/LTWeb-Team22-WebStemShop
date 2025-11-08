@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout/header.css">
+    <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+    <link rel="stylesheet" href="../../assets/css/pages/product-detail.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <main>
+        <div class="back">
+            <a href="../../../index.html">Trang chủ</a>
+            <span>/</span>
+            <a href="shop.html">Cửa hàng</a>
+            <span>/</span>
+            <a href="#">Chi Tiết Sản Phẩm</a>
+        </div>
+
+        <div class="product-detail" id="product-detail">
+            <div class="product-images">
+                <img src="../../assets/images/shop/xe-tap-di-da-nang.jpg" alt="xe-tap-di-da-nang" class="main-image">
+                <div class="thumbnail-images">
+                    <img src="../../assets/images/shop/xe-tap-di-da-nang.jpg" alt="xe-tap-di-da-nang">
+                    <img src="../../assets/images/product-detail/product1.1.png" alt="">
+                    <img src="../../assets/images/product-detail/product1.2.png" alt="">
+                    <img src="../../assets/images/product-detail/product1.3.png" alt="">
+                    
+                </div>
+            </div>
+            <div class="product-info">
+                <h1>Đồ Chơi Xe Tập Đi Đa Năng Có Nhạc Và Đèn Cho Bé VTECH 80-505600</h1>
+                <div class="product-price"> 1.779.000 Đ</div>
+                <div class="product-description">
+                    <ul>
+                        <li><i class="fa-solid fa-check-double"></i> Hàng chính hãng</li>
+                        <li><i class="fa-solid fa-check-double"></i> Miễn phí giao hàng toàn quốc đơn trên 500k</li>
+                        <li><i class="fa-solid fa-check-double"></i> Giao hàng hỏa tốc 4 tiếng</li>
+                        <li><i class="fa-solid fa-check-double"></i> Hỗ trợ trả góp đơn hàng từ 3 triệu. <a
+                                href="chinh-sach-tra-gop.html" target="_blank">Xem chi tiết</a></li>
+                    </ul>
+                </div>
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button onclick="decreaseQuantity()">-</button>
+                        <input type="number" id="quantity" value="1" min="1">
+                        <button onclick="increaseQuantity()">+</button>
+                    </div>
+                    <button class="add-to-cart">
+                        Thêm vào giỏ hàng <i class="fa-solid fa-cart-plus"></i>
+                    </button>
+                    <button class="wishlist-btn">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <div class="product-meta">
+                    <p><strong>Thương hiệu:</strong> VTECH</p>
+                    <p><strong>ID Sản phẩm:</strong> 1</p>
+                    <!-- Thêm thông tin khác nếu cần -->
+                </div>
+            </div>
+        </div>
+
+        <div class="productDecription">
+            <h2>Mô tả sản phẩm</h2>
+            <div class="productDecription__content">
+                <h2>Đồ Chơi Xe Tập Đi Đa Năng Có Nhạc Và Đèn Cho Bé VTECH 80-505600</h2>
+                <p>Đồ Chơi Xe Tập Đi Đa Năng Có Nhạc Và Đèn Cho Bé VTech là món đồ chơi 2 trong 1 thông minh dành cho bé
+                    từ 9 tháng tuổi trở lên. Sản phẩm được thiết kế chắc chắn, an toàn, giúp bé vừa học vừa chơi trong
+                    giai đoạn chập chững biết đi. Phần bảng điều khiển phía trước có thể tháo rời, cho phép bé chơi khi
+                    đang ngồi hoặc khi tập đi.</p>
+                <h2>Bảng trò chơi được trang bị nhiều chi tiết sinh động như:</h2>
+                <ul>
+                    <li> Bàn phím âm nhạc với các phím số, chữ cái, hình dạng và con vật.</li>
+                    <li>Bánh răng xoay, điện thoại đồ chơi, cửa mở ra đóng lại, và các nút bấm phát sáng.</li>
+                    <li>Hệ thống âm thanh vui nhộn với hơn 100 bài hát, giai điệu và cụm từ học tập giúp bé phát triển
+                        kỹ năng ngôn ngữ.</li>
+                    <li>Tay cầm có độ cao vừa phải, bánh xe chống trượt giúp bé tập đi an toàn.</li>
+                </ul>
+                <h2>Lợi ích nổi bật:</h2>
+                <ul>
+                    <li> Phát triển trí tuệ & khả năng nhận biết: Bé học được màu sắc, con số, chữ cái, hình khối và tên
+                        các con vật thông qua trò chơi tương tác.</li>
+                    <li>Rèn luyện vận động thô: Tay cầm vững chắc và bánh xe ổn định giúp bé tự tin tập đi, phát triển
+                        cơ chân và khả năng giữ thăng bằng.</li>
+                    <li>Kích thích giác quan: Âm thanh, đèn sáng, và bề mặt xúc giác đa dạng giúp kích thích thính giác,
+                        thị giác và xúc giác của bé.</li>
+                    <li>Phát triển kỹ năng vận động tinh: Các nút bấm, bánh răng, và chi tiết chuyển động giúp bé rèn sự
+                        khéo léo của bàn tay.</li>
+                    <li>Khả năng tư duy và phản xạ: Bé học cách khám phá và phản hồi lại âm thanh, hình ảnh – giúp tăng
+                        cường khả năng tư duy logic và phản xạ nhanh.</li>
+                    <li>Sử dụng lâu dài: Có thể dùng như bàn chơi khi bé còn nhỏ, và chuyển sang xe tập đi khi bé bắt
+                        đầu đứng vững – tiết kiệm và đa năng.</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="trust-badge__container">
+            <ul>
+                <li>
+                    <img src="../../assets/images/product-detail/chinh-hang.png" alt="">
+                    <p>Sản phẩm chính hãng 100%</p>
+                </li>
+                <li>
+                    <img src="../../assets/images/product-detail/an-toan.png" alt="">
+                    <p>Nhựa an toàn cho trẻ em</p>
+                </li>
+                <li>
+                    <img src="../../assets/images/product-detail/giao-hang.png" alt="">
+                    <p>Miễn phí giao hàng đơn từ 500K</p>
+                </li>
+                <li>
+                    <img src="../../assets/images/product-detail/hoa-toc.png" alt="">
+                    <p>Giao hàng hỏa tốc 4 tiếng</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="evaluate-product">
+            <h2>Đánh giá sản phẩm</h2>
+            <div class="evaluate-product__container">
+                <div class="evaluate-product__star">
+                    <div class="evaluate-product__star__count">
+                        <i class="fa-solid fa-star"></i>
+                        <span class="rate">0.0 </span>
+                        <span>lượt đánh giá</span>
+                    </div>
+                    <div class="evaluate-product__star__process">
+                        <div class="rating-summary">
+                            <div class="rating-row">
+                                <div class="rating-label">5 ★</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 70%;"></div>
+                                </div>
+                                <div class="rating-count">125</div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="rating-label">4 ★</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 20%;"></div>
+                                </div>
+                                <div class="rating-count">36</div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="rating-label">3 ★</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 5%;"></div>
+                                </div>
+                                <div class="rating-count">9</div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="rating-label">2 ★</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 5%;"></div>
+                                </div>
+                                <div class="rating-count">9</div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="rating-label">1 ★</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 0%;"></div>
+                                </div>
+                                <div class="rating-count">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="evaluate-product__comment">
+                    <p>Chưa có bình luận nào, hãy chia sẽ đánh giá của bạn nhé.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="footer"></footer>
+
+    <!-- JavaScript -->
+    <script src="../../assets/js/components.js"></script>
+    <script type="module" src="../../assets/js/pages/product-detail.js"></script>
+</body>
+
+</html>

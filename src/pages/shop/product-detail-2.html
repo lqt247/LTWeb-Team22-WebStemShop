@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout/header.css">
+    <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+    <link rel="stylesheet" href="../../assets/css/pages/product-detail.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <main>
+        <div class="back">
+            <a href="../../../index.html">Trang chủ</a>
+            <span>/</span>
+            <a href="shop.html">Cửa hàng</a>
+            <span>/</span>
+            <a href="#">Chi Tiết Sản Phẩm</a>
+        </div>
+
+        <div class="product-detail" id="product-detail">
+            <div class="product-images">
+                <img src="../../assets/images/shop/do-choi-qua-tao-hoc-chu.png" alt="" class="main-image">
+                <div class="thumbnail-images">
+                    <img src="../../assets/images/shop/do-choi-qua-tao-hoc-chu.png" alt="xe-tap-di-da-nang">
+                    <img src="../../assets/images/product-detail/product2.1.png" alt="">
+                    <img src="../../assets/images/product-detail/product2.2.png" alt="">
+                    <img src="../../assets/images/product-detail/product2.3.png" alt="">
+                    
+                </div>
+            </div>
+            <div class="product-info">
+                <h1>Đồ Chơi Quả Táo Học Chữ ABC VTECH 80-139060</h1>
+                <div class="product-price"> 969.000 Đ</div>
+                <div class="product-description">
+                    <ul>
+                        <li><i class="fa-solid fa-check-double"></i> Hàng chính hãng</li>
+                        <li><i class="fa-solid fa-check-double"></i> Miễn phí giao hàng toàn quốc đơn trên 500k</li>
+                        <li><i class="fa-solid fa-check-double"></i> Giao hàng hỏa tốc 4 tiếng</li>
+                        <li><i class="fa-solid fa-check-double"></i> Hỗ trợ trả góp đơn hàng từ 3 triệu. <a
+                                href="chinh-sach-tra-gop.html" target="_blank">Xem chi tiết</a></li>
+                    </ul>
+                </div>
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <button onclick="decreaseQuantity()">-</button>
+                        <input type="number" id="quantity" value="1" min="1">
+                        <button onclick="increaseQuantity()">+</button>
+                    </div>
+                    <button class="add-to-cart">
+                        Thêm vào giỏ hàng <i class="fa-solid fa-cart-plus"></i>
+                    </button>
+                    <button class="wishlist-btn">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <div class="product-meta">
+                    <p><strong>Thương hiệu:</strong> VTECH</p>
+                    <p><strong>ID Sản phẩm:</strong> 2</p>
+                    <!-- Thêm thông tin khác nếu cần -->
+                </div>
+            </div>
+        </div>
+
+        <div class="productDecription">
+            <h2>Mô tả sản phẩm</h2>
+            <div class="productDecription__content">
+                <h2>Đồ Chơi Quả Táo Học Chữ ABC VTECH 80-139060</h2>
+                <p>Ba mẹ muốn bé nhà mình phát triển khả năng tiếng Anh từ nhỏ, thì món đồ chơi Quả Táo Học Chữ ABC của
+                    Vtech là món không thể bỏ qua.
+                    Với những đặc điểm nổi bật như:</p>
+                <h2>Với những đặc điểm nổi bật như:</h2>
+                <ul>
+                    <li> Thiết kế hình quả táo đáng yêu, giúp bé dễ cầm nắm và thu hút ngay từ ánh nhìn đầu tiên.</li>
+                    <li>Tích hợp 26 phím chữ cái từ A – Z, mỗi chữ tương ứng với một từ vựng và hình minh họa sinh động giúp bé làm quen bảng chữ cái tiếng Anh một cách tự nhiên.</li>
+                    <li>Có 8 hoạt động vui chơi và học tiếng Anh cho bé  </li>
+                    <li>Có đèn LED phát sáng và âm thanh vui nhộn giúp bé vừa học vừa chơi.</li>
+                    <li>Tích hợp đồng hồ học giờ và nhiều chế độ chơi tương tác: học chữ, học từ, chơi đố vui, nghe nhạc.</li>
+                    <li>Chất liệu nhựa cao cấp, an toàn cho trẻ nhỏ, không chứa BPA, bo tròn các góc cạnh.</li>
+                    <li>Tay cầm tiện lợi giúp bé dễ dàng mang theo khi di chuyển.</li>
+                </ul>
+                <h2>Lợi ích phát triển</h2>
+                <ul>
+                    <li> Giúp bé làm quen bảng chữ cái tiếng Anh qua hình ảnh – âm thanh – từ vựng.</li>
+                    <li> Phát triển khả năng ngôn ngữ, ghi nhớ, phản xạ nghe và thị giác.</li>
+                    <li>Tạo thói quen học tập chủ động thông qua việc vừa chơi vừa học</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="trust-badge__container">
+            <ul>
+                <li>
+                    <img src="../../assets/images/product-detail/chinh-hang.png" alt="">
+                    <p>Sản phẩm chính hãng 100%</p>
+                </li>
+                <li>
+                    <img src="../../assets/images/product-detail/an-toan.png" alt="">
+                    <p>Nhựa an toàn cho trẻ em</p>
+                </li>
+                <li>
+                    <img src="../../assets/images/product-detail/giao-hang.png" alt="">
+                    <p>Miễn phí giao hàng đơn từ 500K</p>
+                </li>
+                <li>
+                    <img src="../../assets/images/product-detail/hoa-toc.png" alt="">
+                    <p>Giao hàng hỏa tốc 4 tiếng</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="evaluate-product">
+            <h2>Đánh giá sản phẩm</h2>
+            <div class="evaluate-product__container">
+                <div class="evaluate-product__star">
+                    <div class="evaluate-product__star__count">
+                        <i class="fa-solid fa-star"></i>
+                        <span class="rate">0.0 </span>
+                        <span>lượt đánh giá</span>
+                    </div>
+                    <div class="evaluate-product__star__process">
+                        <div class="rating-summary">
+                            <div class="rating-row">
+                                <div class="rating-label">5 ★</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 70%;"></div>
+                                </div>
+                                <div class="rating-count">125</div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="rating-label">4 ★</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 20%;"></div>
+                                </div>
+                                <div class="rating-count">36</div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="rating-label">3 ★</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 5%;"></div>
+                                </div>
+                                <div class="rating-count">9</div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="rating-label">2 ★</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 5%;"></div>
+                                </div>
+                                <div class="rating-count">9</div>
+                            </div>
+
+                            <div class="rating-row">
+                                <div class="rating-label">1 ★</div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 0%;"></div>
+                                </div>
+                                <div class="rating-count">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="evaluate-product__comment">
+                    <p>Chưa có bình luận nào, hãy chia sẽ đánh giá của bạn nhé.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer id="footer"></footer>
+
+    <!-- JavaScript -->
+    <script src="../../assets/js/components.js"></script>
+    <script type="module" src="../../assets/js/pages/product-detail.js"></script>
+</body>
+
+</html>
