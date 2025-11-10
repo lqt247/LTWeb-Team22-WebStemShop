@@ -27,3 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+// 
+const addToCart = document.querySelectorAll('.add-to-cart');
+addToCart.addEventListener('click', () => {
+    window.
+})

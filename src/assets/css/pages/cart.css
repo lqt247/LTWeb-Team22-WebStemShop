@@ -11,6 +11,8 @@
     align-items: center;
     border-bottom: 1px solid #b6b6b6;
     padding: 20px;
+    width: 1200px;
+    margin: auto;
 }
 .cart-container__head h3:nth-child(1) {
     flex: 3;
