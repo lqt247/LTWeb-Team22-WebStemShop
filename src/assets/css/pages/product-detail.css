@@ -72,6 +72,11 @@
 .product-description ul {
     list-style: none;
 }
+.product-description a{
+    color: #000000;
+    font-weight: 700;
+
+}
 
 .product-description a {}
 

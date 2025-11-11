@@ -5,53 +5,89 @@ document.addEventListener("DOMContentLoaded", () => {
         return amount.toLocaleString('vi-VN') + ' Đ';
     }
 
-    // 2. TÌM TẤT CẢ CÁC DÒNG SẢN PHẨM
+    //hàm cập nhật tổng tiền
+    function updateGrandTotal() {
+        let total = 0;
+        
+        // lấy tất cả các sp trong giỏ hàng
+        const allProductRows = document.querySelectorAll('.cart-containers-');
+        
+        // duyệt qua từng dòng
+        allProductRows.forEach(row => {
+            // Lấy phần tử giá tiền của dòng đó
+            const priceElem = row.querySelector('.product-line-price');
+            // Lấy giá trị text (VD: "1.779.000 Đ")
+            const priceText = priceElem.textContent;
+            // Chuyển text thành số (bỏ dấu '.', chữ 'Đ' và khoảng trắng)
+            const numericPrice = parseInt(priceText.replace(/\./g, '').replace('Đ', '').trim());
+            
+            // Cộng dồn vào tổng
+            total += numericPrice;
+        });
+
+        // Lấy thẻ span chứa tổng tiền
+        const totalElement = document.getElementById('total-price');
+        
+        // Hiển thị tổng tiền mới đã được định dạng
+        if (totalElement) {
+            totalElement.textContent = formatMoney(total);
+        }
+    }
+
+    // 2. lấy ra các sp trong giỏ hàng
     const productRows = document.querySelectorAll('.cart-containers-');
 
-    // 3. DUYỆT QUA TỪNG DÒNG VÀ GẮN SỰ KIỆN CHO CÁC NÚT BÊN TRONG NÓ
+    // 3. duyệt qua từng sp và gán event 'click' cho 2 icon tăng, giảm 
     productRows.forEach(row => {
-        // Tìm các phần tử CHỈ BÊN TRONG dòng hiện tại (row)
+        // lấy các element 
         const decreaseBtn = row.querySelector('.decrease-btn');
-        const increaseBtn = row.querySelector('.increase-btn'); // Sửa lại class HTML của bạn cho đúng nhé, nút + phải là .increase-btn
+        const increaseBtn = row.querySelector('.increase-btn');
         const quantityElem = row.querySelector('.quantity-value');
         const priceElem = row.querySelector('.product-line-price');
         const deleteBtn = row.querySelector('.delete-btn');
-
-        // Lấy giá gốc từ data-unit-price (đã cài sẵn trong HTML)
         const unitPrice = parseInt(priceElem.getAttribute('data-unit-price'));
 
         // --- XỬ LÝ NÚT GIẢM (-) ---
-        if (decreaseBtn) { // Kiểm tra tồn tại để tránh lỗi
+        if (decreaseBtn) {
             decreaseBtn.addEventListener('click', () => {
                 let currentQty = parseInt(quantityElem.textContent);
                 if (currentQty > 1) {
-                    currentQty--; // Giảm số lượng
-                    quantityElem.textContent = currentQty; // Cập nhật số lượng hiển thị
-                    // Cập nhật giá tiền mới = số lượng mới * giá gốc
+                    currentQty--;
+                    quantityElem.textContent = currentQty;
                     priceElem.textContent = formatMoney(currentQty * unitPrice);
+                    
+                    // GỌI HÀM CẬP NHẬT TỔNG TIỀN
+                    updateGrandTotal();
                 }
             });
         }
 
         // --- XỬ LÝ NÚT TĂNG (+) ---
-        // Bạn cần sửa lại HTML: thêm class 'increase-btn' cho thẻ <i> icon dấu cộng
         if (increaseBtn) {
-             increaseBtn.addEventListener('click', () => {
+            increaseBtn.addEventListener('click', () => {
                 let currentQty = parseInt(quantityElem.textContent);
-                currentQty++; // Tăng số lượng
+                currentQty++;
                 quantityElem.textContent = currentQty;
                 priceElem.textContent = formatMoney(currentQty * unitPrice);
+
+                // 
+                updateGrandTotal();
             });
         }
 
         // --- XỬ LÝ NÚT XÓA (Thùng rác) ---
         if (deleteBtn) {
             deleteBtn.addEventListener('click', () => {
-                 // 'row' chính là dòng sản phẩm hiện tại đang được duyệt
-                 row.remove();
-                 // Sau này sẽ thêm hàm cập nhật tổng tiền ở đây
+                row.remove();
+                
+                //
+                updateGrandTotal();
             });
         }
     });
+    
+    // CHẠY 1 LẦN KHI MỚI TẢI TRANG
+    // Để đảm bảo tổng tiền được tính đúng ngay từ đầu (phòng trường hợp HTML bị sai)
+    updateGrandTotal();
 
 });
