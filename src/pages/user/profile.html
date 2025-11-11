@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hồ sơ của bé</title>
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/pages/profile.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Header -->
+  <div id="header"></div>
+
+  <main class="profile">
+    <!-- Thông tin cá nhân -->
+    <section class="profile__card">
+      <div class="profile__avatar">
+        <img src="../../assets/images/user/anhbeminhanh.jpg" alt="Ảnh đại diện của bé" />
+      </div>
+
+      <div class="profile__info">
+        <h2 class="profile__name"><i class="fa-solid fa-user"></i> Bé Minh Anh</h2>
+        <p><i class="fa-solid fa-envelope"></i> minh.anh@example.com</p>
+        <p><i class="fa-solid fa-cake-candles"></i> Ngày sinh: 12/08/2017</p>
+        <p><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh</p>
+      </div>
+    </section>
+
+    <!-- Đơn hàng -->
+    <section class="profile__orders">
+      <h3><i class="fa-solid fa-box"></i> Đơn hàng gần đây</h3>
+      <table class="orders__table">
+        <thead>
+          <tr>
+            <th>Tên sản phẩm</th>
+            <th>Ngày đặt</th>
+            <th>Trạng thái</th>
+            <th>Giá</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bộ lắp ráp Robot Mini</td>
+            <td>20/10/2025</td>
+            <td><span class="status delivered">Đã giao</span></td>
+            <td>450.000đ</td>
+          </tr>
+          <tr>
+            <td>Bộ thí nghiệm Khoa học Vui</td>
+            <td>10/10/2025</td>
+            <td><span class="status shipping">Đang giao</span></td>
+            <td>320.000đ</td>
+          </tr>
+          <tr>
+            <td>Hộp màu sáng tạo</td>
+            <td>05/10/2025</td>
+            <td><span class="status cancelled">Đã hủy</span></td>
+            <td>150.000đ</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Sự kiện -->
+    <section class="profile__events">
+      <h3><i class="fa-solid fa-calendar-check"></i> Sự kiện đã tham gia</h3>
+      <div class="events__list">
+        <article class="event__item">
+          <img src="../../assets/images/events/robot.jpg" alt="Ngày hội Robot" />
+          <div class="event__info">
+            <h4>Ngày hội Robot Sáng tạo</h4>
+            <p><i class="fa-solid fa-calendar-day"></i> 15/09/2025</p>
+            <p><i class="fa-solid fa-location-dot"></i> Nhà Thiếu Nhi TP.HCM</p>
+          </div>
+        </article>
+
+        <article class="event__item">
+          <img src="../../assets/images/events/space.jpg" alt="Workshop vũ trụ" />
+          <div class="event__info">
+            <h4>Workshop Khám phá Vũ trụ</h4>
+            <p><i class="fa-solid fa-calendar-day"></i> 30/08/2025</p>
+            <p><i class="fa-solid fa-location-dot"></i> Trung tâm STEM KidsZone</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Bài viết đã theo dõi -->
+    <section class="profile__blogs">
+      <h3><i class="fa-solid fa-heart"></i> Bài viết đã theo dõi</h3>
+      <div class="blogs__list">
+        <article class="blog__item">
+          <img src="../../assets/images/blog/robot-blog.jpg" alt="Robot Blog" />
+          <div class="blog__info">
+            <h4><a href="../page/blog-detail.html">5 Lý do vì sao nên cho bé học lập trình sớm</a></h4>
+            <p><i class="fa-solid fa-calendar-day"></i> 12/10/2025</p>
+          </div>
+        </article>
+
+        <article class="blog__item">
+          <img src="../../assets/images/blog/creative-play.jpg" alt="Chơi sáng tạo" />
+          <div class="blog__info">
+            <h4><a href="../page/blog-detail.html">Chơi sáng tạo giúp bé phát triển tư duy STEM</a></h4>
+            <p><i class="fa-solid fa-calendar-day"></i> 02/10/2025</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script src="../../assets/js/components.js"></script>
+</body>
+</html>
