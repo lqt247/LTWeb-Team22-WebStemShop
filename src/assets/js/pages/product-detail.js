@@ -14,3 +14,5 @@ addToCartButtons.forEach(button => {
         window.location.href = "cart.html";
     });
 });
+
+

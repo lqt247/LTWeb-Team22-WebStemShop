@@ -1,144 +1,5 @@
 //import { listProduct } from "./data.js";
 
-// const pageSize = 10; // Số sản phẩm muốn hiển thị trên 1 trang
-// let currentPage = 1; // Trang hiện tại
-// const totalPages = Math.ceil(listProduct.length / pageSize); // Tổng số trang cần có
-
-// // --- LẤY CÁC PHẦN TỬ HTML ---
-// const productCardContainer = document.getElementById("list-product__body__card");
-// const paginationContainer = document.querySelector(".list-product__body__pagination");
-// const prevButton = paginationContainer.querySelector('.fa-rotate-180');
-// const nextButton = paginationContainer.querySelector('.fa-play');
-// const pageNumbersList = paginationContainer.querySelector('ul');
-
-// // Make viewDetail a global function
-// window.viewDetail = function(id) {
-//     window.location.href = `product-detail.html?id=${id}`;
-// };
-// // RENDER SẢN PHẨM ---
-// function renderProducts(page) {
-//     currentPage = page; // Cập nhật trạng thái trang hiện tại
-
-//     // 1. Tính toán vị trí bắt đầu và kết thúc của mảng con
-//     const startIndex = (currentPage - 1) * pageSize;
-//     const endIndex = currentPage * pageSize;
-
-//     // 2. Cắt mảng để lấy sản phẩm của trang hiện tại
-//     const productsForPage = listProduct.slice(startIndex, endIndex);
-
-//     // 3. Tạo chuỗi HTML và chèn vào DOM
-//     const listCardHTML = productsForPage.map((item) =>
-//         ` 
-//         <div class="list-product__body__card__container" data-id="${item.idProduct}">
-//             <img src="${item.img}" alt="${item.title}">
-//             <div class="list-product__body__card__content">    
-//                 <p>${item.trademarke}</p>
-//                 <div class="list-product__body__card__content__title">
-//                     <h5>${item.title}</h5>
-//                 </div>
-//                 <h4>${item.price}</h4>
-//                 <div class="list-product__body__card__addCard">
-//                     <button>Thêm vào giỏ hàng</button>
-//                     <i class="fa-regular fa-heart"></i>
-//                 </div>
-//                 <div class="list-product__body__card__evaluate">
-//                     <i class="fa-solid fa-star"></i>
-//                     <i class="fa-solid fa-star"></i>
-//                     <i class="fa-solid fa-star"></i>
-//                     <i class="fa-solid fa-star"></i>
-//                     <i class="fa-solid fa-star"></i>
-//                 </div>
-//             </div>
-//         </div>
-//         `
-//     ).join("");
-
-//     productCardContainer.innerHTML = listCardHTML;
-    
-//     // Add click event listeners
-//     document.querySelectorAll('.list-product__body__card__container').forEach(card => {
-//         card.addEventListener('click', function() {
-//             const id = this.getAttribute('data-id');
-//             viewDetail(id);
-//         });
-//     });
-// }
-
-// // --- RENDER THANH PHÂN TRANG ---
-// function renderPagination() {
-//     pageNumbersList.innerHTML = ''; // Xóa các nút trang cũ
-
-//     // Hiển thị tối đa 5 nút trang (hoặc tùy bạn)
-//     const maxVisiblePages = 5;
-//     let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-//     let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-
-//     // Điều chỉnh lại startPage nếu cần
-//     if (endPage - startPage + 1 < maxVisiblePages) {
-//         startPage = Math.max(1, endPage - maxVisiblePages + 1);
-//     }
-
-//     // 1. Thêm nút ... ở đầu nếu cần
-//     if (startPage > 1) {
-//         pageNumbersList.innerHTML += '<li>...</li>';
-//     }
-
-//     // 2. Thêm các nút số trang
-//     for (let i = startPage; i <= endPage; i++) {
-//         const li = document.createElement('li');
-//         li.textContent = i;
-//         li.classList.add('page-item');
-
-//         // Đánh dấu trang hiện tại
-//         if (i === currentPage) {
-//             li.style.backgroundColor = '#FF6C80';
-//             li.style.color = 'white';
-//         }
-
-//         // Thêm sự kiện click
-//         li.addEventListener('click', () => {
-//             renderProducts(i);
-//             renderPagination(); // Render lại thanh phân trang sau khi chuyển trang
-//         });
-//         pageNumbersList.appendChild(li);
-//     }
-
-//     // 3. Thêm nút ... ở cuối nếu cần
-//     if (endPage < totalPages) {
-//         pageNumbersList.innerHTML += '<li>...</li>';
-//     }
-
-//     // 4. Xử lý trạng thái nút PREV/NEXT
-//     prevButton.style.opacity = currentPage === 1 ? '0.5' : '1';
-//     prevButton.style.pointerEvents = currentPage === 1 ? 'none' : 'auto';
-
-//     nextButton.style.opacity = currentPage === totalPages ? '0.5' : '1';
-//     nextButton.style.pointerEvents = currentPage === totalPages ? 'none' : 'auto';
-// }
-
-
-// // --- CHUYỂN TRANG (PREV/NEXT) ---
-// prevButton.addEventListener('click', () => {
-//     if (currentPage > 1) {
-//         renderProducts(currentPage - 1);
-//         renderPagination();
-//     }
-// });
-
-// nextButton.addEventListener('click', () => {
-//     if (currentPage < totalPages) {
-//         renderProducts(currentPage + 1);
-//         renderPagination();
-//     }
-// });
-
-
-// // --- KHỞI CHẠY LẦN ĐẦU KHI TRANG LOAD XONG ---
-// document.addEventListener("DOMContentLoaded", () => {
-//     // Chỉ gọi hàm này sau khi các thành phần DOM đã được load
-//     renderProducts(currentPage);
-//     renderPagination();
-// });
 
 // -------------------------kiểu xem (view type) ----------------------
 const type1 = document.getElementById('head__type1');
@@ -156,9 +17,9 @@ type1.addEventListener('click', () => {
     type2.style.backgroundColor = '#E9E8E7';
     type3.style.backgroundColor = '#E9E8E7';
 
-    if(bodyCard.className === classType2 ) {
+    if (bodyCard.className === classType2) {
         bodyCard.classList.replace(classType2, classType1)
-    }else if (bodyCard.className === classType3){
+    } else if (bodyCard.className === classType3) {
         bodyCard.classList.replace(classType3, classType1)
     }
 });
@@ -167,9 +28,9 @@ type2.addEventListener('click', () => {
     type1.style.backgroundColor = '#E9E8E7';
     type3.style.backgroundColor = '#E9E8E7';
 
-    if(bodyCard.className === classType1 ) {
+    if (bodyCard.className === classType1) {
         bodyCard.classList.replace(classType1, classType2)
-    }else if (bodyCard.className === classType3){
+    } else if (bodyCard.className === classType3) {
         bodyCard.classList.replace(classType3, classType2)
     }
 });
@@ -178,9 +39,9 @@ type3.addEventListener('click', () => {
     type1.style.backgroundColor = '#E9E8E7';
     type2.style.backgroundColor = '#E9E8E7';
 
-    if(bodyCard.className === classType1 ) {
+    if (bodyCard.className === classType1) {
         bodyCard.classList.replace(classType1, classType3)
-    }else if (bodyCard.className === classType2){
+    } else if (bodyCard.className === classType2) {
         bodyCard.classList.replace(classType2, classType3)
     }
 });
@@ -190,7 +51,7 @@ const iconPlusDoChoiLapRap = document.getElementById('iconPlusDoChoiLapRap');
 const listCatalog = document.getElementById('listDoChoiLapRap');
 //show
 iconPlusDoChoiLapRap.addEventListener('click', () => {
-    if(iconPlusDoChoiLapRap.className === 'fa-plus'){
+    if (iconPlusDoChoiLapRap.className === 'fa-plus') {
         iconPlusDoChoiLapRap.classList.replace('fa-plus', 'fa-minus')
         listCatalog.style.display = 'block';
     }
@@ -204,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. DUYỆT QUA TỪNG THẺ VÀ GẮN SỰ KIỆN CLICK
     productCards.forEach(card => {
-        card.addEventListener('click', function() {
+        card.addEventListener('click', function () {
             // Lấy đường dẫn từ thuộc tính data-url mà bạn đã viết trong HTML
             const url = this.getAttribute('data-url');
 
@@ -218,3 +79,75 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+
+// ------------chức năng tìm kiếm sp-------------
+//lấy ra tất cả các sp
+const products = document.querySelectorAll('.list-product__body__card__container')
+//lấy ra tên của tất cả các sp
+const productName = document.querySelectorAll('.name-product');
+//element input
+const searchInput = document.getElementById('search-product');
+
+searchInput.addEventListener('input', (e) => {
+    const keyword = e.target.value.toLowerCase(); //lấy ra dữ liệu nhập trog input
+    productName.forEach((nameElement, index) => {
+        const name = nameElement.textContent.toLowerCase(); // Lấy tên sp
+
+        if (name.includes(keyword)) {
+            products[index].style.display = "block"; // Hiện sp phù hợp
+        } else {
+            products[index].style.display = "none";  // Ẩn sp không khớp
+        }
+    });
+})
+
+// -------------------------chức năng lọc sp-------------------
+
+// -----lọc theo giá------
+//lấy ra giá tất cả các sp
+const productPrice = document.querySelectorAll('.product-price');
+//lấy ra tất cả các input checkbox
+const checkboxPrice = document.querySelectorAll('.checkbox-price');
+//duyệt qua từng checkbox và add event cho từng thằng
+checkboxPrice.forEach(cb => {
+    cb.addEventListener('change', (e) => {
+        // Bỏ check các checkbox khác
+        checkboxPrice.forEach(other => {
+            if (other !== e.target) {
+                other.checked = false;
+            }
+        });
+        // Lấy giá trị checkbox được chọn
+        const selectedValue = e.target.checked ? e.target.value : null;
+
+        // Duyệt qua từng sản phẩm
+        products.forEach((product, index) => {
+            // Lấy text trong .product-price
+            let priceText = productPrice[index].textContent;
+
+            // Làm sạch chuỗi: xóa dấu . , đ , khoảng trắng
+            priceText = priceText.replace(/[^\d]/g, "");
+
+            // Chuyển sang số
+            const price = parseInt(priceText);
+
+            let inRange = false; // cờ kiểm tra sản phẩm có nằm trong khoảng ko
+
+            if (selectedValue === "duoi200" && price < 200000) inRange = true;
+            else if (selectedValue === "200-1tr" && price >= 200000 && price <= 1000000) inRange = true;
+            else if (selectedValue === "1tr-2tr" && price > 1000000 && price <= 2000000) inRange = true;
+            else if (selectedValue === "2tr-4tr" && price > 2000000 && price <= 4000000) inRange = true;
+            else if (selectedValue === "tren4tr" && price > 4000000) inRange = true;
+
+            // Ẩn/hiện sản phẩm
+            if (selectedValue === null || inRange) {
+                product.style.display = "block"; // hiện
+            } else {
+                product.style.display = "none";  // ẩn
+            }
+        });
+
+    })
+})
+
