@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout/header.css">
+    <link rel="stylesheet" href="../../assets/css/layout/footer.css">
+    <link rel="stylesheet" href="../../assets/css/pages/cart.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <title>Giỏ hàng</title>
+</head>
+
+<body>
+    <!--HEADER-->
+    <header class="header">
+        <!-- PHẦN TRÊN: thông tin + mạng xã hội -->
+        <div class="header__first">
+            <div class="container">
+                <div class="header__top-left">
+                    <a href="https://maps.app.goo.gl/nj1KfxS8ajpDxTni6" target="_blank">
+                        <span><i class="fa-solid fa-location-dot"></i> Trường Đại Học Nông Lâm TPHCM</span></a>
+                    <a href="" target="_blank"><span><i class="fa-solid fa-envelope"></i>
+                            shopstemteam22@gmail.com</span>
+                    </a>
+                </div>
+                <div class="header__top-right">
+                    <div class="header__phone-top">
+                        <a href="" target="_blank"><span><i class="fa-solid fa-phone"></i>
+                                +84 898658107</span>
+                        </a>
+                    </div>
+                    <div class="header_icon-top">
+                        <a href="" class="header__icon-right"> <i class="fa-brands fa-facebook-f"></i> </a>
+                        <a href="" class="header__icon-right"> <i class="fa-brands fa-instagram"></i></a>
+                        <a href="" class="header__icon-right"> <i class="fa-brands fa-amazon"></i> </a>
+                        <a href="" class="header__icon-right"> <i class="fa-brands fa-twitter"></i> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PHẦN DƯỚI:  menu + user -->
+        <div class="header__end">
+            <div class="container">
+                <div class="header__end-left">
+                    <div class="header__logo">
+                        <a href="index.html"> <img src="/src/assets/images/logo.png" alt="logo"> </a>
+                    </div>
+                    <div class="header__nav">
+
+                        <!--NAV-->
+
+                        <nav class="nav-content">
+                            <ul class="nav__list">
+
+                                <!-- Trang chủ -->
+
+                                <li class="nav__item"><a href="/index.html">Trang chủ</a></li>
+
+                                <!-- Giới thiệu -->
+                                <li class="nav__item dropdown">
+                                    <a href="/src/pages/main/about.html">Giới thiệu <i
+                                            class="fa-solid fa-chevron-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/src/pages/about_info/about-stem.html">Về STEM</a></li>
+                                        <li><a href="/src/pages/main/faq.html">Câu hỏi thường gặp</a></li>
+                                        <li><a href="/src/pages/about_info/mission.html">Sứ mệnh & Tầm nhìn</a></li>
+                                        <li><a href="/src/pages/about_info/about-group.html">Nhóm phát triển</a></li>
+                                        <li><a href="/src/pages/about_info/guide.html">Tài liệu hướng dẫn</a></li>
+                                    </ul>
+                                </li>
+
+                                <!-- Cửa hàng -->
+                                <li class="nav__item dropdown">
+                                    <a href="/src/pages/shop/shop.html">Cửa hàng <i
+                                            class="fa-solid fa-chevron-down"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/src/pages/shop/shop.html">Danh mục sản phẩm</a></li>
+                                        <li><a href="/src/pages/shop/cart.html">Giỏ hàng</a></li>
+                                        <li><a href="/src/pages/shop/wishlist.html">Yêu thích</a></li>
+                                        <li><a href="/src/pages/shop/checkout.html">Thanh toán</a></li>
+                                    </ul>
+                                </li>
+
+                                <!-- Bài viết -->
+                                <li class="nav__item dropdown">
+                                    <a href="/src/pages/content/blog.html">Bài viết <i
+                                            class="fa-solid fa-chevron-down"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/src/pages/content/blog-category.html">Danh mục bài viết</a></li>
+                                        <li><a href="/src/pages/content/blog-detail.html">Chi tiết bài viết</a></li>
+                                        <li><a href="/src/pages/content/gallery.html">Bộ sưu tập hình ảnh</a></li>
+                                    </ul>
+                                </li>
+
+                                <!-- Sự kiện -->
+                                <li class="nav__item dropdown">
+                                    <a href="/src/pages/workshop/events.html">Sự kiện <i
+                                            class="fa-solid fa-chevron-down"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/src/pages/workshop/workshop.html">Workshop</a></li>
+                                        <li><a href="/src/pages/workshop/register.html">Đăng ký tham gia</a></li>
+                                        <li><a href="/src/pages/workshop/materials.html">Tài liệu Workshop</a></li>
+                                        <li><a href="/src/pages/workshop/rate.html">Đánh giá</a></li>
+                                    </ul>
+                                </li>
+
+
+                                <!-- Liên hệ -->
+                                <li class="nav__item"><a href="/src/pages/main/contact.html">Liên hệ</a></li>
+
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+
+                <div class="header__end-right">
+                    <div class="header__shop">
+                        <a href="/src/pages/shop/wishlist.html"><i class="fa-solid fa-heart"></i></a>
+                        <a href="/src/pages/shop/cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    <div class="header__user">
+                        <!-- <a href="src/pages/user/sign-in.html"><span><i class="fas fa-user"></i> Đăng nhập </span></a> -->
+                        <a href="/src/pages/user/sign-in.html"><span><i class="fas fa-user"></i> Đăng nhập </span></a>
+                        <span class="divider">|</span>
+                        <!-- <a href="src/pages/user/sign-up.html"><span> <i class="fas fa-pencil-alt"></i> Đăng ký </span></a> -->
+                        <a href="/src/pages/user/sign-up.html"><span> <i class="fas fa-pencil-alt"></i> Đăng ký
+                            </span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="back">
+            <a href="../../../index.html">Trang Chủ</a>
+            <span>/</span>
+            <a href="../../pages/shop/shop.html">Cửa Hàng</a>
+            <span>/</span>
+            <a href="#">Giỏ hàng</a>
+        </div>
+        <div class="cart-container__head">
+            <h3>Sản Phẩm</h3>
+            <h3>Số Lượng</h3>
+            <h3>Giá</h3>
+        </div>
+        <!-- sp1 -->
+        <div class="cart-containers-">
+            <div class="cart-container cart-product-row">
+                <div class="cart-container__product">
+                    <img src="../../assets/images/shop/xe-tap-di-da-nang.jpg" alt="">
+                    <div class="cart-container__product__title">
+                        <h4 style="color: #989898;">VTECH</h4>
+                        <h4>Đồ Chơi Xe Tập Đi Đa Năng Có Nhạc Và Đèn Cho Bé</h4>
+                    </div>
+                </div>
+                <div class="cart-container__quantity">
+                    <span><i class="fa-solid fa-minus decrease-btn" style="margin-right: 16px ;"></i> <span
+                            class="quantity-value">1</span> <i class="fa-solid fa-plus increase-btn"
+                            style="margin-left: 16px;"></i></span>
+                    <span><i class="fa-solid fa-trash delete-btn" style="margin-left: 16px;"></i></span>
+                </div>
+                <div class="cart-container__price">
+                    <!-- thuộc tính data-unit-price để JS biết giá mặc định cho 1 sp là bao nhiêu -->
+                    <p class="product-line-price" data-unit-price="1779999">1.779.000 Đ</p>
+                </div>
+            </div>
+        </div>
+        <!-- sp2 -->
+        <div class="cart-containers-">
+            <div class="cart-container cart-product-row">
+                <div class="cart-container__product">
+                    <img src="../../assets/images/shop/do-choi-qua-tao-hoc-chu.png" alt="">
+                    <div class="cart-container__product__title">
+                        <h4 style="color: #989898;">VTECH</h4>
+                        <h4>Đồ Chơi Quả Táo Học Chữ ABC VTECH</h4>
+                    </div>
+                </div>
+                <div class="cart-container__quantity">
+                    <span><i class="fa-solid fa-minus decrease-btn" style="margin-right: 16px ;"></i> <span
+                            class="quantity-value ">1</span> <i class="fa-solid fa-plus increase-btn"
+                            style="margin-left: 16px;"></i></span>
+                    <span><i class="fa-solid fa-trash delete-btn" style="margin-left: 16px;"></i></span>
+                </div>
+                <div class="cart-container__price">
+                    <p class="product-line-price" data-unit-price="969000">969.000 Đ</p>
+                </div>
+            </div>
+        </div>
+        <!-- ... -->
+
+        <!--  -->
+        <div class="total">
+            <h2>Tổng cộng: <span id="total-price" total-price="">3.717.000 Đ</span></h2>
+        </div>
+
+        <!--  -->
+        <div class="continue-shopping">
+            <a href="../../pages/shop/shop.html">
+                <h2>Tiếp tục mua hàng</h2>
+            </a>
+            <a href="../../pages/shop/checkout.html">
+                <h2>Tiến hành thanh toán</h2>
+            </a>
+
+        </div>
+    </main>
+
+    <!--FOOTER-->
+    <footer class="footer">
+        <div class="container  footer__container">
+            <div class="footer__col footer__logo">
+                <div class="logo">
+                    <a href="/index.html">
+                        <img src="/src/assets/images/logo.png" alt="logo" style="width: 15rem; height: auto; object-fit: contain; display: block; 
+                        margin: auto;">
+                    </a>
+                </div>
+                <div class="footer__icon">
+                    <a href="" class="header__icon-right"> <i class="fa-brands fa-facebook-f"></i> </a>
+                    <a href="" class="header__icon-right"> <i class="fa-brands fa-instagram"></i></a>
+                    <a href="" class="header__icon-right"> <i class="fa-brands fa-amazon"></i> </a>
+                    <a href="" class="header__icon-right"> <i class="fa-brands fa-twitter"></i> </a>
+                </div>
+                <p>
+                    3.T STEMSHOP – Nơi mang đến dụng cụ học tập STEM giúp trẻ em vừa học vừa chơi, <br>
+                    phát triển tư duy logic, khả năng sáng tạo và niềm đam mê khám phá khoa học từ sớm.
+                </p>
+            </div>
+            <div class="footer__col footer__quickLinks">
+                <h3>Liên kết nhanh</h3>
+                <ul>
+                    <ul>
+                        <ul>
+                            <li><a href="/index.html">Trang chủ</a></li>
+                            <li><a href="/src/pages/main/about.html">Giới thiệu</a></li>
+                            <li><a href="/src/pages/shop/shop.html">Cửa hàng</a></li>
+                            <li><a href="/src/pages/content/blog.html">Bài viết</a></li>
+                            <li><a href="/src/pages/main/contact.html">Liên hệ</a></li>
+
+                        </ul>
+
+                    </ul>
+                </ul>
+            </div>
+
+
+            <div class="footer__col footer__customerSupport">
+                <h3>Hỗ trợ khách hàng</h3>
+                <ul>
+                    <li><a href="/src/pages/main/faq.html">Câu hỏi thường gặp</a></li>
+                    <li><a href="/src/pages/main/policy.html">Chính sách bảo hành</a></li>
+                    <li><a href="/src/pages/main/terms.html">Điều khoản sử dụng</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col footer__contact">
+                <h3>Liên hệ</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Trường Đại học Nông Lâm TP.HCM</p>
+                <p><i class="fa-solid fa-envelope"></i> shopstemteam22@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> +84 898 658 107</p>
+            </div>
+        </div>
+
+
+        <div class="footer__bottom">
+            <p>© 2025 STEMSHOP - Nhóm 22 | All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/components.js"></script>
+    <script src="../../assets/js/pages/cart.js"></script>
+</body>
+
+</html>
