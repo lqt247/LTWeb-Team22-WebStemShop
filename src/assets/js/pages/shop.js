@@ -252,3 +252,25 @@ checkboxCategory.forEach(cb => {
     });
 });
 
+// -------------back to top-----------------
+const backToTopBtn = document.querySelector('.back-to-top');
+
+//lắng nghe sựu kiện cuộn chuột và gọi function để xử lý sự kiện đó
+window.onscroll = function () {
+    scrollFunction();
+}
+
+function scrollFunction() {
+    if(document.documentElement.scrollTop > 300){
+        backToTopBtn.style.display = "block";
+    } else {
+        backToTopBtn.style.display = "none";
+    }
+}
+
+backToTopBtn.addEventListener('click', () =>{
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
