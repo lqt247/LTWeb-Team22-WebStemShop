@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Đánh giá Workshop</title>
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-  <link rel="stylesheet" href="../../assets/css/pages/rate.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết tài liệu Workshop - STEMShop</title>
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/pages/materials-detail.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
 <!--HEADER-->
 <header class="header">
     <!-- PHẦN TRÊN: thông tin + mạng xã hội -->
@@ -66,7 +70,7 @@
                                 <ul class="dropdown-menu">
 
 
-                                     
+                                    <li><a href="/src/pages/about_info/about-stem.html">Về STEMSHOP</a></li>            
                                     <li><a href="/src/pages/about_info/mission.html">Sứ mệnh & Tầm nhìn</a></li>
                                     <li><a href="/src/pages/about_info/guide.html">Tài liệu hướng dẫn</a></li>
 
@@ -106,7 +110,7 @@
                                 <ul class="dropdown-menu">
 
 
-                                    <li><a href="/src/pages/workshop/events.html">Workshop</a></li>
+                                  
 
                                     <li><a href="/src/pages/workshop/register.html">Đăng ký tham gia</a></li>
                                     <li><a href="/src/pages/workshop/materials.html">Tài liệu Workshop</a></li>
@@ -132,7 +136,7 @@
   </div>
   <!-- KHI CHƯA ĐĂNG NHẬP -->
   <div class="header__user header__user-login">
-       <a href="/src/pages/user/sign-in.html"><span><i class="fas fa-user"></i> Đăng nhập </span></a>
+    <a href="/src/pages/user/sign-in.html"><span><i class="fas fa-user"></i> Đăng nhập </span></a>
                     <span class="divider">|</span>
                     <a href="/src/pages/user/sign-up.html"><span> <i class="fas fa-pencil-alt"></i> Đăng ký </span></a>
   </div>
@@ -160,46 +164,83 @@
     </div>
 </header>
 
-  <main class="rate">
-    <section class="rate__container">
-      <div class="rate__image">
-        <img src="../../assets/images/workshop/dangky.jpg" alt="Bé đánh giá workshop" />
+    <main class="material-detail">
+      <div class="material-detail__container">
+        <div class="material-detail__image">
+          <img
+            src="../../assets/images/workshop/robot-mini.jpg"
+            alt="Lắp ráp Robot mini"
+          />
+        </div>
+
+        <div class="material-detail__content">
+          <h1 class="material-detail__title">
+            <i class="fa-solid fa-robot"></i> Lắp ráp Robot mini
+          </h1>
+          <p class="material-detail__desc">
+            Tài liệu này hướng dẫn các bé cách lắp ráp robot mini có thể di chuyển
+            và phát sáng, giúp rèn luyện tư duy kỹ thuật và kỹ năng sáng tạo. Các
+            bước được minh họa bằng hình ảnh dễ hiểu, phù hợp với độ tuổi từ 6–10
+            tuổi.
+          </p>
+
+          <ul class="material-detail__info">
+            <li>
+              <i class="fa-solid fa-calendar-days"></i>
+              Ngày đăng: 26/10/2025
+            </li>
+            <li>
+              <i class="fa-solid fa-user-graduate"></i>
+              Độ tuổi phù hợp: 6–10 tuổi
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              Thời gian học: 30 phút
+            </li>
+          </ul>
+
+          <div class="material-detail__actions">
+            <a href="materials.html" class="btn-back">
+              <i class="fa-solid fa-arrow-left"></i> Quay lại thư viện
+            </a>
+            <a href="#" class="btn-download">
+              <i class="fa-solid fa-download"></i> Tải tài liệu
+            </a>
+          </div>
+        </div>
       </div>
 
-      <div class="rate__form">
-        <h1 class="rate__title"><i class="fa-solid fa-star text-pink"></i> Đánh giá Workshop</h1>
-        <p class="rate__desc">Hãy chia sẻ cảm nhận của bé sau buổi học STEM nhé 💖</p>
-
-        <form class="rate__content">
-          <label for="name"><i class="fa-solid fa-child"></i> Tên bé:</label>
-          <input type="text" id="name" placeholder="Nhập tên bé..." />
-
-          <label for="event"><i class="fa-solid fa-flask"></i> Workshop đã tham gia:</label>
-          <select id="event">
-            <option>Học làm Robot mini</option>
-            <option>Thí nghiệm Khoa học Vui</option>
-            <option>Khám phá Không gian</option>
-          </select>
-
-          <label><i class="fa-solid fa-star"></i> Đánh giá của bé:</label>
-          <div class="rate__stars">
-            <i class="fa-regular fa-star" data-value="1"></i>
-            <i class="fa-regular fa-star" data-value="2"></i>
-            <i class="fa-regular fa-star" data-value="3"></i>
-            <i class="fa-regular fa-star" data-value="4"></i>
-            <i class="fa-regular fa-star" data-value="5"></i>
+      <section class="material-detail__related">
+        <h2 class="related__title">📚 Tài liệu khác bạn có thể thích</h2>
+        <div class="related__list">
+          <div class="related__item">
+            <img
+              src="../../assets/images/workshop/science-fun.jpg"
+              alt="Khoa học vui"
+            />
+            <p>Khoa học vui</p>
           </div>
 
-          <label for="comment"><i class="fa-solid fa-comment-dots"></i> Cảm nhận của bé:</label>
-          <textarea id="comment" rows="4" placeholder="Bé thấy buổi học thế nào?..."></textarea>
+          <div class="related__item">
+            <img
+              src="../../assets/images/workshop/space.jpg"
+              alt="Khám phá không gian"
+            />
+            <p>Khám phá không gian</p>
+          </div>
 
-          <button type="submit" class="rate__btn">Gửi đánh giá</button>
-        </form>
-      </div>
-    </section>
-  </main>
+          <div class="related__item">
+            <img
+              src="../../assets/images/workshop/engineer.jpg"
+              alt="Kỹ sư nhí sáng tạo"
+            />
+            <p>Kỹ sư nhí sáng tạo</p>
+          </div>
+        </div>
+      </section>
+    </main>
 
- <!--FOOTER-->
+<!--FOOTER-->
 <!-- Wave Divider -->
 <div class="footer-wave">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
@@ -280,43 +321,7 @@
         <p>© 2025 STEMSHOP - Nhóm 22 | All rights reserved.</p>
     </div>
 </footer>
-   <script src="../../assets/js/header.js"></script>
-  <script src="../../assets/js/components.js"></script>
-  <script>
-    // đánh giá 
-      const form = document.querySelector('.rate__content');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault(); // chặn reload
-    window.location.href = "../../../index.html"; // chuyển về trang chủ
-  });
-    //  Xử lý chọn sao
-    const stars = document.querySelectorAll('.rate__stars i');
-    let rating = 0;
-
-    stars.forEach((star) => {
-      star.addEventListener('click', () => {
-        rating = star.getAttribute('data-value');
-        stars.forEach((s, index) => {
-          s.classList.toggle('fa-solid', index < rating);
-          s.classList.toggle('fa-regular', index >= rating);
-        });
-      });
-
-      star.addEventListener('mouseover', () => {
-        stars.forEach((s, index) => {
-          s.classList.toggle('fa-solid', index < star.getAttribute('data-value'));
-          s.classList.toggle('fa-regular', index >= star.getAttribute('data-value'));
-        });
-      });
-
-      star.addEventListener('mouseleave', () => {
-        stars.forEach((s, index) => {
-          s.classList.toggle('fa-solid', index < rating);
-          s.classList.toggle('fa-regular', index >= rating);
-        });
-      });
-    });
-  </script>
-</body>
+     <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/components.js"></script>
+  </body>
 </html>

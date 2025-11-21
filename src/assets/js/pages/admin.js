@@ -40,8 +40,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // POPUP BÀI VIẾT
     // -------------------------
     const postForm = document.getElementById("postForm");
+    const productForm = document.getElementById("productForm");
+    const eventForm = document.getElementById("eventForm");
+
     document.getElementById("openPostForm").onclick = () => postForm.style.display = "flex";
     document.getElementById("closePostForm").onclick = () => postForm.style.display = "none";
+
+    document.getElementById("openAddProduct")?.addEventListener('click', () => productForm.style.display = "flex");
+    document.getElementById("closeProductForm")?.addEventListener('click', () => productForm.style.display = "none");
+
+    document.getElementById("openAddEvent")?.addEventListener('click', () => eventForm.style.display = "flex");
+    document.getElementById("closeEventForm")?.addEventListener('click', () => eventForm.style.display = "none");
 
     // -------------------------
     // TAG INPUT
@@ -87,6 +96,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    document.getElementById("productImage")?.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                const img = document.getElementById("previewProductImage");
+                img.src = e.target.result;
+                img.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    document.getElementById("eventImage")?.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                const img = document.getElementById("previewEventImage");
+                img.src = e.target.result;
+                img.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
     // -------------------------
     // SAVE POST (demo)
     // -------------------------
@@ -94,12 +129,27 @@ document.addEventListener("DOMContentLoaded", () => {
         const title = document.getElementById("postTitle").value;
         const date = document.getElementById("postDate").value;
 
+        if (!title || !date) {
+            alert('Vui lòng nhập đầy đủ tiêu đề và ngày!');
+            return;
+        }
+
+        const blogImages = [
+            'STEM trong đời sống.jpg',
+            'Hướng dẫn chọn kit STEM phù hợp.jpg',
+            'Lợi ích học STEM sớm cho trẻ em.jpg'
+        ];
+        const randomImage = blogImages[Math.floor(Math.random() * blogImages.length)];
+        
+        const tbody = document.getElementById("postsTable");
+        const newId = tbody.rows.length + 1;
+
         const row = `
             <tr>
-                <td>NEW</td>
-                <td><img src="../../assets/images/blog/b1.jpg"></td>
+                <td>${newId}</td>
+                <td><img src="../../assets/images/blog/${randomImage}" alt="Blog"></td>
                 <td>${title}</td>
-                <td>${tags.map(t => `<span class='tag'>${t}</span>`).join(" ")}</td>
+                <td>${tags.map(t => `<span class='tag'>${t}</span>`).join(" ") || '<span class="tag">Chung</span>'}</td>
                 <td>${date}</td>
                 <td>
                     <button class="btn-small edit">Sửa</button>
@@ -108,7 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </tr>
         `;
 
-        document.getElementById("postsTable").innerHTML += row;
+        tbody.insertAdjacentHTML('beforeend', row);
+        
         postForm.style.display = "none";
         tags = [];
         renderTags();
@@ -116,8 +167,100 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("postDate").value = "";
         document.getElementById("postImage").value = "";
         document.getElementById("previewImage").style.display = "none";
-        alert("Đã lưu bài viết (demo)");
+        alert("Đã thêm bài viết mới!");
     };
+
+    // -------------------------
+    // SAVE PRODUCT
+    // -------------------------
+    document.getElementById("saveProduct")?.addEventListener('click', function() {
+        const name = document.getElementById("productName").value;
+        const category = document.getElementById("productCategory").value;
+        const price = document.getElementById("productPrice").value;
+
+        if (!name || !category || !price) {
+            alert('Vui lòng nhập đầy đủ thông tin!');
+            return;
+        }
+
+        const productImages = [
+            'Robot lập trình Scratch.png',
+            'Kit STEM Arduino cơ bản.png',
+            'Bộ lắp ráp cơ khí cho trẻ em.png'
+        ];
+        const randomImage = productImages[Math.floor(Math.random() * productImages.length)];
+
+        const tbody = document.getElementById("productsTable");
+        const newId = tbody.rows.length + 1;
+
+        const row = `
+            <tr>
+                <td>${newId}</td>
+                <td><img src="../../assets/images/products/${randomImage}" alt="${name}"></td>
+                <td>${name}</td>
+                <td>${category}</td>
+                <td>${parseInt(price).toLocaleString('vi-VN')}đ</td>
+                <td>
+                    <button class="btn-small edit">Sửa</button>
+                    <button class="btn-small delete">Xoá</button>
+                </td>
+            </tr>
+        `;
+
+        tbody.insertAdjacentHTML('beforeend', row);
+
+        productForm.style.display = "none";
+        document.getElementById("productName").value = "";
+        document.getElementById("productCategory").value = "";
+        document.getElementById("productPrice").value = "";
+        document.getElementById("productImage").value = "";
+        document.getElementById("previewProductImage").style.display = "none";
+        alert('Đã thêm sản phẩm mới!');
+    });
+
+    // -------------------------
+    // SAVE EVENT
+    // -------------------------
+    document.getElementById("saveEvent")?.addEventListener('click', function() {
+        const name = document.getElementById("eventName").value;
+        const date = document.getElementById("eventDate").value;
+        const location = document.getElementById("eventLocation").value;
+
+        if (!name || !date || !location) {
+            alert('Vui lòng nhập đầy đủ thông tin!');
+            return;
+        }
+
+        const eventImages = ['robot-mini.jpg', 'science-fun.jpg', 'electric.jpg', 'engineer.jpg', 'math.jpg', 'space.jpg'];
+        const randomImage = eventImages[Math.floor(Math.random() * eventImages.length)];
+
+        const tbody = document.getElementById("eventsTable");
+        const newId = tbody.rows.length + 1;
+
+        const row = `
+            <tr>
+                <td>${newId}</td>
+                <td><img src="../../assets/images/workshop/${randomImage}" alt="${name}"></td>
+                <td>${name}</td>
+                <td>${date}</td>
+                <td>${location}</td>
+                <td>
+                    <button class="btn-small edit">Sửa</button>
+                    <button class="btn-small delete">Xoá</button>
+                </td>
+            </tr>
+        `;
+
+        tbody.insertAdjacentHTML('beforeend', row);
+
+        eventForm.style.display = "none";
+        document.getElementById("eventName").value = "";
+        document.getElementById("eventDate").value = "";
+        document.getElementById("eventLocation").value = "";
+        document.getElementById("eventImage").value = "";
+        document.getElementById("previewEventImage").style.display = "none";
+        alert('Đã thêm sự kiện mới!');
+    });
 
     // -------------------------
     // SEARCH FILTER
@@ -139,4 +282,17 @@ document.addEventListener("DOMContentLoaded", () => {
     addSearchFilter('searchOrder', 'ordersTable');
     addSearchFilter('searchUser', 'usersTable');
     addSearchFilter('searchPost', 'postsTable');
+
+    // -------------------------
+    // XÓA HÀNG (DELETE ROW)
+    // -------------------------
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('delete')) {
+            if (confirm('Bạn có chắc muốn xóa mục này?')) {
+                const row = e.target.closest('tr');
+                row.remove();
+                alert('Đã xóa!');
+            }
+        }
+    });
 });
