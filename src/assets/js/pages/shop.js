@@ -251,3 +251,4 @@ checkboxCategory.forEach(cb => {
         applyFilters(); 
     });
 });
+
