@@ -1,4 +1,5 @@
 .materials {
+
     display: grid;
     grid-template-columns: 280px 1fr;
     gap: 30px;
@@ -153,4 +154,6 @@
 .pagination a.active {
     background: #ff6c80;
     color: #fff;
+
+
 }

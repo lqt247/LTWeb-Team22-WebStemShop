@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <!--HEADER-->
+   <!--HEADER-->
 <header class="header">
     <!-- PHẦN TRÊN: thông tin + mạng xã hội -->
     <div class="header__first">
@@ -76,8 +76,8 @@
                                     <li><a href="/src/pages/about_info/about-stem.html">Về STEMSHOP</a></li>            
                                     <li><a href="/src/pages/about_info/mission.html">Sứ mệnh & Tầm nhìn</a></li>
                                     <li><a href="/src/pages/about_info/guide.html">Tài liệu hướng dẫn</a></li>
+                                    <li><a href="/src/pages/about_info/about-group.html">Nhóm phát triển</a></li>
 
-                                      <li><a href="/src/pages/about_info/about-group.html">Nhóm phát triển</a></li>
                                 </ul>
                             </li>
 
@@ -114,7 +114,6 @@
 
 
                                     <li><a href="/src/pages/workshop/events.html">Workshop</a></li>
-
                                     <li><a href="/src/pages/workshop/register.html">Đăng ký tham gia</a></li>
                                     <li><a href="/src/pages/workshop/materials.html">Dự Án Workshop</a></li>
                                     <li><a href="/src/pages/workshop/rate.html">Đánh giá</a></li>
@@ -130,45 +129,61 @@
 
                 </div>
             </div>
+  <div class="header__end-right">
 
-<div class="header__end-right">
+                    <div class="header__shop">
+                        <a href="/src/pages/shop/wishlist.html"><i class="fa-solid fa-heart"></i></a>
+                        <a href="/src/pages/shop/cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    <!-- KHI CHƯA ĐĂNG NHẬP -->
+                    <!-- <div class="header__user header__user-login">
+                        <a href="/src/pages/user/sign-in.html"><span><i class="fas fa-user"></i> Đăng nhập </span></a>
+                        <span class="divider">|</span>
+                        <a href="/src/pages/user/sign-up.html"><span> <i class="fas fa-pencil-alt"></i> Đăng ký
+                            </span></a>
+                    </div> -->
 
-  <div class="header__shop">
-    <a href="/src/pages/shop/wishlist.html"><i class="fa-solid fa-heart"></i></a>
-    <a href="/src/pages/shop/cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
-  </div>
-  <!-- KHI CHƯA ĐĂNG NHẬP -->
-  <!-- <div class="header__user header__user-login">
-      <a href="/src/pages/user/sign-in.html">Đăng nhập</a>
-      <span class="divider">|</span>
-      <a href="/src/pages/user/sign-up.html">Đăng ký</a>
-  </div> -->
+                    <!-- KHI ĐÃ ĐĂNG NHẬP -->
+                    <div class="header__user header__user-logged">
 
-  <!-- KHI ĐÃ ĐĂNG NHẬP -->
-  <div class="header__user header__user-logged">
-      
-      <i class="fa-solid fa-circle-user user-avatar-icon"></i>
-      <span class="user-short-name">Bé Minh Anh</span>
-      <div class="user-dropdown">
-          
+                        <i class="fa-solid fa-circle-user user-avatar-icon"></i>
+                        <span class="user-short-name">Bé Minh Anh</span>
+                        <div class="user-dropdown">
 
-          <ul class="dropdown-menu-user">
-              <li><a href="/src/pages/user/profile.html"><i class="fa-solid fa-user"></i> Hồ sơ</a></li>
-              <li><a href="/src/pages/shop/cart.html"><i class="fa-solid fa-box"></i> Đơn hàng</a></li>
-              <li><a href="/src/pages/shop/wishlist.html"><i class="fa-solid fa-heart"></i> sản phẩm yêu thích</a></li>
-              <li><a href="/src/pages/workshop/events.html"><i class="fa-solid fa-calendar-check"></i> Sự kiện đã tham gia</a></li>
-              <li class="logout"><a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
-          </ul>
-      </div>
-  </div>
 
-</div>
+                            <ul class="dropdown-menu-user">
+                                <li><a href="/src/pages/user/profile.html"><i class="fa-solid fa-user"></i> Hồ sơ</a>
+                                </li>
+                                <li><a href="/src/pages/shop/cart.html"><i class="fa-solid fa-box"></i> Đơn hàng</a>
+                                </li>
+                                <li><a href="/src/pages/shop/wishlist.html"><i class="fa-solid fa-heart"></i> sản phẩm
+                                        yêu thích</a></li>
+                                <li><a href="/src/pages/workshop/events.html"><i class="fa-solid fa-calendar-check"></i>
+                                        Sự kiện đã tham gia</a></li>
+                                <li class="logout"><a href="#" id="logoutBtn"><i
+                                            class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
         </div>
     </div>
 </header>
-   
+
+     <div class="blog-category-bannerMain">
+            <div class="blog-banner__content">
+                <h1 class="blog-banner__title">Chi tiết bài viét</h1>
+                <div class="blog-breadcrumb">
+                    <a href="/index.html">Trang chủ</a>
+                    <i class="fa-solid fa-angle-right"></i>
+                    <span>Khơi dậy niềm yêu thích STEM cho trẻ nhỏ</span>
+                </div>
+            </div>
+        </div>
     <main class="blog-detail container">
        
+      
         <!--Bài viết chi tiết-->
         <article class="post-detail">
             <h1 class="post-detail__title">Khơi dậy niềm yêu thích STEM cho trẻ nhỏ</h1>
@@ -319,7 +334,9 @@
 
     </main>
 
-<!--FOOTER-->
+
+    <!--FOOTER-->
+
 <!-- Wave Divider -->
 <div class="footer-wave">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
@@ -365,7 +382,6 @@
 
                 </ul>
 
-
             </ul>
         </div>
         <!-- CỘT HỖ TRỢ KHÁCH HÀNG -->
@@ -403,6 +419,7 @@
     <!--Link Components-->
     
     <script src="../../assets/js/components.js"></script>
+    
 </body>
 
 </html>
