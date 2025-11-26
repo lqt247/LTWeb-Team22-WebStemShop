@@ -173,6 +173,8 @@
         <p><i class="fa-solid fa-envelope"></i> minh.anh@example.com</p>
         <p><i class="fa-solid fa-cake-candles"></i> Ngày sinh: 12/08/2017</p>
         <p><i class="fa-solid fa-location-dot"></i> TP. Hồ Chí Minh</p>
+        <p><i class="fa-solid fa-user-shield"></i> Phụ huynh: Nguyễn Văn A</p>
+        <p><i class="fa-solid fa-phone"></i> SĐT phụ huynh: 0901 234 567</p>
       </div>
     </section>
 
@@ -321,46 +323,8 @@
     </div>
 </footer>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-    const headerLogin = document.querySelector(".header__user-login");
-    const headerLogged = document.querySelector(".header__user-logged");
-
-    if (userInfo) {
-        headerLogin && (headerLogin.style.display = "none");
-        headerLogged && (headerLogged.style.display = "flex");
-
-        const nameText = document.querySelector(".user-short-name");
-        if (nameText) nameText.textContent = userInfo.name;
-    } else {
-        headerLogin && (headerLogin.style.display = "flex");
-        headerLogged && (headerLogged.style.display = "none");
-    }
-});
-
-// Logout
-  const logoutBtn = document.getElementById("logoutBtn");
-  if (logoutBtn) {
-      logoutBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        localStorage.removeItem("userInfo");
-        window.location.href = "/src/pages/user/sign-in.html";
-      });
-}
-
-
-    document.addEventListener("DOMContentLoaded", () => {
-    const user = JSON.parse(localStorage.getItem("userInfo"));
-
-    // Nếu chưa login → đẩy về trang đăng nhập
-    if (!user) {
-        window.location.href = "/src/pages/user/sign-in.html";
-    }
-});
-</script>
-  
+  <script src="../../assets/js/pages/profile.js"></script>
   <script src="../../assets/js/components.js"></script>
 </body>
 </html>
