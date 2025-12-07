@@ -31,6 +31,7 @@
         <li class="admin-menu__item" data-page="users"><i class="fa-solid fa-users"></i> Người dùng</li>
         <li class="admin-menu__item" data-page="posts"><i class="fa-solid fa-blog"></i> Bài viết</li>
         <li class="admin-menu__item" data-page="events"><i class="fa-solid fa-calendar"></i> Sự kiện</li>
+        <li class="admin-menu__item" data-page="materials"><i class="fa-solid fa-flask"></i> Dự án Workshop</li>
       </ul>
     </aside>
 
@@ -92,6 +93,24 @@
             <div class="card-info">
               <h3>Sản phẩm</h3>
               <p class="card-value">134</p>
+            </div>
+          </div>
+          <div class="card card-posts">
+            <div class="card-icon">
+              <i class="fa-solid fa-blog"></i>
+            </div>
+            <div class="card-info">
+              <h3>Bài viết</h3>
+              <p class="card-value">68</p>
+            </div>
+          </div>
+          <div class="card card-materials">
+            <div class="card-icon">
+              <i class="fa-solid fa-flask"></i>
+            </div>
+            <div class="card-info">
+              <h3>Dự án Workshop</h3>
+              <p class="card-value">23</p>
             </div>
           </div>
         </div>
@@ -415,6 +434,64 @@
         </div>
       </section>
 
+      <!-- Materials (Dự án Workshop) -->
+      <section id="materials" class="admin-page">
+        <div class="page-header">
+          <h2>Quản lý dự án Workshop</h2>
+          <button class="btn-add" id="openAddMaterial">+ Thêm dự án</button>
+        </div>
+
+        <div class="filter-bar">
+          <input type="text" id="searchMaterial" placeholder="Tìm dự án..." class="filter-bar__input">
+        </div>
+
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Ảnh</th>
+                <th>Tiêu đề dự án</th>
+                <th>Lượt xem</th>
+                <th>Tác vụ</th>
+              </tr>
+            </thead>
+            <tbody id="materialsTable">
+              <tr>
+                <td>1</td>
+                <td><img src="../../assets/images/workshop/materials/p1.png" alt="Robot Mini"></td>
+                <td>Làm Robot Mini từ vật liệu tái chế</td>
+                <td>245</td>
+                <td>
+                  <button class="btn-small edit">Sửa</button>
+                  <button class="btn-small delete">Xoá</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><img src="../../assets/images/workshop/science-fun.jpg" alt="Thí nghiệm khoa học"></td>
+                <td>Thí nghiệm núi lửa baking soda</td>
+                <td>189</td>
+                <td>
+                  <button class="btn-small edit">Sửa</button>
+                  <button class="btn-small delete">Xoá</button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><img src="../../assets/images/workshop/robot-mini.jpg" alt="Arduino Project"></td>
+                <td>Lập trình đèn LED với Arduino</td>
+                <td>312</td>
+                <td>
+                  <button class="btn-small edit">Sửa</button>
+                  <button class="btn-small delete">Xoá</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -470,6 +547,37 @@
       <textarea id="eventDescription" placeholder="Mô tả sự kiện..." rows="4"></textarea>
       <button id="saveEvent" class="btn-add">Lưu sự kiện</button>
       <button id="closeEventForm" class="btn-add" style="background:#aaa;">Đóng</button>
+    </div>
+  </div>
+
+  <!-- Popup thêm dự án workshop -->
+  <div class="popup" id="materialForm">
+    <div class="popup-content">
+      <h3>Thêm dự án Workshop mới</h3>
+      
+      <input type="text" id="materialTitle" placeholder="Tiêu đề dự án (VD: Robot Tránh Vật Cản)" maxlength="150">
+      
+      <select id="materialCategory">
+        <option value="">Chọn danh mục</option>
+        <option value="1">Arduino</option>
+        <option value="2">Module</option>
+        <option value="3">Rio</option>
+        <option value="4">Xbot</option>
+        <option value="5">YoLo:Bit</option>
+      </select>
+      
+      <label style="font-size: 13px; color: #666; margin-top: 10px;">Thumbnail (ảnh đại diện):</label>
+      <input type="file" id="materialThumbnail" accept="image/*">
+      <img id="previewThumbnail" alt="Preview" style="display:none; width:180px; border-radius:10px; margin:10px 0;">
+      
+      <label style="font-size: 13px; color: #666; margin-top: 10px;">Cover Image (ảnh bìa chi tiết):</label>
+      <input type="file" id="materialCoverImage" accept="image/*">
+      <img id="previewCoverImage" alt="Preview" style="display:none; width:180px; border-radius:10px; margin:10px 0;">
+      
+      <textarea id="materialContent" placeholder="Nội dung chi tiết dự án (Giới thiệu, Mục tiêu, Linh kiện, Các bước thực hiện, Lời kết...)..." rows="12"></textarea>
+      
+      <button id="saveMaterial" class="btn-add">Lưu dự án</button>
+      <button id="closeMaterialForm" class="btn-add" style="background:#aaa;">Đóng</button>
     </div>
   </div>
 

@@ -151,7 +151,7 @@
 ===================================================== */
 .dashboard-cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-bottom: 30px;
 }
@@ -187,6 +187,8 @@
 .card-orders .card-icon { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
 .card-users .card-icon { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
 .card-products .card-icon { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+.card-posts .card-icon { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+.card-materials .card-icon { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
 
 .card-info {
     flex: 1;

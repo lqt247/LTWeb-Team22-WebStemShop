@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const postForm = document.getElementById("postForm");
     const productForm = document.getElementById("productForm");
     const eventForm = document.getElementById("eventForm");
+    const materialForm = document.getElementById("materialForm");
 
     document.getElementById("openPostForm").onclick = () => postForm.style.display = "flex";
     document.getElementById("closePostForm").onclick = () => postForm.style.display = "none";
@@ -51,6 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("openAddEvent")?.addEventListener('click', () => eventForm.style.display = "flex");
     document.getElementById("closeEventForm")?.addEventListener('click', () => eventForm.style.display = "none");
+
+    document.getElementById("openAddMaterial")?.addEventListener('click', () => materialForm.style.display = "flex");
+    document.getElementById("closeMaterialForm")?.addEventListener('click', () => materialForm.style.display = "none");
 
     // -------------------------
     // TAG INPUT
