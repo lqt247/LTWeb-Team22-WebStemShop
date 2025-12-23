@@ -34,38 +34,6 @@
 
 
 
-<script>
-    // Counter animation
-    const counters = document.querySelectorAll('.counter');
-    let counted = false;
-    function isInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        return rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.bottom >= 0;
-    }
-    function runCounter() {
-        if (!counted && counters.length > 0 && isInViewport(counters[0])) {
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                let count = 0;
-                const increment = target / 200;
-                const update = () => {
-                    count += increment;
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count);
-                        requestAnimationFrame(update);
-                    } else {
-                        counter.innerText = target + (target >= 1000 ? "+" : "");
-                    }
-                };
-                update();
-            });
-            counted = true;
-        }
-    }
-    window.addEventListener('scroll', runCounter);
-    window.addEventListener('load', runCounter);
-</script>
 </body>
 
 </html>

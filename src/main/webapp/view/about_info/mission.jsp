@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3.T STEMSHOP - Học Tập STEM Sáng Tạo</title>
+    <title>Su Menh</title>
 
 
     <!--LINK CSS-->
@@ -29,7 +29,7 @@
 <%@ include file="/WEB-INF/components/header.jsp" %>
 <main>
     <div class="back">
-        <a href="${pageContext.request.contextPath}/index.html">Trang Chủ</a>
+        <a href="${pageContext.request.contextPath}/">Trang Chủ</a>
         <span>/</span>
         <a href="${pageContext.request.contextPath}/view/main/about.jsp">Giới thiệu</a>
         <span>/</span>

@@ -27,7 +27,7 @@
 <%@ include file="/WEB-INF/components/header.jsp" %>
 <main>
     <div class="back">
-        <a href="${pageContext.request.contextPath}/index.html">Trang Chủ</a>
+        <a href="${pageContext.request.contextPath}/">Trang Chủ</a>
         <span>/</span>
         <a href="${pageContext.request.contextPath}/view/main/about.jsp">Giới thiệu</a>
         <span>/</span>

@@ -35,7 +35,6 @@
 
     <div class="back">
         <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
-
         <span>/</span>
         <a href="#">Giới thiệu</a>
     </div>
@@ -65,7 +64,7 @@
                     giúp trẻ phát triển tư duy logic, khả năng sáng tạo và niềm yêu thích khám phá thế giới xung
                     quanh.
                 </p>
-                <a href="${pageContext.request.contextPath}/view/about_info/about-stem.html" class="btn-readmore">
+                <a href="${pageContext.request.contextPath}/view/about_info/about-stem.jsp" class="btn-readmore">
                     TÌM HIỂU THÊM <i class="fa-solid fa-arrow-right-long"></i>
 
                 </a>
@@ -86,7 +85,7 @@
                     Chúng tôi tin rằng học tập STEM không chỉ là kiến thức,
                     mà là hành trình khám phá thế giới xung quanh.
                 </p>
-                <a href="${pageContext.request.contextPath}/view/about_info/mission.html" class="btn-readmore">
+                <a href="${pageContext.request.contextPath}/view/about_info/mission.jsp" class="btn-readmore">
                     XEM CHI TIẾT <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
             </div>
@@ -142,7 +141,7 @@
                 <h4><i class="fa-solid fa-circle-question"></i> Sản phẩm có phù hợp với lứa tuổi nào?</h4>
                 <p>Mỗi sản phẩm được thiết kế phù hợp với từng nhóm tuổi từ 5–15 tuổi.</p>
             </div>
-            <a href="${pageContext.request.contextPath}/view/main/faq.html" class="btn-readmore">
+            <a href="${pageContext.request.contextPath}/view/main/faq.jsp" class="btn-readmore">
                 XEM THÊM CÂU HỎI <i class="fa-solid fa-arrow-right-long"></i>
             </a>
         </div>
@@ -220,7 +219,7 @@
         });
     });
 </script>
-<script src="../../assets/js/components.js"></script>
+
 
 </body>
 

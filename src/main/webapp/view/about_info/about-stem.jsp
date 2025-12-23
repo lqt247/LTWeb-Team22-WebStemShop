@@ -30,9 +30,9 @@
 
 <main>
     <div class="back">
-        <a href="${pageContext.request.contextPath}/index.html">Trang Chủ</a>
+        <a href="${pageContext.request.contextPath}/">Trang Chủ</a>
         <span>/</span>
-        <a href=/${pageContext.request.contextPath}/view/main/about.jsp">Giới thiệu</a>
+        <a href="${pageContext.request.contextPath}/view/main/about.jsp">Giới thiệu</a>
         <span>/</span>
         <a href="#">Về 3.T STEMSHOP</a>
     </div>
@@ -48,9 +48,11 @@
                 </p>
             </div>
             <div class="stem-intro__image">
-                <img src="../../assets/images/about/about-stem-1.jpg" alt="Học sinh học STEM">
+                <img src="${pageContext.request.contextPath}/assets/images/about/about-stem-1.jpg"
+                 alt="Học sinh học STEM">
             </div>
         </div>
+
     </section>
     <!-- SECTION 2A: THÀNH TỰU / COUNTER -->
     <section class="stem-achievements">
