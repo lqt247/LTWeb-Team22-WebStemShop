@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!--HEADER-->
 <header class="header">
 
@@ -49,52 +49,52 @@
 
                             <!-- Giới thiệu -->
                             <li class="nav__item dropdown">
-                                <a href="${pageContext.request.contextPath}/about.jsp">
+                                <a href="${pageContext.request.contextPath}/view/main/about.jsp">
                                     Giới thiệu <i class="fa-solid fa-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="${pageContext.request.contextPath}/about-stem.jsp">Về STEMSHOP</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/mission.jsp">Sứ mệnh & Tầm nhìn</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/guide.jsp">Tài liệu hướng dẫn</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/about_info/about-stem.jsp">Về STEMSHOP</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/about_info//mission.jsp">Sứ mệnh & Tầm nhìn</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/about_info/guide.jsp">Tài liệu hướng dẫn</a></li>
                                 </ul>
                             </li>
 
                             <!-- SHOP -->
                             <li class="nav__item dropdown">
-                                <a href="${pageContext.request.contextPath}/shop.jsp">
+                                <a href="${pageContext.request.contextPath}/view/shop/shop.jsp">
                                     Cửa hàng <i class="fa-solid fa-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="${pageContext.request.contextPath}/cart.jsp">Giỏ hàng</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/wishlist.jsp">Yêu thích</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/checkout.jsp">Thanh toán</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/shop/cart.jsp">Giỏ hàng</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/shop/wishlist.jsp">Yêu thích</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/shop/checkout.jsp">Thanh toán</a></li>
                                 </ul>
                             </li>
 
                             <!-- BLOG -->
                             <li class="nav__item dropdown">
-                                <a href="${pageContext.request.contextPath}/blog.jsp">
+                                <a href="${pageContext.request.contextPath}/view/content/blog.jsp">
                                     Bài viết <i class="fa-solid fa-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="${pageContext.request.contextPath}/blog-category.jsp">Danh mục bài viết</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/content/blog-category.jsp">Danh mục bài viết</a></li>
                                 </ul>
                             </li>
 
                             <!-- SỰ KIỆN -->
                             <li class="nav__item dropdown">
-                                <a href="${pageContext.request.contextPath}/events.jsp">
+                                <a href="${pageContext.request.contextPath}/view/workshop/events.jsp">
                                     Sự kiện <i class="fa-solid fa-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="${pageContext.request.contextPath}/workshop-register.jsp">Đăng ký tham gia</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/materials.jsp">Tài liệu Workshop</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/rate.jsp">Đánh giá</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/workshop/workshop-register.jsp">Đăng ký tham gia</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/workshop/materials.jsp">Tài liệu Workshop</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/view/workshop/rate.jsp">Đánh giá</a></li>
                                 </ul>
                             </li>
 
                             <li class="nav__item">
-                                <a href="${pageContext.request.contextPath}/contact.jsp">Liên hệ</a>
+                                <a href="${pageContext.request.contextPath}/view/main/contact.jsp">Liên hệ</a>
                             </li>
                         </ul>
                     </nav>
@@ -104,16 +104,16 @@
             <!-- USER + CART -->
             <div class="header__end-right">
                 <div class="header__shop">
-                    <a href="${pageContext.request.contextPath}/wishlist.jsp"><i class="fa-solid fa-heart"></i></a>
-                    <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="${pageContext.request.contextPath}/view/shop/wishlist.jsp"><i class="fa-solid fa-heart"></i></a>
+                    <a href="${pageContext.request.contextPath}/view/shop/cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
 
                 <div class="header__user">
-                    <a href="${pageContext.request.contextPath}/sign-in.jsp">
+                    <a href="${pageContext.request.contextPath}/view/user/sign-in.jsp">
                         <span><i class="fas fa-user"></i> Đăng nhập </span>
                     </a>
                     <span class="divider">|</span>
-                    <a href="${pageContext.request.contextPath}/sign-up.jsp">
+                    <a href="${pageContext.request.contextPath}/view/user/sign-up.jsp">
                         <span><i class="fas fa-pencil-alt"></i> Đăng ký </span>
                     </a>
                 </div>

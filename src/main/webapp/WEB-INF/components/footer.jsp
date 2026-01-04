@@ -35,11 +35,11 @@
     <div class="footer__col footer__quickLinks">
       <h3>Liên kết nhanh</h3>
       <ul>
-        <li><a href="index.jsp">Trang chủ</a></li>
-        <li><a href="/src/pages/main/about.jsp">Giới thiệu</a></li>
-        <li><a href="/src/pages/shop/shop.jsp">Cửa hàng</a></li>
-        <li><a href="/src/pages/content/blog.jsp">Bài viết</a></li>
-        <li><a href="/src/pages/main/contact.jsp">Liên hệ</a></li>
+        <li><a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/main/about.jsp">Giới thiệu</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/shop/shop.jsp">Cửa hàng</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/content/blog.jsp">Bài viết</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/main/contact.jsp">Liên hệ</a></li>
       </ul>
     </div>
 
@@ -47,9 +47,9 @@
     <div class="footer__col footer__customerSupport">
       <h3>Hỗ trợ khách hàng</h3>
       <ul>
-        <li><a href="/src/pages/main/faq.jsp">Câu hỏi thường gặp</a></li>
-        <li><a href="/src/pages/main/policy.jsp">Chính sách bảo hành</a></li>
-        <li><a href="/src/pages/main/terms.jsp">Điều khoản sử dụng</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/main/faq.jsp">Câu hỏi thường gặp</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/main/policy.jsp">Chính sách bảo hành</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/main/terms.jsp">Điều khoản sử dụng</a></li>
       </ul>
     </div>
 

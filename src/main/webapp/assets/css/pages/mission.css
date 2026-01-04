@@ -7,15 +7,21 @@
 }
 
 
-.mission-intro .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
+.mission-intro {
+  position: relative;
+  min-height: 80vh;
+  padding: 100px 0;
+
+  background-image:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("../../images/about/about-mission-1.png");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
+
+
 
 /*====BACK====*/
 .back {
@@ -29,20 +35,21 @@
     color: #a1a0a0;
     margin-left: 20px;
 }
-.mission-intro {
+.mission-intro .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
 
   position: relative;
-  min-height: 80vh;
-  overflow: hidden;
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/src/assets/images/about/about-mission-1.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-
-
+  z-index: 1;
 }
+
+
 
 .mission-text {
   flex: 2;
@@ -137,7 +144,8 @@
 
 .mission-vision .container {
   display: flex;
-  align-items: space-between;
+  align-items: center;
+
   gap: 20px;
   justify-content: space-around;
   padding: 10px;
