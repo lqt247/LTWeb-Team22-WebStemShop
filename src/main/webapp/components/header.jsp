@@ -1,3 +1,4 @@
+<%@ page import="vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <header class="header">
     <!-- PHẦN TRÊN -->
@@ -107,6 +108,10 @@
 
                 <div class="header__user">
                     <a href="${pageContext.request.contextPath}/view/user/signIn.jsp">
+                        <%
+                            //nếu đăng nhập thành công lấy user đã lưu vào session khi đăng nhập thành công
+
+                        %>
                         <span><i class="fas fa-user"></i> Đăng nhập </span>
                     </a>
                     <span class="divider">|</span>

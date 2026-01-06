@@ -30,15 +30,17 @@ public class LoginServlet  extends HttpServlet {
 
         UserDAO dao = new UserDAO();
         User user = dao.login(username, password);
-
+        String url ="";
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("cart", new Cart());
-            response.sendRedirect("index");
+            url="index.jsp";
         } else {
-            request.setAttribute("error", "Login failed");
-            request.getRequestDispatcher("signIn.jsp").forward(request, response);
+            request.setAttribute("error", "Username hoặc password không đúng, vui lòng nhập lại");
+            url = "view/user/signIn.jsp";
+
         }
+        request.getRequestDispatcher(url).forward(request, response);
     }
 }
