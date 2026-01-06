@@ -1,8 +1,5 @@
-
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!--HEADER-->
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <header class="header">
-
     <!-- PHẦN TRÊN -->
     <div class="header__first">
         <div class="container">
