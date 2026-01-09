@@ -1,5 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
     <title>Đăng nhập</title>
@@ -12,7 +11,7 @@
 </head>
 <body>
 <!--HEADER-->
-<%@ include file="/components/header.jsp" %>
+<%@ include file="/WEB-INF/components/header.jsp" %>
 
 <main class="auth">
     <section class="auth__container">
@@ -40,7 +39,7 @@
 </main>
 
 <!--footer-->
-<%@ include file="/components/footer.jsp" %>
+<%@ include file="/WEB-INF/components/footer.jsp" %>
 
 <script src="${pageContext.request.contextPath}/assets/js/components.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
