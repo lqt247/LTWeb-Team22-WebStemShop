@@ -63,7 +63,10 @@
 
                             <!-- SHOP -->
                             <li class="nav__item dropdown">
-                                <a href="${pageContext.request.contextPath}/view/shop/shop.jsp">
+<%--                                <a href="${pageContext.request.contextPath}/view/shop/shop.jsp">--%>
+<%--                                    Cửa hàng <i class="fa-solid fa-chevron-down"></i>--%>
+<%--                                </a>--%>
+                                <a href="${pageContext.request.contextPath}/shop">
                                     Cửa hàng <i class="fa-solid fa-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
