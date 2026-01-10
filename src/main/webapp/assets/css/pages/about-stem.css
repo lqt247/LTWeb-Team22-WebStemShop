@@ -1,15 +1,24 @@
 
 /* ==== SECTION 1: GIỚI THIỆU ==== */
-.stem-intro {
+
+section.stem-intro {
   position: relative;
   min-height: 80vh;
+  padding: 80px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 0;
-  background: linear-gradient(rgba(82,82,82,0.4), rgba(0,0,0,0.4)),
-   url('/src/assets/images/about/bg-stem.jpg') center/cover no-repeat;
+
+  /* background */
+  background-image:
+          linear-gradient(rgba(82,82,82,0.4), rgba(0,0,0,0.4)),
+          url("../../images/about/bg-stem.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
+
 
 .stem-intro .container {
   display: flex;
