@@ -1,5 +1,6 @@
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%--thêm taglib này để viết JSTL--%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!--HEADER-->
 <header class="header">
 
@@ -61,7 +62,7 @@
 
                             <!-- SHOP -->
                             <li class="nav__item dropdown">
-                                <a href="${pageContext.request.contextPath}/view/shop/shop.jsp">
+                                <a href="${pageContext.request.contextPath}/shop">
                                     Cửa hàng <i class="fa-solid fa-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
