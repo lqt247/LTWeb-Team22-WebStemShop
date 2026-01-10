@@ -198,7 +198,10 @@
                 </div>
 
                 <div class="list-product__body">
+<<<<<<< HEAD
                     <h1>This is demo</h1>
+=======
+>>>>>>> d0bbf84b4a2b803bbf35ce7663fabd426b7f4850
                     <div class="list-product__body__card" id="list-product__body__card">
                         <h1>Demo</h1>
                         <c:forEach var="p" items="${products}">
