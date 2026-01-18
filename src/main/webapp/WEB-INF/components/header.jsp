@@ -63,12 +63,6 @@
 
                             <!-- SHOP -->
                             <li class="nav__item dropdown">
-<<<<<<< HEAD
-=======
-<%--                                <a href="${pageContext.request.contextPath}/view/shop/shop.jsp">--%>
-<%--                                    Cửa hàng <i class="fa-solid fa-chevron-down"></i>--%>
-<%--                                </a>--%>
->>>>>>> d0bbf84b4a2b803bbf35ce7663fabd426b7f4850
                                 <a href="${pageContext.request.contextPath}/shop">
                                     Cửa hàng <i class="fa-solid fa-chevron-down"></i>
                                 </a>

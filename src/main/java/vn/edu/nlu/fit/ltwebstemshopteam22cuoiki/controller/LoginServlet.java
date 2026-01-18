@@ -1,10 +1,7 @@
 package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.controller;
 
-<<<<<<< HEAD
-=======
 import java.io.IOException;
 
->>>>>>> d0bbf84b4a2b803bbf35ce7663fabd426b7f4850
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,11 +12,7 @@ import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.UserDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.Cart;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.User;
 
-<<<<<<< HEAD
-import java.io.IOException;
 
-=======
->>>>>>> d0bbf84b4a2b803bbf35ce7663fabd426b7f4850
 @WebServlet("/dang-nhap")
 public class LoginServlet  extends HttpServlet {
 
