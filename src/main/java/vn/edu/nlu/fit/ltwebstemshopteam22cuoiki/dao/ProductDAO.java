@@ -40,18 +40,29 @@ public class ProductDAO {
         return list;
     }
 
-    public Product findById(int id) {
-        String sql = "SELECT * FROM products WHERE ID=?";
-        try (Connection conn = ConnectionDB.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
 
+    public Product findByIdWithImage(int id) {
+        String sql = "SELECT p.*, " +
+                "(SELECT ImageURL FROM product_image WHERE ProductID = p.ID LIMIT 1) AS image_url " +
+                "FROM products p " +
+                "WHERE p.ID = ?";
+        try (
+                Connection con = ConnectionDB.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)
+        ) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
+
             if (rs.next()) {
                 Product p = new Product();
-                p.setId(rs.getInt("id"));
-                p.setProductName(rs.getString("productName"));
-                p.setPrice(rs.getDouble("price"));
+                p.setId(rs.getInt("ID"));
+                p.setCategoriesID(rs.getInt("CategoryID"));
+                p.setBrandID(rs.getInt("BrandID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setDescription(rs.getString("Description"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setImageUrl(rs.getString("image_url"));
                 return p;
             }
         } catch (Exception e) {

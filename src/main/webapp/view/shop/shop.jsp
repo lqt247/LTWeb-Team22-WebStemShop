@@ -188,23 +188,25 @@
                 </p>
 
                 <div class="list-product__body__card">
-
                     <c:forEach var="p" items="${products}">
-                        <div class="list-product__body__card__container"
-                             data-category="${p.categoriesID}"
-                             data-brand="${p.brandID}"
-                             data-price="${p.price}"
-                             data-name="${fn:toLowerCase(p.productName)}">
+                        <a href="${pageContext.request.contextPath}/product-detail?id=${p.id}"
+                           class="product-link">
+                            <div class="list-product__body__card__container"
+                                 data-category="${p.categoriesID}"
+                                 data-brand="${p.brandID}"
+                                 data-price="${p.price}"
+                                 data-name="${fn:toLowerCase(p.productName)}">
 
-                            <img src="${pageContext.request.contextPath}/${p.imageUrl}"
-                                 alt="${p.productName}">
+                                <img src="${pageContext.request.contextPath}/${p.imageUrl}"
+                                     alt="${p.productName}">
 
-                            <div class="list-product__body__card__content">
-                                <p class="brand">Brand ID: ${p.brandID}</p>
-                                <h5>${p.productName}</h5>
-                                <h4>${p.price} Đ</h4>
+                                <div class="list-product__body__card__content">
+                                    <p class="brand">Brand ID: ${p.brandID}</p>
+                                    <h5>${p.productName}</h5>
+                                    <h4>${p.price} Đ</h4>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </c:forEach>
                 </div>
             </div>

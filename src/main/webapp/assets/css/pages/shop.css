@@ -421,3 +421,8 @@ main {
 .back-to-top img:hover {
     transform: translateY(-5px);
 }
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+}
