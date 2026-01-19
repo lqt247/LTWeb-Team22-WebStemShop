@@ -4,9 +4,12 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.ProductDAO;
+import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.ProductImageDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.Product;
+import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.ProductImage;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/product-detail")
 public class ProductDetailServlet extends HttpServlet {
@@ -17,10 +20,15 @@ public class ProductDetailServlet extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
 
-        ProductDAO dao = new ProductDAO();
-        Product product = dao.findByIdWithImage(id);
+        ProductDAO productDAO = new ProductDAO();
+        ProductImageDAO imageDAO = new ProductImageDAO();
+
+        Product product = productDAO.findByIdWithImage(id);
+        List<ProductImage> images = imageDAO.findByProductId(id);
 
         request.setAttribute("product", product);
+        request.setAttribute("images", images);
+
         request.getRequestDispatcher("/view/shop/product-detail.jsp")
                 .forward(request, response);
     }

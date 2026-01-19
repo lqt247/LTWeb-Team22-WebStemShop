@@ -33,14 +33,21 @@
 
         <!-- LEFT: IMAGES -->
         <div class="product-images">
-            <img class="main-image"
-                 src="${pageContext.request.contextPath}/${product.imageUrl}"
-                 alt="${product.productName}">
+            <!-- MAIN IMAGE -->
+            <c:if test="${not empty images}">
+                <img class="main-image"
+                     src="${pageContext.request.contextPath}/${images[0].imageUrl}"
+                     alt="${product.productName}">
+            </c:if>
 
-            <!-- thumbnail (tạm dùng lại ảnh chính) -->
+            <!-- THUMBNAILS -->
             <div class="thumbnail-images">
-                <img src="${pageContext.request.contextPath}/${product.imageUrl}">
+                <c:forEach var="img" items="${images}">
+                    <img src="${pageContext.request.contextPath}/${img.imageUrl}"
+                         alt="${product.productName}">
+                </c:forEach>
             </div>
+
         </div>
 
         <!-- RIGHT: INFO -->
@@ -57,7 +64,7 @@
                     <li><i class="fa-solid fa-check-double"></i> Miễn phí giao hàng đơn trên 500K</li>
                     <li><i class="fa-solid fa-check-double"></i> Giao hàng hỏa tốc 4 tiếng</li>
                     <li><i class="fa-solid fa-check-double"></i> Hỗ trợ trả góp đơn hàng từ 3 triệu. <a
-                            href="${pageContext.request.contextPath}/view/shop/chinh-sach-tra-gop.html" target="_blank">Xem chi tiết</a></li>
+                            href="${pageContext.request.contextPath}/view/shop/chinh-sach-tra-gop.jsp" target="_blank">Xem chi tiết</a></li>
                 </ul>
             </div>
 
@@ -74,7 +81,7 @@
             </div>
 
             <div class="product-meta">
-                <p><strong>Thương hiệu:</strong> ${product.brandID}</p>
+                <p><strong>Thương hiệu:</strong> ${product.brandName}</p>
                 <p><strong>ID sản phẩm:</strong> ${product.id}</p>
             </div>
         </div>
@@ -132,5 +139,16 @@
 
 <!-- FOOTER -->
 <jsp:include page="/WEB-INF/components/footer.jsp"/>
+<%--hàm đổi ản khi click vào thumbnail--%>
+<script>
+    const mainImage = document.querySelector('.main-image');
+    const thumbnails = document.querySelectorAll('.thumbnail-images img');
+
+    thumbnails.forEach(img => {
+        img.addEventListener('click', () => {
+            mainImage.src = img.src;
+        });
+    });
+</script>
 </body>
 </html>

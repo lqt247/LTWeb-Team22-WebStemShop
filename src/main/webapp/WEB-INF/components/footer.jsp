@@ -5,6 +5,9 @@
 <%--    <path fill="rgba(236,117,173,1)" d="M0,50 C80,80 160,30 240,60 C320,90 400,40 480,70 C560,90 640,50 720,80 C800,90 880,50 960,80 C1040,90 1120,50 1200,70 C1280,90 1360,60 1440,80 L1440,100 L0,100 Z"/>--%>
 <%--  </svg>--%>
 <%--</div>--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%--thêm taglib này để viết JSTL--%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <footer class="footer">
 
   <div class="container footer__container">
