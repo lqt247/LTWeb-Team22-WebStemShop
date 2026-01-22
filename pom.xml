@@ -52,6 +52,13 @@
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
             <version>3.0.1</version>
         </dependency>
+        <!-- Source: https://mvnrepository.com/artifact/org.jdbi/jdbi3-core -->
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-core</artifactId>
+            <version>3.50.0</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 
