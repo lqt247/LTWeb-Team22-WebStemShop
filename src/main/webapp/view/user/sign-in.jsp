@@ -17,13 +17,21 @@
 <main class="auth">
     <section class="auth__container">
         <h1 class="auth__title">Đăng  nhập!</h1>
+        <c:if test="${not empty error1}">
+            <p style="color:red">${error1}</p>
+        </c:if>
+        
+        <c:if test="${not empty error2}">
+            <p style="color:red">${error2}</p>
+        </c:if>
 
-        <form class="auth__form" id="signInForm" method="post" action="${pageContext.request.contextPath}/dang-nhap" method="post">
-            <div class="auth__group">
-                <c:if test="${not empty error}">
-                    <p style="color:red">${error}</p>
-                </c:if>
-            </div>
+        <c:if test="${not empty success}">
+            <p style="color:blue">${success}</p>
+        </c:if>
+
+
+        <form class="auth__form" id="signInForm" method="post" action="${pageContext.request.contextPath}/dang-nhap">
+
             <div class="auth__group">
                 <label for="username" class="auth__label">Username</label>
                 <input type="text" id="username" name="username" class="auth__input" value="${username}" placeholder="Nhập username">
@@ -42,7 +50,7 @@
 
             <div class="auth__link">
                 <a href="forgot-password.html" class="auth__link--highlight">Quên mật khẩu?</a>
-                <a href="sign-up.html" class="auth__link--highlight">Đăng ký</a>
+                <a href="sign-up.jsp" class="auth__link--highlight">Đăng ký</a>
             </div>
         </form>
     </section>
