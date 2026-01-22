@@ -27,8 +27,9 @@ public class DBProperties {
     public static final String USERNAME = prop.getProperty("db.username");
     public static final String PASSWORD = prop.getProperty("db.pass");
     public static final String DBNAME = prop.getProperty("db.name");
+    public static final String OPTION = prop.getProperty("dp.option");
 
     public static final String JDBC_URL =
-            "jdbc:mysql://" + HOST + ":" + PORT + "/" + DBNAME
+            "jdbc:mysql://" + HOST + ":" + PORT + "/" + DBNAME + "?" + OPTION
                     + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 }
