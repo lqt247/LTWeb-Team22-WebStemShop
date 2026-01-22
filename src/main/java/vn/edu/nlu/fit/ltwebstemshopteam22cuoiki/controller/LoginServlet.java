@@ -30,17 +30,23 @@ public class LoginServlet  extends HttpServlet {
 
         UserDAO dao = new UserDAO();
         User user = dao.login(username, password);
-        String url ="";
+
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("cart", new Cart());
-            url="index.jsp";
-        } else {
-            request.setAttribute("error", "Username hoặc password không đúng, vui lòng nhập lại");
-            url = "view/user/signIn.jsp";
-
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            return;
         }
-        request.getRequestDispatcher(url).forward(request, response);
+        if (dao.isUnverifiedUser(username, password)) {
+            request.setAttribute("error1", "Tài khoản chưa được xác thực. Vui lòng kiểm tra email.");
+            request.getRequestDispatcher("/view/user/sign-in.jsp").forward(request, response);
+            return;
+        }
+        request.setAttribute("error2", "Username hoặc password không đúng");
+        request.getRequestDispatcher("/view/user/sign-in.jsp").forward(request, response);
     }
-}
+
+
+
+    }
