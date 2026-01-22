@@ -40,7 +40,7 @@ public class LoginServlet  extends HttpServlet {
         } else {
             request.setAttribute("error", "Username hoặc password không đúng, vui lòng nhập lại");
             request.setAttribute("username",  username);
-            url = "view/user/signIn.jsp";
+            url = "view/user/sign-in.jsp";
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

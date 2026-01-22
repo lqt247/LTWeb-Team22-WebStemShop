@@ -13,6 +13,33 @@
 </head>
 
 <body>
+<style>
+    .rating{
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+    }
+    .rating i {
+        font-size: 2rem;
+        color: #ec8b0b;
+    }
+    .rating label input{
+        font-size: 2rem;
+    }
+    .form-reviews{
+        display: flex;
+    }
+    .review__rate{
+        width: 50%;
+    }
+    .review__comment{
+        flex:1;
+    }
+    .review__comment textarea{
+        width: 100%;
+        height: 35%;
+    }
+</style>
 
 <!-- HEADER -->
 <jsp:include page="/WEB-INF/components/header.jsp"/>
@@ -122,16 +149,60 @@
     <!-- ================= REVIEW (STATIC) ================= -->
     <div class="evaluate-product">
         <h2>Đánh giá sản phẩm</h2>
-        <div class="evaluate-product__container">
-            <div class="evaluate-product__star">
-                <i class="fa-solid fa-star"></i>
-                <span>0.0 lượt đánh giá</span>
-            </div>
+        <div class="evaluate-product__containers">
+            <form action="${pageContext.request.contextPath}/review" method="post">
+                <input type="hidden" name="productId" value="${product.id}">
+                <div  class="form-reviews">
+                    <div class="review__rate">
+                        <h3>Đánh giá trung bình: ${avgRating} / 5</h3> <br>
+                        <div class="rating">
+                            <label>
+                                <input type="radio" name="rating" value="5" required>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </label>
 
-            <div class="evaluate-product__comment">
-                <p>Chưa có bình luận nào, hãy chia sẻ đánh giá của bạn.</p>
-                <button>Viết đánh giá</button>
-            </div>
+                            <label>
+                                <input type="radio" name="rating" value="4">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating" value="3">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating" value="2">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating" value="1">
+                                <i class="fa-solid fa-star"></i>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="review__comment">
+                        <h3>Bình luận sản phẩm:</h3><br>
+                        <div class="evaluate-product__comment">
+                            <p>Chưa có bình luận nào, hãy chia sẻ đánh giá của bạn.</p>
+                            <textarea name="comment" placeholder="Nhận xét của bạn"></textarea><br>
+                            <button>Viết đánh giá</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
