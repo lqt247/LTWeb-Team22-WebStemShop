@@ -1,7 +1,6 @@
 package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao;
 
 
-import Dao.BaseDao;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.config.ConnectionDB;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.User;
 
@@ -11,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO extends BaseDao {
+public class UserDAO {
     //Lấy danh sác user
     public List<User> getAllUsers() {
         List<User> Users = new ArrayList<>();
@@ -64,43 +63,4 @@ public class UserDAO extends BaseDao {
         }
         return null;
     }
-    //  Đăng ký
-    public boolean register(User user) {
-        String sql = "INSERT INTO users " +
-                "(FullName, Email, UserName, Password, Role, Status, CreateAt) " +
-                "VALUES (?, ?, ?, ?, ?, ?, CURRENT_DATE)";
-
-        try (Connection conn = ConnectionDB.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setString(1, user.getFullName());
-            ps.setString(2, user.getEmail());
-            ps.setString(3, user.getUserName());
-            ps.setString(4, user.getPassword());
-            ps.setString(5, "USER");     // role mặc định
-            ps.setString(6, "ACTIVE");   // status mặc định
-
-            return ps.executeUpdate() > 0;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-    // check trùng username
-    public boolean isUsernameExists(String username) {
-        String sql = "SELECT ID FROM users WHERE UserName = ?";
-        try (Connection conn = ConnectionDB.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setString(1, username);
-            ResultSet rs = ps.executeQuery();
-            return rs.next();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
 }
