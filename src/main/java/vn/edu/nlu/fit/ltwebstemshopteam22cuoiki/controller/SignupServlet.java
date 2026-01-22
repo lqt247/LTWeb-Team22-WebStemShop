@@ -5,6 +5,7 @@
     import jakarta.servlet.*;
     import jakarta.servlet.http.*;
     import jakarta.servlet.annotation.*;
+    import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.util.EmailUtil;
 
     import java.io.IOException;
 
@@ -30,14 +31,14 @@
             //check mật khẩu
             if (!password.equals(confirmPassword)) {
                 request.setAttribute("error", "Mật khẩu xác nhận không khớp");
-                request.getRequestDispatcher("view/user/sign-up.jsp").forward(request, response);
+                request.getRequestDispatcher("/view/user/sign-up.jsp").forward(request, response);
                 return;
             }
 
             // check trùng username
             if (dao.isUsernameExists(username)) {
                 request.setAttribute("error", "Tên đăng nhập đã tồn tại");
-                request.getRequestDispatcher("view/user/sign-up.jsp").forward(request, response);
+                request.getRequestDispatcher("/view/user/sign-up.jsp").forward(request, response);
                 return;
             }
 
@@ -48,13 +49,25 @@
             user.setPassword(password);
             user.setFullName(username);
 
-            boolean success = dao.register(user);
+            String token = java.util.UUID.randomUUID().toString();
+
+            boolean success = dao.registerWithVerify(user, token);
 
             if (success) {
-                response.sendRedirect( "view/user/sign-in.jsp");
-            } else {
+                String verifyLink = request.getScheme() + "://" +
+                        request.getServerName() + ":" +
+                        request.getServerPort() +
+                        request.getContextPath() +
+                        "/xac-thuc?token=" + token;
+
+                EmailUtil.sendVerifyEmail(email, verifyLink);
+
+                request.setAttribute("success", "Đăng ký thành công! Vui lòng kiểm tra email để xác thực.");
+                request.getRequestDispatcher("/view/user/sign-in.jsp").forward(request, response);
+            }   else {
                 request.setAttribute("error", "Đăng ký thất bại");
-                request.getRequestDispatcher("  view/user/sign-up.jsp").forward(request, response);
+                request.getRequestDispatcher("/view/user/sign-up.jsp").forward(request, response);
+            }
+
             }
         }
-    }

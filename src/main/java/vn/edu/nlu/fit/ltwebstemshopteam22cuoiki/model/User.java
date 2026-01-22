@@ -13,11 +13,13 @@ public class User {
     private String userName;
     private String password;
     private Date createDate;
+    private String verifyToken;
+    private boolean isVerified;
 
     public User() {
     }
 
-    public User(int id, String fullName, String email, String phoneNumber, String address, String role, String status, String userName, String password, Date createDate) {
+    public User(int id, String fullName, String email, String phoneNumber, String address, String role, String status, String userName, String password, Date createDate, String verifyToken, boolean isVerified) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
@@ -28,6 +30,8 @@ public class User {
         this.userName = userName;
         this.password = password;
         this.createDate = createDate;
+        this.verifyToken = verifyToken;
+        this.isVerified = isVerified;
     }
 
     public int getId() {
@@ -109,4 +113,12 @@ public class User {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
+
+    public String getVerifyToken() {return verifyToken; }
+
+    public void setVerifyToken(String verifyToken) {this.verifyToken = verifyToken; }
+
+    public boolean isVerified() {return isVerified; }
+
+    public void setVerified(boolean verified) {isVerified = verified; }
 }
