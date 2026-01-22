@@ -17,10 +17,11 @@
     <section class="auth__container">
         <h1 class="auth__title">Đăng  nhập!</h1>
 
-        <form class="auth__form" id="signInForm" method="post" action="/dang-nhap">
+        <form class="auth__form" id="signInForm" method="post" action="${pageContext.request.contextPath}/dang-nhap">
+            <span>${error}</span>
             <div class="auth__group">
                 <label for="username" class="auth__label">Username</label>
-                <input type="text" id="username" name="username" class="auth__input" placeholder="Nhập username">
+                <input type="text" id="username" name="username" class="auth__input" placeholder="Nhập Email">
             </div>
 
             <div class="auth__group">
@@ -32,7 +33,7 @@
 
             <div class="auth__link">
                 <a href="forgot-password.html" class="auth__link--highlight">Quên mật khẩu?</a>
-                <a href="sign-up.html" class="auth__link--highlight">Đăng ký</a>
+                <a href="sign-up.jsp" class="auth__link--highlight">Đăng ký</a>
             </div>
         </form>
     </section>
