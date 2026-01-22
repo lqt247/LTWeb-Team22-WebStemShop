@@ -35,6 +35,7 @@ public class LoginServlet  extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("cart", new Cart());
+
             response.sendRedirect(request.getContextPath() + "/index.jsp");
             return;
         }
@@ -46,6 +47,7 @@ public class LoginServlet  extends HttpServlet {
         request.setAttribute("error2", "Username hoặc password không đúng");
         request.getRequestDispatcher("/view/user/sign-in.jsp").forward(request, response);
     }
+
 
 
 

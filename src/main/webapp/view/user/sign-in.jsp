@@ -20,7 +20,7 @@
         <c:if test="${not empty error1}">
             <p style="color:red">${error1}</p>
         </c:if>
-
+        
         <c:if test="${not empty error2}">
             <p style="color:red">${error2}</p>
         </c:if>
@@ -31,9 +31,14 @@
 
 
         <form class="auth__form" id="signInForm" method="post" action="${pageContext.request.contextPath}/dang-nhap">
+
             <div class="auth__group">
                 <label for="username" class="auth__label">Username</label>
-                <input type="text" id="username" name="username" class="auth__input" placeholder="Nhập username">
+                <input type="text" id="username" name="username" class="auth__input" value="${username}" placeholder="Nhập username">
+                <%--trogn input tryyền value=${username} để:
+                    Khi login fail → ${username} có giá trị => tự điền lại
+                    Khi mở trang lần đầu → ${username} rỗng => không lỗi
+                --%>
             </div>
 
             <div class="auth__group">
