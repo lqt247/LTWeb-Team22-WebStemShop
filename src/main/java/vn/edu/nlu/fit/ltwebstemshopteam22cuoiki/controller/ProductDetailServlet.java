@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.ProductDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.ProductImageDAO;
+import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.ReviewDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.Product;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.ProductImage;
 
@@ -28,6 +29,14 @@ public class ProductDetailServlet extends HttpServlet {
 
         request.setAttribute("product", product);
         request.setAttribute("images", images);
+
+        //
+        ReviewDAO reviewDAO = new ReviewDAO();
+
+        double avgRating = reviewDAO.getAverageRating(id);
+
+        request.setAttribute("avgRating", avgRating);
+
 
         request.getRequestDispatcher("/view/shop/product-detail.jsp")
                 .forward(request, response);

@@ -39,19 +39,40 @@ public class ReviewDAO {
     }
 
     //tính điểm đánh giá trung bình
-    public double getAverageRating(int productId){
-        String sql = "SELECT AVG(Rating) FROM reviews WHERE ProductID = ?";
-        try(
+    public double getAverageRating(int productId) {
+        String sql = "SELECT AVG(Rating) AS avgRating FROM reviews WHERE ProductID = ?";
+        double avg = 0;
+
+        try (
                 Connection con = ConnectionDB.getConnection();
-                PreparedStatement ps = con.prepareStatement(sql);
-        ){
+                PreparedStatement ps = con.prepareStatement(sql)
+        ) {
             ps.setInt(1, productId);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
 
+            if (rs.next()) {
+                avg = rs.getDouble("avgRating");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return avg;
+    }
 
-        }catch(Exception e){
+    //insert review
+    public void insert(Reviews r){
+        String sql = "INSERT INTO reviews(UserID, ProductID, Rating, Comment) VALUE(?, ?, ?, ?)";
+
+        try(
+            Connection con = ConnectionDB.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+        ){
+            ps.setInt(1, r.getUserID());
+            ps.setInt(2, r.getProductID());
+            ps.setDouble(3, r.getRating());
+            ps.setString(4, r.getComment());
+            ps.executeUpdate();
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -260,11 +260,11 @@
 .evaluate-product  h2 {
     font-size: 24px;
 }
-
+/*
 .evaluate-product__container {
     display: flex;
     justify-content: space-between;
-}
+}*/
 
 .evaluate-product__star {
     width: 40%;
