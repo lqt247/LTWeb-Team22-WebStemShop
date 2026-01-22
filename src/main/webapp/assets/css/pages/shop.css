@@ -281,7 +281,6 @@ main {
 }
 
 .list-product__body__card__content {
-    flex-grow: 1; /* Cho phép phần nội dung chiếm hết không gian trống còn lại */
     margin: 20px;
 }
 .list-product__body__card__container {
@@ -421,4 +420,9 @@ main {
 
 .back-to-top img:hover {
     transform: translateY(-5px);
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
 }

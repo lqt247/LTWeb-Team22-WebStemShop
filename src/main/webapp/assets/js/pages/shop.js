@@ -92,165 +92,68 @@ searchInput.addEventListener('input', (e) => {
 })
 
 // -------------------------CHỨC NĂNG LỌC TỔNG HỢP (5 BỘ LỌC)-------------------
+const cards = document.querySelectorAll(
+    ".list-product__body__card__container"
+);
 
-// 1. LẤY TẤT CẢ ELEMENT CẦN THIẾT
-// 'products' đã được định nghĩa ở phần tìm kiếm (search)
-const productPriceElems = document.querySelectorAll('.product-price');
-const productBrandElems = document.querySelectorAll('.brand'); 
+// ================= CATEGORY FILTER =================
+document.querySelectorAll(".checkbox-category").forEach(cb => {
+    cb.addEventListener("change", filterProducts);
+});
 
-const checkboxPrice = document.querySelectorAll('.checkbox-price');
-const checkboxAge = document.querySelectorAll('.checkbox-age');
-const checkboxSex = document.querySelectorAll('.checkbox-sex');
-const checkboxBrand = document.querySelectorAll('.checkbox-brand');
-const checkboxCategory = document.querySelectorAll('.checkbox-category'); // <-- MỚI
+// ================= PRICE FILTER =================
+document.querySelectorAll(".checkbox-price").forEach(cb => {
+    cb.addEventListener("change", filterProducts);
+});
 
+// ================= SEARCH =================
+document.getElementById("search-product").addEventListener("input", filterProducts);
 
-// 2. HÀM LỌC TỔNG (QUAN TRỌNG NHẤT)
-function applyFilters() {
-    
-    // --- Lấy giá trị đang lọc (GIÁ) ---
-    let selectedPrice = null;
-    checkboxPrice.forEach(cb => {
-        if (cb.checked) {
-            selectedPrice = cb.value;
+function filterProducts() {
+    const checkedCategories = Array.from(
+        document.querySelectorAll(".checkbox-category:checked")
+    ).map(cb => cb.value);
+
+    const checkedPrices = Array.from(
+        document.querySelectorAll(".checkbox-price:checked")
+    ).map(cb => cb.value);
+
+    const keyword = document
+        .getElementById("search-product")
+        .value.toLowerCase();
+
+    cards.forEach(card => {
+        let show = true;
+
+        const category = card.dataset.category;
+        const price = Number(card.dataset.price);
+        const name = card.dataset.name;
+
+        // ===== CATEGORY =====
+        if (checkedCategories.length > 0) {
+            show = checkedCategories.includes(category);
         }
-    });
 
-    // --- Lấy giá trị đang lọc (TUỔI) ---
-    let selectedAge = null;
-    checkboxAge.forEach(cb => {
-        if (cb.checked) {
-            selectedAge = cb.value;
+        // ===== PRICE =====
+        if (show && checkedPrices.length > 0) {
+            show = false;
+            checkedPrices.forEach(p => {
+                if (p === "duoi200" && price < 200000) show = true;
+                if (p === "200-1tr" && price >= 200000 && price <= 1000000) show = true;
+                if (p === "1tr-2tr" && price > 1000000 && price <= 2000000) show = true;
+                if (p === "2tr-4tr" && price > 2000000 && price <= 4000000) show = true;
+                if (p === "tren4tr" && price > 4000000) show = true;
+            });
         }
-    });
 
-    // --- Lấy giá trị đang lọc (GIỚI TÍNH) ---
-    let selectedSex = null;
-    checkboxSex.forEach(cb => {
-        if (cb.checked) {
-            selectedSex = cb.value;
+        // ===== SEARCH =====
+        if (show && keyword) {
+            show = name.includes(keyword);
         }
-    });
 
-    // --- Lấy danh sách đang lọc (THƯƠNG HIỆU) - (Cho phép chọn nhiều) ---
-    const selectedBrands = [];
-    checkboxBrand.forEach(cb => {
-        if (cb.checked) {
-            selectedBrands.push(cb.value.toLowerCase());
-        }
-    });
-
-    // --- Lấy danh sách đang lọc (DANH MỤC) - (Cho phép chọn nhiều) --- (MỚI)
-    const selectedCategories = [];
-    checkboxCategory.forEach(cb => {
-        if (cb.checked) {
-            selectedCategories.push(cb.value.toLowerCase());
-        }
-    });
-
-
-    // --- Duyệt qua từng sản phẩm để quyết định ẨN/HIỆN ---
-    products.forEach((product, index) => {
-        
-        // === 1. KIỂM TRA GIÁ ===
-        let priceText = productPriceElems[index].textContent.replace(/[^\d]/g, "");
-        const price = parseInt(priceText);
-        
-        let priceMatch = false; 
-        if (selectedPrice === null) priceMatch = true; 
-        else if (selectedPrice === "duoi200" && price < 200000) priceMatch = true;
-        else if (selectedPrice === "200-1tr" && price >= 200000 && price <= 1000000) priceMatch = true;
-        else if (selectedPrice === "1tr-2tr" && price > 1000000 && price <= 2000000) priceMatch = true;
-        else if (selectedPrice === "2tr-4tr" && price > 2000000 && price <= 4000000) priceMatch = true;
-        else if (selectedPrice === "tren4tr" && price > 4000000) priceMatch = true;
-
-        // === 2. KIỂM TRA TUỔI ===
-        const productAge = product.dataset.age;
-        let ageMatch = false; 
-        if (selectedAge === null) ageMatch = true; 
-        else if (selectedAge === productAge) ageMatch = true;
-
-        // === 3. KIỂM TRA GIỚI TÍNH ===
-        const productSex = product.dataset.sex;
-        let sexMatch = false;
-        if (selectedSex === null) sexMatch = true;
-        else if (selectedSex === productSex) sexMatch = true;
-        else if (productSex === "unisex") sexMatch = true;
-
-        // === 4. KIỂM TRA THƯƠNG HIỆU ===
-        const productBrand = productBrandElems[index].textContent.toLowerCase();
-        let brandMatch = false;
-        if (selectedBrands.length === 0) brandMatch = true;
-        else if (selectedBrands.includes(productBrand)) brandMatch = true;
-        
-        // === 5. KIỂM TRA DANH MỤC === (MỚI)
-        // Lấy data-category (nếu không có thì trả về chuỗi rỗng)
-        const productCategory = product.dataset.category ? product.dataset.category.toLowerCase() : '';
-        let categoryMatch = false;
-        if (selectedCategories.length === 0) categoryMatch = true; // Không chọn -> Luôn khớp
-        else if (selectedCategories.includes(productCategory)) categoryMatch = true; // Khớp 1 trong các mục đã chọn
-
-
-        // === QUYẾT ĐỊNH CUỐI CÙNG ===
-        // Chỉ HIỆN khi khớp TẤT CẢ 5 ĐIỀU KIỆN
-        if (priceMatch && ageMatch && sexMatch && brandMatch && categoryMatch) {
-            product.style.display = "block";
-        } else {
-            product.style.display = "none";
-        }
+        card.style.display = show ? "block" : "none";
     });
 }
-
-// 3. GÁN SỰ KIỆN CHO CÁC BỘ LỌC (SINGLE-CHOICE)
-// (Chỉ cho phép chọn 1 checkbox mỗi nhóm)
-
-// Gán sự kiện cho Checkbox GIÁ
-checkboxPrice.forEach(cb => {
-    cb.addEventListener('change', (e) => {
-        checkboxPrice.forEach(other => {
-            if (other !== e.target) other.checked = false;
-        });
-        applyFilters(); 
-    });
-});
-
-// Gán sự kiện cho Checkbox TUỔI
-checkboxAge.forEach(cb => {
-    cb.addEventListener('change', (e) => {
-        checkboxAge.forEach(other => {
-            if (other !== e.target) other.checked = false;
-        });
-        applyFilters(); 
-    });
-});
-
-// Gán sự kiện cho Checkbox GIỚI TÍNH
-checkboxSex.forEach(cb => {
-    cb.addEventListener('change', (e) => {
-        checkboxSex.forEach(other => {
-            if (other !== e.target) other.checked = false;
-        });
-        applyFilters(); 
-    });
-});
-
-
-// 4. GÁN SỰ KIỆN CHO BỘ LỌC (MULTI-CHOICE)
-// (Cho phép chọn nhiều)
-
-// Gán sự kiện cho BỘ LỌC THƯƠNG HIỆU
-checkboxBrand.forEach(cb => {
-    cb.addEventListener('change', () => {
-        applyFilters(); 
-    });
-});
-
-// Gán sự kiện cho BỘ LỌC DANH MỤC (MỚI)
-checkboxCategory.forEach(cb => {
-    cb.addEventListener('change', () => {
-        applyFilters(); 
-    });
-});
 
 // -------------back to top-----------------
 const backToTopBtn = document.querySelector('.back-to-top');
