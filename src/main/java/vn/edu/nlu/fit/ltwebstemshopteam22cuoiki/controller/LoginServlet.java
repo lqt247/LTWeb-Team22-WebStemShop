@@ -36,11 +36,12 @@ public class LoginServlet  extends HttpServlet {
             session.setAttribute("user", user);
             session.setAttribute("cart", new Cart());
             url="index.jsp";
+            response.sendRedirect(url);
         } else {
             request.setAttribute("error", "Username hoặc password không đúng, vui lòng nhập lại");
+            request.setAttribute("username",  username);
             url = "view/user/signIn.jsp";
-
+            request.getRequestDispatcher(url).forward(request, response);
         }
-        request.getRequestDispatcher(url).forward(request, response);
     }
 }
