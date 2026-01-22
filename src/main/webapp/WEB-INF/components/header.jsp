@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%--thêm taglib này để viết JSTL--%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!--HEADER-->
 <header class="header">
 
@@ -61,7 +63,7 @@
 
                             <!-- SHOP -->
                             <li class="nav__item dropdown">
-                                <a href="${pageContext.request.contextPath}/view/shop/shop.jsp">
+                                <a href="${pageContext.request.contextPath}/shop">
                                     Cửa hàng <i class="fa-solid fa-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -109,13 +111,25 @@
                 </div>
 
                 <div class="header__user">
-                    <a href="${pageContext.request.contextPath}/view/user/sign-in.jsp">
-                        <span><i class="fas fa-user"></i> Đăng nhập </span>
-                    </a>
-                    <span class="divider">|</span>
-                    <a href="${pageContext.request.contextPath}/view/user/sign-up.jsp">
-                        <span><i class="fas fa-pencil-alt"></i> Đăng ký </span>
-                    </a>
+                    <c:choose>
+                        <%-- CHƯA LOGIN --%>
+                        <c:when test="${empty sessionScope.user}">
+                            <a href="${pageContext.request.contextPath}/view/user/signIn.jsp">Đăng nhập</a>
+                            <a href="${pageContext.request.contextPath}/view/user/signUp.jsp">Đăng ký</a>
+                        </c:when>
+                        <%-- ĐÃ LOGIN --%>
+                        <c:otherwise>
+                            <span>Xin chào, ${sessionScope.user.fullName}</span>
+                            <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                        </c:otherwise>
+                    </c:choose>
+<%--                    <a href="${pageContext.request.contextPath}/view/user/signIn.jsp">--%>
+<%--                        <span><i class="fas fa-user"></i> Đăng nhập </span>--%>
+<%--                    </a>--%>
+<%--                    <span class="divider">|</span>--%>
+<%--                    <a href="${pageContext.request.contextPath}/view/user/sign-up.jsp">--%>
+<%--                        <span><i class="fas fa-pencil-alt"></i> Đăng ký </span>--%>
+<%--                    </a>--%>
                 </div>
             </div>
         </div>

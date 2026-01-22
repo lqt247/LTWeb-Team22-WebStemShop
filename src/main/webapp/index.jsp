@@ -1,5 +1,5 @@
-
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -19,7 +19,6 @@
 <body>
 <!-- HEADER -->
 <%@ include file="/WEB-INF/components/header.jsp" %>
-
 
 <main>
     <!--SECTION: HERO BANNER-->
@@ -427,5 +426,7 @@
 
 <!-- FOOTER  -->
 <%@ include file="/WEB-INF/components/footer.jsp" %>
+
+
 </body>
 </html>
