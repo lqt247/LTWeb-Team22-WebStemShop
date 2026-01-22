@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <html>
 <head>
     <title>Đăng nhập</title>
@@ -17,10 +18,19 @@
     <section class="auth__container">
         <h1 class="auth__title">Đăng  nhập!</h1>
 
-        <form class="auth__form" id="signInForm" method="post" action="/dang-nhap">
+        <form class="auth__form" id="signInForm" method="post" action="${pageContext.request.contextPath}/dang-nhap" method="post">
+            <div class="auth__group">
+                <c:if test="${not empty error}">
+                    <p style="color:red">${error}</p>
+                </c:if>
+            </div>
             <div class="auth__group">
                 <label for="username" class="auth__label">Username</label>
-                <input type="text" id="username" name="username" class="auth__input" placeholder="Nhập username">
+                <input type="text" id="username" name="username" class="auth__input" value="${username}" placeholder="Nhập username">
+                <%--trogn input tryyền value=${username} để:
+                    Khi login fail → ${username} có giá trị => tự điền lại
+                    Khi mở trang lần đầu → ${username} rỗng => không lỗi
+                --%>
             </div>
 
             <div class="auth__group">
