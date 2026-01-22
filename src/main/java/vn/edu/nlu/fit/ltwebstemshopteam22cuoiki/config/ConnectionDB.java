@@ -1,4 +1,4 @@
-package Dao;
+package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

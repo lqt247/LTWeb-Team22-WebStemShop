@@ -1,4 +1,6 @@
-package Dao;
+package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.test;
+
+import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.config.ConnectionDB;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
