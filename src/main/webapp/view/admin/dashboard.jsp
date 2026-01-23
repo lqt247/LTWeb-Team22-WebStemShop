@@ -31,17 +31,14 @@
             <li class="admin-menu__item active" onclick="window.location.href='${pageContext.request.contextPath}/admin/dashboard'">
                 <i class="fa-solid fa-chart-line"></i> Dashboard
             </li>
-            <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/users'">
+            <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-user'">
                 <i class="fa-solid fa-users"></i> Quản lý Users
             </li>
-            <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/products'">
+            <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-products'">
                 <i class="fa-solid fa-box"></i> Quản lý Products
             </li>
-            <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/orders'">
+            <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-orders'">
                 <i class="fa-solid fa-shopping-cart"></i> Quản lý Orders
-            </li>
-            <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/blogs'">
-                <i class="fa-solid fa-newspaper"></i> Quản lý Blogs
             </li>
             <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/'">
                 <i class="fa-solid fa-home"></i> Về trang chủ
@@ -68,7 +65,7 @@
                     <i class="fa-solid fa-users"></i>
                 </div>
                 <div class="card-info">
-                    <h3>Tổng Users</h3>
+                    <h3>Tổng Số Người Dùng</h3>
                     <div class="card-value">${totalUsers}</div>
                     <div class="card-trend up">
                         <i class="fa-solid fa-arrow-up"></i> +12% tháng này
@@ -81,7 +78,7 @@
                     <i class="fa-solid fa-box"></i>
                 </div>
                 <div class="card-info">
-                    <h3>Tổng Products</h3>
+                    <h3>Tổng Số Sản Phẩm</h3>
                     <div class="card-value">${totalProducts}</div>
                     <div class="card-trend up">
                         <i class="fa-solid fa-arrow-up"></i> +8% tháng này
@@ -94,7 +91,7 @@
                     <i class="fa-solid fa-shopping-cart"></i>
                 </div>
                 <div class="card-info">
-                    <h3>Tổng Orders</h3>
+                    <h3>Tổng Số Đơn hàng</h3>
                     <div class="card-value">${totalOrders}</div>
                     <div class="card-trend up">
                         <i class="fa-solid fa-arrow-up"></i> +15% tháng này
@@ -110,7 +107,7 @@
                     <i class="fa-solid fa-newspaper"></i>
                 </div>
                 <div class="card-info">
-                    <h3>Tổng Blogs</h3>
+                    <h3>Tổng Số Bài Viết</h3>
                     <div class="card-value">${totalBlogs}</div>
                     <div class="card-trend up">
                         <i class="fa-solid fa-arrow-up"></i> +5% tháng này
@@ -123,7 +120,7 @@
                     <i class="fa-solid fa-dollar-sign"></i>
                 </div>
                 <div class="card-info">
-                    <h3>Tổng doanh thu</h3>
+                    <h3>Tổng Doanh Thu</h3>
                     <div class="card-value">
                         <fmt:formatNumber value="${totalRevenue}" type="number" groupingUsed="true"/>đ
                     </div>
