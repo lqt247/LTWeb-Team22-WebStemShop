@@ -44,7 +44,7 @@ public class UserDAO {
 
     // lấy ra 1 user
     public User login(String username, String password) {
-        String sql = "SELECT * FROM users WHERE UserName=? AND Password=?";
+        String sql = "SELECT * FROM users WHERE UserName=? AND Password=? AND IsVerified=1";
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -67,6 +67,80 @@ public class UserDAO {
         }
         return null;
     }
+
+    //  Đăng ký
+    public boolean registerWithVerify(User user, String token) {
+        String sql = "INSERT INTO users " +
+                "(FullName, Email, UserName, Password, Role, Status, CreateAt, IsVerified, VerifyToken) " +
+                "VALUES (?, ?, ?, ?, ?, ?, CURRENT_DATE, 0, ?)";
+
+        try (Connection conn = ConnectionDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, user.getFullName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getUserName());
+            ps.setString(4, user.getPassword());
+            ps.setString(5, "USER");
+            ps.setString(6, "ACTIVE");
+            ps.setString(7, token);
+
+            return ps.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // check trùng username
+    public boolean isUsernameExists(String username) {
+        String sql = "SELECT ID FROM users WHERE UserName = ?";
+        try (Connection conn = ConnectionDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    // xác thực tài khoản
+    public boolean verifyAccount(String token) {
+        String sql = "UPDATE users SET IsVerified=1, VerifyToken=NULL WHERE VerifyToken=?";
+
+        try (Connection conn = ConnectionDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, token);
+            return ps.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    // tài khoản chưa xác thực
+    public boolean isUnverifiedUser(String username, String password) {
+        String sql = "SELECT ID FROM users WHERE UserName=? AND Password=? AND IsVerified=0";
+        try (Connection conn = ConnectionDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 
     // 2 Phương thức này ở admin - quan ly
     public void updateUser(User user) {

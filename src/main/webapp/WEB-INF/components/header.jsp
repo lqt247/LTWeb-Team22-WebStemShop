@@ -114,8 +114,8 @@
                     <c:choose>
                         <%-- CHƯA LOGIN --%>
                         <c:when test="${empty sessionScope.user}">
-                            <a href="${pageContext.request.contextPath}/view/user/signIn.jsp">Đăng nhập</a>
-                            <a href="${pageContext.request.contextPath}/view/user/signUp.jsp">Đăng ký</a>
+                            <a href="${pageContext.request.contextPath}/view/user/sign-in.jsp">Đăng nhập</a>
+                            <a href="${pageContext.request.contextPath}/view/user/sign-up.jsp">Đăng ký</a>
                         </c:when>
                         <%-- ĐÃ LOGIN --%>
                         <c:otherwise>
@@ -123,7 +123,7 @@
                             <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
                         </c:otherwise>
                     </c:choose>
-<%--                    <a href="${pageContext.request.contextPath}/view/user/signIn.jsp">--%>
+<%--                    <a href="${pageContext.request.contextPath}/view/user/sign-in.jsp">--%>
 <%--                        <span><i class="fas fa-user"></i> Đăng nhập </span>--%>
 <%--                    </a>--%>
 <%--                    <span class="divider">|</span>--%>
