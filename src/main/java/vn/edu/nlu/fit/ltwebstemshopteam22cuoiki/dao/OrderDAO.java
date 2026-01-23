@@ -2,6 +2,7 @@ package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao;
 
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.config.ConnectionDB;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.CartItem;
+import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.Order;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,34 +12,33 @@ import java.util.Map;
 
 public class OrderDAO {
 
-    public int createOrder(int userId, double total) throws Exception {
-        String sql = "INSERT INTO orders(UserID, OrderStatus, TotalAmount) VALUES (?, 'CONFIRMED', ?)";
-        try (Connection conn = ConnectionDB.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+    public int createOrder(Order order) {
+        String sql = "INSERT INTO orders"+
+        "(UserID, PromotionID, OrderDate, OrderStatus, ShippingFee, TotalAmount, Note, ShippingAddress, ReceiverName, ReceiverPhone)"+
+        "VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?)";
 
-            ps.setInt(1, userId);
-            ps.setDouble(2, total);
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            ps.setInt(1, order.getUserId());
+            ps.setObject(2, order.getPromotionId());
+            ps.setString(3, order.getOrderStatus());
+            ps.setDouble(4, order.getShippingFee());
+            ps.setDouble(5, order.getTotalAmount());
+            ps.setString(6, order.getNote());
+            ps.setString(7, order.getShippingAddress());
+            ps.setString(8, order.getReceiverName());
+            ps.setString(9, order.getReceiverPhone());
+
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            return rs.getInt(1);
+            if (rs.next()) return rs.getInt(1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return -1;
     }
 
-    public void insertOrderDetail(int orderId, Map<Integer, CartItem> items) throws Exception {
-        String sql = "INSERT INTO order_detail(OrderID, ProductID, Quantity, Price) VALUES (?,?,?,?)";
-        try (Connection conn = ConnectionDB.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            for (CartItem item : items.values()) {
-                ps.setInt(1, orderId);
-                ps.setInt(2, item.getProduct().getId());
-                ps.setInt(3, item.getQuantity());
-                ps.setDouble(4, item.getProduct().getPrice());
-                ps.addBatch();
-            }
-            ps.executeBatch();
-        }
-    }
 }

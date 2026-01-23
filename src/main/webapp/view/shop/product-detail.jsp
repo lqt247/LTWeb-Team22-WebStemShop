@@ -283,7 +283,7 @@
         transition: 0.3s;
     }
 
-        /* Review List */
+    /* Review List */
     .review-list {
         background: var(--bg-white);
         border-radius: var(--radius-lg);
