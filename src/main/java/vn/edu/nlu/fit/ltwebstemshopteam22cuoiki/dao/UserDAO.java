@@ -28,6 +28,8 @@ public class UserDAO {
                 u.setFullName(rs.getString("FullName"));
                 u.setEmail(rs.getString("Email"));
                 u.setUserName(rs.getString("UserName"));
+                // THÊM - 23130355_LeQuangTruong - để nó lấy sdt
+                u.setPhoneNumber(rs.getString("PhoneNumber"));
                 u.setRole(rs.getString("Role"));
                 u.setStatus(rs.getString("Status"));
 
@@ -55,6 +57,8 @@ public class UserDAO {
                 u.setId(rs.getInt("ID"));
                 u.setFullName(rs.getString("FullName"));
                 u.setEmail(rs.getString("Email"));
+                // THÊM - 23130355_LeQuangTruong - để nó lấy sdt
+                u.setPhoneNumber(rs.getString("PhoneNumber"));
                 u.setRole(rs.getString("Role"));
                 return u;
             }
@@ -62,5 +66,12 @@ public class UserDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    // 2 Phương thức này ở admin - quan ly
+    public void updateUser(User user) {
+    }
+
+    public void deleteUser(int id) {
     }
 }

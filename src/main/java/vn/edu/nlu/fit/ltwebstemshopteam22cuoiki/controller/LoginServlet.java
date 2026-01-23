@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             }
         } else {
             request.setAttribute("error", "Tên đăng nhập hoặc mật khẩu không đúng!");
-            request.getRequestDispatcher("/view/user/sign-in.jsp").forward(request, response);
+            request.getRequestDispatcher("/view/user/signIn.jsp").forward(request, response);
         }
     }
     }
