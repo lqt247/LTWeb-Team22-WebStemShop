@@ -32,13 +32,13 @@
                 <i class="fa-solid fa-chart-line"></i> Dashboard
             </li>
             <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-user'">
-                <i class="fa-solid fa-users"></i> Quản lý Users
+                <i class="fa-solid fa-users"></i> Quản lý Người Dùng
             </li>
             <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-products'">
-                <i class="fa-solid fa-box"></i> Quản lý Products
+                <i class="fa-solid fa-box"></i> Quản lý Sản Phẩm
             </li>
             <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-orders'">
-                <i class="fa-solid fa-shopping-cart"></i> Quản lý Orders
+                <i class="fa-solid fa-shopping-cart"></i> Quản lý Đơn hàng
             </li>
             <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/'">
                 <i class="fa-solid fa-home"></i> Về trang chủ
@@ -54,7 +54,7 @@
         <header class="admin-topbar">
             <h1>Dashboard</h1>
             <div class="admin-info">
-                <img src="${pageContext.request.contextPath}/assets/images/user/avatar-default.jpg" alt="Admin" class="admin-avatar">
+                <img src="${pageContext.request.contextPath}/assets/images/user/user-male-circle.jpg" class="admin-avatar" alt="Admin">
             </div>
         </header>
 
@@ -91,7 +91,7 @@
                     <i class="fa-solid fa-shopping-cart"></i>
                 </div>
                 <div class="card-info">
-                    <h3>Tổng Số Đơn hàng</h3>
+                    <h3>Tổng Số Đơn Hàng</h3>
                     <div class="card-value">${totalOrders}</div>
                     <div class="card-trend up">
                         <i class="fa-solid fa-arrow-up"></i> +15% tháng này

@@ -27,13 +27,13 @@
                 <i class="fa-solid fa-chart-line"></i> Dashboard
             </li>
             <li class="admin-menu__item active">
-                <i class="fa-solid fa-users"></i> Quản lý Users
+                <i class="fa-solid fa-users"></i> Quản lý Người Dùng
             </li>
             <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-product'">
-                <i class="fa-solid fa-box"></i> Quản lý Products
+                <i class="fa-solid fa-box"></i> Quản lý Sản Phẩm
             </li>
             <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-orders'">
-                <i class="fa-solid fa-shopping-cart"></i> Quản lý Orders
+                <i class="fa-solid fa-shopping-cart"></i> Quản lý Đơn Hàng
             </li>
             <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/'">
                 <i class="fa-solid fa-home"></i> Về trang chủ
@@ -50,7 +50,7 @@
         <header class="admin-topbar">
             <h1>Quản lý Users</h1>
             <div class="admin-info">
-                <img src="${pageContext.request.contextPath}/assets/images/user/avatar-default.jpg" class="admin-avatar" alt="Admin">
+                <img src="${pageContext.request.contextPath}/assets/images/user/user-male-circle.jpg" class="admin-avatar" alt="Admin">
             </div>
         </header>
 
@@ -79,8 +79,11 @@
                             <td>${user.phoneNumber}</td>
                             <td>${user.role}</td>
                             <td>
-                                <button class="btn-small edit" onclick="editUser(${user.id})">Sửa</button>
-                                <button class="btn-small delete" onclick="deleteUser(${user.id}, '${user.fullName}')">Xoá</button>
+                                <button class="btn-small delete" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-user-detail?id=${user.id}'">Chi tiết</button>
+
+<%--                            --%>
+<%--                                <button class="btn-small edit" onclick="editUser(${user.id})">Sửa</button>--%>
+<%--                                <button class="btn-small delete" onclick="deleteUser(${user.id}, '${user.fullName}')">Xoá</button>--%>
                             </td>
                         </tr>
                     </c:forEach>
