@@ -40,6 +40,9 @@
     .bin a{
         color: black;
     }
+    .cart-container__product__title h4 {
+        font-size: 1.2rem;
+    }
 </style>
 
     <jsp:include page="/WEB-INF/components/header.jsp"/>
