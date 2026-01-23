@@ -19,7 +19,7 @@ public class DashboardDAO {
         stats.put("totalUsers", getTotalUsers());
         stats.put("totalProducts", getTotalProducts());
         stats.put("totalOrders", getTotalOrders());
-        stats.put("totalBlogs", getTotalBlogs());
+
 
         return stats;
     }
@@ -47,17 +47,11 @@ public class DashboardDAO {
     }
 
 
-     // Đếm tổng số blogs
-
-    public int getTotalBlogs() {
-        String sql = "SELECT COUNT(*) as total FROM blogs";
-        return executeCountQuery(sql);
-    }
 
 
       //Tính tổng doanh thu
     public double getTotalRevenue() {
-        String sql = "SELECT SUM(TotalAmount) as total FROM orders WHERE Status = 'completed'";
+        String sql = "SELECT SUM(TotalAmount) as total FROM orders WHERE OrderStatus = 'completed'";
 
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

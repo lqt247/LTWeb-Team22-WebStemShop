@@ -1,6 +1,7 @@
 package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao;
 
 
+import jakarta.servlet.http.HttpServletRequest;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.config.ConnectionDB;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.User;
 
@@ -143,9 +144,56 @@ public class UserDAO {
 
 
     // 2 Phương thức này ở admin - quan ly
+    // Sửa
     public void updateUser(User user) {
+        String sql = "UPDATE users SET FullName=?, Email=?, PhoneNumber=?, Address=?, Role=?, Status=?, UserName=? WHERE ID=?";
+        try (Connection conn = ConnectionDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, user.getFullName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPhoneNumber());
+            ps.setString(4, user.getAddress());
+            ps.setString(5, user.getRole());
+            ps.setString(6, user.getStatus());
+            ps.setString(7, user.getUserName());
+            ps.setInt(8, user.getId());
+
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void deleteUser(int id) {
+    public void detailUser(HttpServletRequest id) {
+    }
+
+    // lấy user bằng id
+    public User getUserById(int userId) {
+        String sql = "SELECT * FROM users WHERE ID=?";
+        try (Connection conn = ConnectionDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                User u = new User();
+                u.setId(rs.getInt("ID"));
+                u.setFullName(rs.getString("FullName"));
+                u.setEmail(rs.getString("Email"));
+                u.setPhoneNumber(rs.getString("PhoneNumber"));
+                u.setAddress(rs.getString("Address"));
+                u.setUserName(rs.getString("UserName"));
+                u.setRole(rs.getString("Role"));
+                u.setStatus(rs.getString("Status"));
+                u.setCreateDate(rs.getDate("CreateAt"));
+                return u;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

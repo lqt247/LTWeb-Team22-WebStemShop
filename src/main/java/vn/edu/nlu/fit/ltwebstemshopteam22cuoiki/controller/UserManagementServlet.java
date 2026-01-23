@@ -45,7 +45,7 @@ public class UserManagementServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-                    "Có lỗi s");
+                    "Có lỗi");
         }
     }
 
@@ -57,43 +57,29 @@ public class UserManagementServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         try {
-            switch (action) {
+            if ("update".equals(action)) {
+                // Lấy thông tin từ form
+                User user = new User();
+                user.setId(Integer.parseInt(request.getParameter("id")));
+                user.setFullName(request.getParameter("fullName"));
+                user.setEmail(request.getParameter("email"));
+                user.setPhoneNumber(request.getParameter("phoneNumber"));
+                user.setAddress(request.getParameter("address"));
+                user.setRole(request.getParameter("role"));
+                user.setStatus(request.getParameter("status"));
+                user.setUserName(request.getParameter("userName"));
 
-                case "update":
-                    updateUser(request);
-                    break;
-                case "delete":
-                    deleteUser(request);
-                    break;
+                userDAO.updateUser(user);
             }
+
             response.sendRedirect(request.getContextPath() + "/admin/admin-user");
 
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-                    "Có lỗi xảy ra khi xử lý user");
+                    "Có lỗi ");
         }
     }
 
 
-
-    private void updateUser(HttpServletRequest request) {
-        User user = new User();
-        user.setId(Integer.parseInt(request.getParameter("id")));
-        user.setFullName(request.getParameter("fullName"));
-        user.setEmail(request.getParameter("email"));
-        user.setPhoneNumber(request.getParameter("phoneNumber"));
-        user.setAddress(request.getParameter("address"));
-        user.setRole(request.getParameter("role"));
-        user.setStatus(request.getParameter("status"));
-        user.setUserName(request.getParameter("userName"));
-
-        // tach ra cho de nhin
-        userDAO.updateUser(user);
-    }
-
-    private void deleteUser(HttpServletRequest request) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        userDAO.deleteUser(id);
-    }
 }

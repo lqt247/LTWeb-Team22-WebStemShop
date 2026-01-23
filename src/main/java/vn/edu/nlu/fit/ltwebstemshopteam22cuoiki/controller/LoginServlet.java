@@ -35,9 +35,14 @@ public class LoginServlet  extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("cart", new Cart());
+            // Phân biệt admin và user -> nếu admin thì cho qua dashboard, user thì mình cho về trang chủ
+            if ("admin".equals(user.getRole())) {
+                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
+                return;
+            } else {
+                response.sendRedirect(request.getContextPath() + "/index");
+            }  return;
 
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
-            return;
         }
         if (dao.isUnverifiedUser(username, password)) {
             request.setAttribute("error1", "Tài khoản chưa được xác thực. Vui lòng kiểm tra email.");
@@ -47,7 +52,6 @@ public class LoginServlet  extends HttpServlet {
         request.setAttribute("error2", "Username hoặc password không đúng");
         request.getRequestDispatcher("/view/user/sign-in.jsp").forward(request, response);
     }
-
 
 
 
