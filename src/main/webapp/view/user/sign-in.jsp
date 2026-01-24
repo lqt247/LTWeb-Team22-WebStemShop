@@ -49,7 +49,7 @@
             <button type="submit" class="auth__button">Đăng nhập</button>
 
             <div class="auth__link">
-                <a href="forgot-password.html" class="auth__link--highlight">Quên mật khẩu?</a>
+                <a href="forgot-password.jsp" class="auth__link--highlight">Quên mật khẩu?</a>
                 <a href="sign-up.jsp" class="auth__link--highlight">Đăng ký</a>
             </div>
         </form>
