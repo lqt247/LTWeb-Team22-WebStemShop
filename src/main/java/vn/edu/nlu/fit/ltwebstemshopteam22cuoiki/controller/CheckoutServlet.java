@@ -14,6 +14,7 @@ import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.config.ConnectionDB;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.OrderDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.OrderDetailDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.PaymentDAO;
+import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.PromotionDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.*;
 
 @WebServlet("/checkout")
@@ -75,7 +76,7 @@ public class CheckoutServlet extends HttpServlet {
             Order order = new Order();
             order.setUserId(user.getId());
             order.setPromotionId(null);
-            order.setOrderStatus("CONFIRMED");
+            order.setOrderStatus("CONFIRMED"); //mặt định là thành công luôn
             order.setShippingFee(shippingFee);
             order.setTotalAmount(cart.getTotalPrice() + shippingFee);
             order.setNote(note);

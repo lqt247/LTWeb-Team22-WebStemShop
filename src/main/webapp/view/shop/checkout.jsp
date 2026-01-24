@@ -199,6 +199,7 @@
                             </div>
 
                             <button type="submit"
+                                    value="order"
                                     class="btn-order">
                                 ĐẶT HÀNG
                             </button>
