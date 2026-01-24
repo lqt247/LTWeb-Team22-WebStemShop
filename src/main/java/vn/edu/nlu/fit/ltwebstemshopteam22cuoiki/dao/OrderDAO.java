@@ -47,12 +47,16 @@ public class OrderDAO {
     public List<OrderItemView> getOrderHistoryByUser(int userId) {
         List<OrderItemView> list = new ArrayList<>();
 
-        String sql = "SELECT o.ID AS orderId, o.OrderDate, o.OrderStatus, o.TotalAmount, p.ProductName, p.Image, od.Quantity, od.Price"+
-        "FROM orders o"+
-        "JOIN order_detail od ON o.ID = od.OrderID"+
-        "JOIN products p ON od.ProductID = p.ID"+
-        "WHERE o.UserID = ?"+
-        "ORDER BY o.OrderDate DESC";
+        String sql =
+                "SELECT o.ID AS orderId, o.OrderStatus, " +
+                        "p.ProductName, pi.ImageURL, od.Quantity, od.Price " +
+                        "FROM orders o " +
+                        "JOIN order_detail od ON o.ID = od.OrderID " +
+                        "JOIN products p ON od.ProductID = p.ID " +
+                        "LEFT JOIN product_image pi ON p.ID = pi.ProductID " +
+                        "WHERE o.UserID = ? " +
+                        "GROUP BY o.ID, p.ID " +
+                        "ORDER BY o.OrderDate DESC, o.ID DESC";
 
         try (Connection con = ConnectionDB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -64,14 +68,17 @@ public class OrderDAO {
                 list.add(new OrderItemView(
                         rs.getInt("orderId"),
                         rs.getString("ProductName"),
-                        rs.getString("Image"),
+                        rs.getString("ImageURL"),
                         rs.getInt("Quantity"),
-                        rs.getDouble("Price")
+                        rs.getDouble("Price"),
+                        rs.getString("OrderStatus")
                 ));
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return list;
     }
 }

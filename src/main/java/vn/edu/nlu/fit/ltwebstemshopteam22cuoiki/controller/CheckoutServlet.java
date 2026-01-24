@@ -76,7 +76,7 @@ public class CheckoutServlet extends HttpServlet {
             Order order = new Order();
             order.setUserId(user.getId());
             order.setPromotionId(null);
-            order.setOrderStatus("CONFIRMED"); //mặt định là thành công luôn
+            order.setOrderStatus("PENDING"); //mặt định là PENDING trong trang admin duyệt thì mới update đơn hàng đó thành trạng thái CONFIRMED
             order.setShippingFee(shippingFee);
             order.setTotalAmount(cart.getTotalPrice() + shippingFee);
             order.setNote(note);

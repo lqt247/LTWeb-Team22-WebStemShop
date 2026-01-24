@@ -131,7 +131,7 @@
                                         </li>
 
                                         <li>
-                                            <a href="${pageContext.request.contextPath}/don-hang">
+                                            <a href="${pageContext.request.contextPath}/my-orders">
                                                 <i class="fa-solid fa-box"></i> Đơn hàng
                                             </a>
                                         </li>
