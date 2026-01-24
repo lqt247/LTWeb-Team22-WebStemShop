@@ -83,16 +83,9 @@
                                 </ul>
                             </li>
 
-                            <!-- SỰ KIỆN -->
-                            <li class="nav__item dropdown">
-                                <a href="${pageContext.request.contextPath}/view/workshop/events.jsp">
-                                    Sự kiện <i class="fa-solid fa-chevron-down"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="${pageContext.request.contextPath}/view/workshop/workshop-register.jsp">Đăng ký tham gia</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/view/workshop/materials.jsp">Tài liệu Workshop</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/view/workshop/rate.jsp">Đánh giá</a></li>
-                                </ul>
+                            <!-- DỰ ÁN WORKSHOP -->
+                            <li class="nav__item ">
+                                <a href="${pageContext.request.contextPath}/view/workshop/materials.jsp">Dự Án WorkShops</a>
                             </li>
 
                             <li class="nav__item">
@@ -119,17 +112,51 @@
                         </c:when>
                         <%-- ĐÃ LOGIN --%>
                         <c:otherwise>
-                            <span>Xin chào, ${sessionScope.user.fullName}</span>
-                            <a href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                            <div class="header__user header__user-logged">
+
+                                    <%-- AVATAR ICON --%>
+                                <i class="fa-solid fa-circle-user user-avatar-icon"></i>
+
+                                    <%-- TÊN --%>
+                                <span class="user-short-name">${sessionScope.user.fullName}</span>
+
+                                    <%-- DROPDOWN --%>
+                                <div class="user-dropdown">
+                                    <ul class="dropdown-menu-user">
+
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/profile">
+                                                <i class="fa-solid fa-user"></i> Hồ sơ
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/don-hang">
+                                                <i class="fa-solid fa-box"></i> Đơn hàng
+                                            </a>
+                                        </li>
+
+
+                                        <c:if test="${sessionScope.user.role == 'ADMIN'}">
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/admin">
+                                                    <i class="fa-solid fa-gear"></i> Quản lý
+                                                </a>
+                                            </li>
+                                        </c:if>
+
+                                        <li class="logout">
+                                            <a href="${pageContext.request.contextPath}/logout">
+                                                <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
                         </c:otherwise>
+
                     </c:choose>
-<%--                    <a href="${pageContext.request.contextPath}/view/user/sign-in.jsp">--%>
-<%--                        <span><i class="fas fa-user"></i> Đăng nhập </span>--%>
-<%--                    </a>--%>
-<%--                    <span class="divider">|</span>--%>
-<%--                    <a href="${pageContext.request.contextPath}/view/user/sign-up.jsp">--%>
-<%--                        <span><i class="fas fa-pencil-alt"></i> Đăng ký </span>--%>
-<%--                    </a>--%>
                 </div>
             </div>
         </div>
