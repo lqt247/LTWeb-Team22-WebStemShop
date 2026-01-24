@@ -3,8 +3,11 @@ package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.config.ConnectionDB;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.CartItem;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.Order;
+import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.OrderItemView;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class OrderDAO {
@@ -38,5 +41,37 @@ public class OrderDAO {
         }
 
         return -1;
+    }
+
+    // hàm láy toàn bộ lịch sử mua hàng của user
+    public List<OrderItemView> getOrderHistoryByUser(int userId) {
+        List<OrderItemView> list = new ArrayList<>();
+
+        String sql = "SELECT o.ID AS orderId, o.OrderDate, o.OrderStatus, o.TotalAmount, p.ProductName, p.Image, od.Quantity, od.Price"+
+        "FROM orders o"+
+        "JOIN order_detail od ON o.ID = od.OrderID"+
+        "JOIN products p ON od.ProductID = p.ID"+
+        "WHERE o.UserID = ?"+
+        "ORDER BY o.OrderDate DESC";
+
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new OrderItemView(
+                        rs.getInt("orderId"),
+                        rs.getString("ProductName"),
+                        rs.getString("Image"),
+                        rs.getInt("Quantity"),
+                        rs.getDouble("Price")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }
