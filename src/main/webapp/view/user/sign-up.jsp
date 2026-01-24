@@ -23,9 +23,7 @@
         <p style="color:red">${error}</p>
       </c:if>
 
-      <form class="auth__form"
-            action="${pageContext.request.contextPath}/dang-ky"
-            method="post">
+      <form class="auth__form" action="${pageContext.request.contextPath}/dang-ky" method="post">
         <div class="auth__group">
           <label for="username" class="auth__label">Tên người dùng</label>
           <input type="text" id="username" name="username" class="auth__input" placeholder="Nhập tên đăng nhập của bạn">

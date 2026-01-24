@@ -6,6 +6,8 @@
     import jakarta.servlet.http.*;
     import jakarta.servlet.annotation.*;
     import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.util.EmailUtil;
+    import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.util.PasswordUtil;
+
 
     import java.io.IOException;
 
@@ -35,24 +37,35 @@
                 return;
             }
 
+            // kiểm tra dữ liệu password
+            if (!PasswordUtil.isValidPassword(password)) {
+                request.setAttribute("error",
+                        "Mật khẩu phải ≥ 8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt");
+                request.getRequestDispatcher("/view/user/sign-up.jsp").forward(request, response);
+                return;
+            }
+
             // check trùng username
             if (dao.isUsernameExists(username)) {
                 request.setAttribute("error", "Tên đăng nhập đã tồn tại");
                 request.getRequestDispatcher("/view/user/sign-up.jsp").forward(request, response);
                 return;
             }
+            // hash password
+            String hashedPassword = PasswordUtil.md5(password);
 
             // tạo user
             User user = new User();
             user.setUserName(username);
             user.setEmail(email);
-            user.setPassword(password);
+            user.setPassword(hashedPassword);
             user.setFullName(username);
 
             String token = java.util.UUID.randomUUID().toString();
 
             boolean success = dao.registerWithVerify(user, token);
 
+            // gửi verify cho email
             if (success) {
                 String verifyLink = request.getScheme() + "://" +
                         request.getServerName() + ":" +

@@ -1,7 +1,6 @@
 package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao;
 
 
-import jakarta.servlet.http.HttpServletRequest;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.config.ConnectionDB;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.User;
 
@@ -56,11 +55,17 @@ public class UserDAO {
             if (rs.next()) {
                 User u = new User();
                 u.setId(rs.getInt("ID"));
+                u.setUserName(rs.getString("UserName"));
                 u.setFullName(rs.getString("FullName"));
                 u.setEmail(rs.getString("Email"));
                 // THÊM - 23130355_LeQuangTruong - để nó lấy sdt
                 u.setPhoneNumber(rs.getString("PhoneNumber"));
                 u.setRole(rs.getString("Role"));
+
+                u.setGender(rs.getString("gender"));
+                u.setBirthday(rs.getDate("birthday"));
+                u.setAddress(rs.getString("Address"));
+                u.setAvatar(rs.getString("avatar"));
                 return u;
             }
         } catch (Exception e) {
@@ -195,5 +200,83 @@ public class UserDAO {
             e.printStackTrace();
         }
         return null;
+    }
+    // check username và email
+    public User findByUsernameAndEmail(String username, String email) {
+        String sql = "SELECT * FROM users WHERE UserName=? AND Email=?";
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, username);
+            ps.setString(2, email);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                User u = new User();
+                u.setId(rs.getInt("id"));
+                u.setUserName(rs.getString("username"));
+                u.setEmail(rs.getString("email"));
+                return u;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // tạo password mới
+    public boolean updatePassword(int userId, String hashedPassword) {
+        String sql = "UPDATE users SET Password=? WHERE id=?";
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, hashedPassword);
+            ps.setInt(2, userId);
+            return ps.executeUpdate() > 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // update profile
+    public boolean updateProfile(User user) {
+        String sql = "UPDATE users SET FullName = ?, PhoneNumber = ?, gender = ?, birthday = ?, avatar = ?, Address = ? WHERE id=?";
+
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, user.getFullName());
+            ps.setString(2, user.getPhoneNumber());
+            ps.setString(3, user.getGender());
+            ps.setDate(4, user.getBirthday());
+            ps.setString(5, user.getAvatar());
+            ps.setString(6, user.getAddress());
+            ps.setInt(7, user.getId());
+
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // check password cũ để đổi
+    public boolean checkPassword(int userId, String hashedPassword) {
+        String sql = "SELECT ID FROM users WHERE ID = ? AND Password = ?";
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, userId);
+            ps.setString(2, hashedPassword);
+
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

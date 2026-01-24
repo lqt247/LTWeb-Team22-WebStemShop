@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpSession;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.UserDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.Cart;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.User;
+import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.util.PasswordUtil;
 
 
 @WebServlet("/dang-nhap")
@@ -29,7 +30,8 @@ public class LoginServlet  extends HttpServlet {
         String password = request.getParameter("password");
 
         UserDAO dao = new UserDAO();
-        User user = dao.login(username, password);
+        String hashedPassword = PasswordUtil.md5(password);
+        User user = dao.login(username, hashedPassword);
 
         if (user != null) {
             HttpSession session = request.getSession();
@@ -44,7 +46,7 @@ public class LoginServlet  extends HttpServlet {
             }  return;
 
         }
-        if (dao.isUnverifiedUser(username, password)) {
+        if (dao.isUnverifiedUser(username, hashedPassword)) {
             request.setAttribute("error1", "Tài khoản chưa được xác thực. Vui lòng kiểm tra email.");
             request.getRequestDispatcher("/view/user/sign-in.jsp").forward(request, response);
             return;
