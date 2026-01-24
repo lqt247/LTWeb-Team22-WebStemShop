@@ -448,11 +448,12 @@
             </div>
 
             <div class="product-actions">
-                <a href="${pageContext.request.contextPath}/add-to-cart?id=${product.id}">
-                    <button class="add-to-cart">
-                        Thêm vào giỏ hàng <i class="fa-solid fa-cart-plus"></i>
-                    </button>
-                </a>
+                <button class="add-to-cart"
+                        type="button"
+                        onclick="addToCart(${product.id})">
+                    Thêm vào giỏ hàng
+                    <i class="fa-solid fa-cart-plus"></i>
+                </button>
 
                 <button class="wishlist-btn">
                     <i class="fa-solid fa-heart" style="color:#FF6C80"></i>

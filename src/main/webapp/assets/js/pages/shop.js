@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = url;
             } else {
                 // Thông báo nếu sản phẩm chưa có trang demo (tùy chọn)
-                alert("Sản phẩm này đang cập nhật nội dung!");
+                //alert("Sản phẩm này đang cập nhật nội dung!");
             }
         });
     });

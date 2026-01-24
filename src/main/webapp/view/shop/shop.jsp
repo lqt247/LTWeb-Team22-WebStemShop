@@ -15,6 +15,31 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 
+<style>
+    .product-actions {
+        display: flex;
+        gap: 20px;
+        margin: 30px 0;
+    }
+
+    .product-actions button {
+        border-radius: 10px;
+        margin:auto;
+    }
+    .add-to-cart {
+        background-color: #FF6C80;
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .add-to-cart:hover {
+        background-color: #ff3e5a;
+    }
+</style>
+
 <body>
 
 <!-- HEADER -->
@@ -133,21 +158,6 @@
         <!-- ========== PRODUCT LIST RIGHT ========== -->
         <div class="list-product">
 
-            <!-- head -->
-<%--            <div class="list-product__head">--%>
-<%--                <div class="list-product__head__type">--%>
-<%--                    <span>Kiểu xem:</span>--%>
-<%--                    <ul>--%>
-<%--                        <li class="active"><i class="fa-solid fa-bars"></i></li>--%>
-<%--                        <li><i class="fa-solid fa-grip"></i></li>--%>
-<%--                    </ul>--%>
-<%--                </div>--%>
-
-<%--                <div class="list-product__head__search">--%>
-<%--                    <span>Tìm kiếm:</span>--%>
-<%--                    <input type="text" placeholder="Nhập tên sản phẩm">--%>
-<%--                </div>--%>
-<%--            </div>--%>
             <div class="list-product__head">
                 <div class="list-product__head__type">
                     <span>Kiểu xem: </span>
@@ -197,13 +207,28 @@
                                  data-price="${p.price}"
                                  data-name="${fn:toLowerCase(p.productName)}">
 
-                                <img src="${pageContext.request.contextPath}/${p.imageUrl}"
-                                     alt="${p.productName}">
+                                <!-- CLICK VÀO ĐÂY MỚI ĐI CHI TIẾT -->
+                                <a href="${pageContext.request.contextPath}/product-detail?id=${p.id}"
+                                   class="product-link">
 
-                                <div class="list-product__body__card__content">
-                                    <p class="brand">Brand ID: ${p.brandID}</p>
-                                    <h5>${p.productName}</h5>
-                                    <h4>${p.price} Đ</h4>
+                                    <img src="${pageContext.request.contextPath}/${p.imageUrl}"
+                                         alt="${p.productName}">
+
+                                    <div class="list-product__body__card__content">
+                                        <p class="brand">Brand ID: ${p.brandID}</p>
+                                        <h5>${p.productName}</h5>
+                                        <h4>${p.price} Đ</h4>
+                                    </div>
+                                </a>
+
+                                <!-- NÚT THÊM GIỎ -->
+                                <div class="product-actions">
+                                    <button type="button"
+                                            class="add-to-cart"
+                                            onclick="addToCart(${p.id})">
+                                        Thêm vào giỏ hàng
+                                        <i class="fa-solid fa-cart-plus"></i>
+                                    </button>
                                 </div>
                             </div>
                         </a>
@@ -221,6 +246,10 @@
 
 <!-- JS dùng file của bạn -->
 <script src="${pageContext.request.contextPath}/assets/js/pages/shop.js"></script>
+<script>
+    const contextPath = '${pageContext.request.contextPath}';
+</script>
+<script src="${pageContext.request.contextPath}/assets/js/pages/cart.js"></script>
 
 </body>
 </html>

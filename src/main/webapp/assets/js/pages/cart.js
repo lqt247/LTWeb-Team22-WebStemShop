@@ -91,3 +91,25 @@ document.addEventListener("DOMContentLoaded", () => {
     updateGrandTotal();
 
 });
+
+function addToCart(productId) {
+    fetch(`${contextPath}/add-to-cart?id=` + productId)
+        .then(() => updateCartCount());
+}
+function updateCartCount() {
+    fetch(`${contextPath}/cart-count`)
+        .then(res => res.json())
+        .then(data => {
+            const badge = document.getElementById("cart-count");
+            if (badge) {
+                badge.innerText = data.count;
+            }
+        });
+}
+function updateQuantity(productId, action) {
+    fetch(`${contextPath}/update-cart?id=${productId}&action=${action}`)
+        .then(() => {
+            updateCartCount();   // cập nhật số trên icon giỏ hàng
+            location.reload();   // reload lại cart.jsp (nếu muốn)
+        });
+}

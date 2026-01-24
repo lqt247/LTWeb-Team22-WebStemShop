@@ -45,6 +45,15 @@ public class Cart {
         return total;
     }
 
+    //hàm lấy ra tất cả số lượng sp thêm vào giỏ hàng
+    public int getTotalQuantity() {
+        int total = 0;
+        for (CartItem item : items.values()) {
+            total += item.getQuantity();
+        }
+        return total;
+    }
+
     public boolean isEmpty() {
         return items.isEmpty();
     }

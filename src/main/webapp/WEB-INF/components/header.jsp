@@ -5,6 +5,24 @@
 <!--HEADER-->
 <header class="header">
 
+    <style>
+        .cart-icon {
+            position: relative;
+            font-size: 20px;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+    </style>
+
     <!-- PHẦN TRÊN -->
     <div class="header__first">
         <div class="container">
@@ -99,8 +117,15 @@
             <!-- USER + CART -->
             <div class="header__end-right">
                 <div class="header__shop">
-                    <a href="${pageContext.request.contextPath}/view/shop/wishlist.jsp"><i class="fa-solid fa-heart"></i></a>
-                    <a href="${pageContext.request.contextPath}/view/shop/cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="${pageContext.request.contextPath}/view/shop/wishlist.jsp" class="cart-icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/view/shop/cart.jsp" class="cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-count">
+                            ${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}
+                        </span>
+                    </a>
                 </div>
 
                 <div class="header__user">
@@ -161,4 +186,9 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const contextPath = '${pageContext.request.contextPath}';
+    </script>
+    <script src="${pageContext.request.contextPath}/assets/js/pages/cart.js"></script>
 </header>
