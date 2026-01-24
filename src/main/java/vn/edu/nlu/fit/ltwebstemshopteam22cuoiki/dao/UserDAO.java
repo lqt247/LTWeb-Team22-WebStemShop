@@ -62,10 +62,10 @@ public class UserDAO {
                 u.setPhoneNumber(rs.getString("PhoneNumber"));
                 u.setRole(rs.getString("Role"));
 
-                u.setGender(rs.getString("gender"));
-                u.setBirthday(rs.getDate("birthday"));
-                u.setAddress(rs.getString("Address"));
-                u.setAvatar(rs.getString("avatar"));
+               u.setGender(rs.getString("gender"));
+              u.setBirthday(rs.getDate("birthday"));
+              u.setAddress(rs.getString("Address"));
+               u.setAvatar(rs.getString("avatar"));
                 return u;
             }
         } catch (Exception e) {
@@ -171,8 +171,7 @@ public class UserDAO {
         }
     }
 
-    public void detailUser(HttpServletRequest id) {
-    }
+
 
     // lấy user bằng id
     public User getUserById(int userId) {

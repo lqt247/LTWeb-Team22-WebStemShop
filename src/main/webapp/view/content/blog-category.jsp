@@ -54,7 +54,7 @@
                 <div class="blog__post-container">
                     <div class="blog__post">
                         <img src="../../assets/images/blog/Hướng dẫn chọn kit STEM phù hợp.jpg" alt="Workshop STEM">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">Workshop STEM - Học qua thực
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">Workshop STEM - Học qua thực
                             hành</a>
                         </h3>
                         <p class="blog__post-desc">Trẻ được tiếp xúc trực tiếp với bộ kit STEM, học lập trình robot
@@ -64,7 +64,7 @@
                     </div>
                     <div class="blog__post">
                         <img src="../../assets/images/blog/Lợi ích học STEM sớm cho trẻ em.jpg" alt="Arduino STEM">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">Ứng dụng Arduino trong STEM</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">Ứng dụng Arduino trong STEM</a></h3>
                         <p class="blog__post-desc">Học lập trình và điện tử cơ bản qua các dự án Arduino đơn giản
                             cho
                             trẻ em...</p>
@@ -72,14 +72,14 @@
                     </div>
                     <div class="blog__post">
                         <img src="../../assets/images/blog/STEM trong đời sống.jpg" alt="STEM tại nhà">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">STEM tại nhà</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">STEM tại nhà</a></h3>
                         <p class="blog__post-desc">Các dự án STEM đơn giản giúp trẻ làm quen với khoa học và công
                             nghệ...</p>
                         <a href="blog-detail.html" class="blog__btn">Đọc thêm</a>
                     </div>
                     <div class="blog__post">
                         <img src="../../assets/images/blog/STEM trong đời sống.jpg" alt="STEM tại nhà">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">STEM tại nhà</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">STEM tại nhà</a></h3>
                         <p class="blog__post-desc">Các dự án STEM đơn giản giúp trẻ làm quen với khoa học và công
                             nghệ...</p>
                         <a href="blog-detail.html" class="blog__btn">Đọc thêm</a>
@@ -96,7 +96,7 @@
                 <div class="blog__post-container">
                     <div class="blog__post">
                         <img src="../../assets/images/blog/Lợi ích học STEM sớm cho trẻ em.jpg" alt="STEM cơ bản">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">STEM cơ bản cho trẻ em</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">STEM cơ bản cho trẻ em</a></h3>
                         <p class="blog__post-desc">Các dự án STEM cơ bản giúp trẻ làm quen với khoa học và công
                             nghệ...
                         </p>
@@ -104,14 +104,14 @@
                     </div>
                     <div class="blog__post">
                         <img src="../../assets/images/blog/STEM trong đời sống.jpg" alt="STEM cơ bản">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">Khám phá STEM cơ bản</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">Khám phá STEM cơ bản</a></h3>
                         <p class="blog__post-desc">Học lập trình, điện tử cơ bản qua các bộ kit đơn giản tại nhà...
                         </p>
                         <a href="blog-detail.html" class="blog__btn">Đọc thêm</a>
                     </div>
                     <div class="blog__post">
                         <img src="../../assets/images/blog/Lợi ích học STEM sớm cho trẻ em.jpg" alt="STEM cơ bản">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">Thí nghiệm STEM cơ bản</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">Thí nghiệm STEM cơ bản</a></h3>
                         <p class="blog__post-desc">Trẻ làm quen các thí nghiệm khoa học đơn giản và an toàn tại
                             nhà...
                         </p>
@@ -119,7 +119,7 @@
                     </div>
                     <div class="blog__post">
                         <img src="../../assets/images/blog/STEM trong đời sống.jpg" alt="STEM tại nhà">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">STEM tại nhà</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">STEM tại nhà</a></h3>
                         <p class="blog__post-desc">Các dự án STEM đơn giản giúp trẻ làm quen với khoa học và công
                             nghệ...</p>
                         <a href="blog-detail.html" class="blog__btn">Đọc thêm</a>
@@ -137,7 +137,7 @@
                     <div class="blog__post">
                         <img src="../../assets/images/blog/Lợi ích học STEM sớm cho trẻ em.jpg"
                              alt="Thí nghiệm khoa học">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">Thí nghiệm khoa học vui nhộn</a>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">Thí nghiệm khoa học vui nhộn</a>
                         </h3>
                         <p class="blog__post-desc">Các hoạt động STEM giúp trẻ tìm hiểu khoa học qua trò chơi và thí
                             nghiệm...</p>
@@ -146,7 +146,7 @@
                     <div class="blog__post">
                         <img src="../../assets/images/blog/Lợi ích học STEM sớm cho trẻ em.jpg "
                              alt="Thí nghiệm khoa học">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">Thí nghiệm STEM tại nhà</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">Thí nghiệm STEM tại nhà</a></h3>
                         <p class="blog__post-desc">Học thí nghiệm đơn giản, an toàn cho trẻ tại nhà, vừa học vừa
                             chơi...
                         </p>
@@ -154,14 +154,14 @@
                     </div>
                     <div class="blog__post">
                         <img src="../../assets/images/blog/STEM trong đời sống.jpg" alt="Thí nghiệm khoa học">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">Thí nghiệm khoa học nâng cao</a>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">Thí nghiệm khoa học nâng cao</a>
                         </h3>
                         <p class="blog__post-desc">Các dự án STEM thú vị giúp trẻ khám phá khoa học sâu hơn...</p>
                         <a href="blog-detail.html" class="blog__btn">Đọc thêm</a>
                     </div>
                     <div class="blog__post">
                         <img src="../../assets/images/blog/STEM trong đời sống.jpg" alt="STEM tại nhà">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">STEM tại nhà</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">STEM tại nhà</a></h3>
                         <p class="blog__post-desc">Các dự án STEM đơn giản giúp trẻ làm quen với khoa học và công
                             nghệ...</p>
                         <a href="blog-detail.html" class="blog__btn">Đọc thêm</a>
@@ -179,27 +179,27 @@
                 <div class="blog__post-container">
                     <div class="blog__post">
                         <img src="../../assets/images/blog/Hướng dẫn chọn kit STEM phù hợp.jpg" alt="Robot coding">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">Học lập trình robot mini</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">Học lập trình robot mini</a></h3>
                         <p class="blog__post-desc">Trẻ làm quen với robot và lập trình cơ bản qua các dự án STEM thú
                             vị...</p>
                         <a href="blog-detail.html" class="blog__btn">Đọc thêm</a>
                     </div>
                     <div class="blog__post">
                         <img src="../../assets/images/blog/Hướng dẫn chọn kit STEM phù hợp.jpg" alt="Robot coding">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">Robot nâng cao</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">Robot nâng cao</a></h3>
                         <p class="blog__post-desc">Học lập trình robot nâng cao với các dự án STEM sáng tạo...</p>
                         <a href="blog-detail.html" class="blog__btn">Đọc thêm</a>
                     </div>
                     <div class="blog__post">
                         <img src="../../assets/images/blog/Hướng dẫn chọn kit STEM phù hợp.jpg" alt="Robot coding">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">Ứng dụng Arduino trong STEM</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">Ứng dụng Arduino trong STEM</a></h3>
                         <p class="blog__post-desc">Học lập trình và điện tử cơ bản qua các dự án Arduino đơn giản...
                         </p>
                         <a href="blog-detail.html" class="blog__btn">Đọc thêm</a>
                     </div>
                     <div class="blog__post">
                         <img src="../../assets/images/blog/Lợi ích học STEM sớm cho trẻ em.jpg" alt="STEM tại nhà">
-                        <h3 class="blog__post-title"><a href="blog-detail.html">STEM tại nhà</a></h3>
+                        <h3 class="blog__post-title"><a href="blog-detail.jsp">STEM tại nhà</a></h3>
                         <p class="blog__post-desc">Các dự án STEM đơn giản giúp trẻ làm quen với khoa học và công
                             nghệ...</p>
                         <a href="blog-detail.html" class="blog__btn">Đọc thêm</a>

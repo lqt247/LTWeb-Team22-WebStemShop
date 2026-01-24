@@ -95,7 +95,7 @@
             <li class="admin-menu__item active">
                 <i class="fa-solid fa-users"></i> Quản lý Người Dùng
             </li>
-            <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-product'">
+            <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-products'">
                 <i class="fa-solid fa-box"></i> Quản lý Sản Phẩm
             </li>
             <li class="admin-menu__item" onclick="window.location.href='${pageContext.request.contextPath}/admin/admin-orders'">
@@ -113,7 +113,7 @@
     <main class="admin-main">
         <!-- Topbar -->
         <header class="admin-topbar">
-            <h1>Quản lý Users</h1>
+            <h1>Thông tin chi tiết</h1>
             <div class="admin-info">
                 <img src="${pageContext.request.contextPath}/assets/images/user/user-male-circle.jpg" class="admin-avatar" alt="Admin">
             </div>

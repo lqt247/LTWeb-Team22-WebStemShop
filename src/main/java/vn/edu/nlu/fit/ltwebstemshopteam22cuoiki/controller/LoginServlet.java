@@ -28,11 +28,16 @@ public class LoginServlet  extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        // debug
+        System.out.println("Username: " + username);
+        System.out.println("Password raw: " + password);
 
         UserDAO dao = new UserDAO();
         String hashedPassword = PasswordUtil.md5(password);
-        User user = dao.login(username, hashedPassword);
+        System.out.println("Password: " + hashedPassword);
 
+        User user = dao.login(username, hashedPassword);
+        System.out.println("User: " + (user != null));
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
