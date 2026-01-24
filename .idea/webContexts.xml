@@ -8,6 +8,9 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/components/header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/components" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/view/shop/cart.jsp" value="file://$PROJECT_DIR$/src/main/webapp/view/shop" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/view/shop/checkout.jsp" value="file://$PROJECT_DIR$/src/main/webapp/view/shop" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/view/shop/checkout_simple.jsp" value="file://$PROJECT_DIR$/src/main/webapp/view/shop" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/view/shop/order-success.jsp" value="file://$PROJECT_DIR$/src/main/webapp/view/shop" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/view/shop/product-detail.jsp" value="file://$PROJECT_DIR$/src/main/webapp/view/shop" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/view/shop/shop.jsp" value="file://$PROJECT_DIR$/src/main/webapp/view/shop" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/view/user/sign-in.jsp" value="file://$PROJECT_DIR$/src/main/webapp/view/user" />
