@@ -83,16 +83,9 @@
                                 </ul>
                             </li>
 
-                            <!-- SỰ KIỆN -->
-                            <li class="nav__item dropdown">
-                                <a href="${pageContext.request.contextPath}/view/workshop/events.jsp">
-                                    Sự kiện <i class="fa-solid fa-chevron-down"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="${pageContext.request.contextPath}/view/workshop/workshop-register.jsp">Đăng ký tham gia</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/view/workshop/materials.jsp">Tài liệu Workshop</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/view/workshop/rate.jsp">Đánh giá</a></li>
-                                </ul>
+                            <!-- DỰ ÁN WORKSHOP -->
+                            <li class="nav__item ">
+                                <a href="${pageContext.request.contextPath}/view/workshop/materials.jsp">Dự Án WorkShops</a>
                             </li>
 
                             <li class="nav__item">
@@ -121,7 +114,7 @@
                         <c:otherwise>
                             <div class="header__user header__user-logged">
 
-                                    <%-- AVATAR ICON        --%>
+                                    <%-- AVATAR ICON --%>
                                 <i class="fa-solid fa-circle-user user-avatar-icon"></i>
 
                                     <%-- TÊN --%>
@@ -143,11 +136,6 @@
                                             </a>
                                         </li>
 
-                                        <li>
-                                            <a href="${pageContext.request.contextPath}/wishlist">
-                                                <i class="fa-solid fa-heart"></i> Sản phẩm yêu thích
-                                            </a>
-                                        </li>
 
                                         <c:if test="${sessionScope.user.role == 'ADMIN'}">
                                             <li>
