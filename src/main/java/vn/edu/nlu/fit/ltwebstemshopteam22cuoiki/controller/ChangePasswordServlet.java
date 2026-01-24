@@ -33,30 +33,39 @@ public class ChangePasswordServlet extends HttpServlet {
 
         UserDAO dao = new UserDAO();
 
-        // 1. Check mật khẩu cũ
+        // 1. check không để trống phần đổi mật khẩu
+        if (oldPassword == null || oldPassword.trim().isEmpty()
+                || newPassword == null || newPassword.trim().isEmpty()
+                || confirmPassword == null || confirmPassword.trim().isEmpty()) {
+
+            request.setAttribute("error1", "Vui lòng nhập password để đổi");
+            request.getRequestDispatcher("/view/user/profile.jsp").forward(request, response);
+            return;
+        }
+        // 2. Check mật khẩu cũ
         String oldHash = PasswordUtil.md5(oldPassword);
         if (!dao.checkPassword(user.getId(), oldHash)) {
-            request.setAttribute("error", "Mật khẩu hiện tại không đúng");
+            request.setAttribute("error1", "Mật khẩu hiện tại không đúng");
             request.getRequestDispatcher("/view/user/profile.jsp").forward(request, response);
             return;
         }
 
-        // 2. Check mật khẩu mới khớp
+        // 3. Check mật khẩu mới khớp
         if (!newPassword.equals(confirmPassword)) {
-            request.setAttribute("error", "Xác nhận mật khẩu không khớp");
+            request.setAttribute("error1", "Xác nhận mật khẩu không khớp");
             request.getRequestDispatcher("/view/user/profile.jsp").forward(request, response);
             return;
         }
 
-        // 3. check validation
+        // 4. check validation
         if (!PasswordUtil.isValidPassword(newPassword)) {
-            request.setAttribute("error",
+            request.setAttribute("error1",
                     "Mật khẩu phải ≥8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt");
             request.getRequestDispatcher("/view/user/profile.jsp").forward(request, response);
             return;
         }
 
-        // 4. Hash mật khẩu mới và update mật khẩu mới
+        // 5. Hash mật khẩu mới và update mật khẩu mới
         String newHash = PasswordUtil.md5(newPassword);
         dao.updatePassword(user.getId(), newHash);
 
@@ -65,5 +74,7 @@ public class ChangePasswordServlet extends HttpServlet {
 
         request.setAttribute("message", "Đổi mật khẩu thành công");
         request.getRequestDispatcher("/view/user/profile.jsp").forward(request, response);
+
+
     }
 }
