@@ -390,6 +390,9 @@
     .average-stars span i{
         color: #FFC107;
     }
+    .active-heart {
+        color: red !important;
+    }
 
 </style>
 
@@ -455,8 +458,10 @@
                     <i class="fa-solid fa-cart-plus"></i>
                 </button>
 
-                <button class="wishlist-btn">
-                    <i class="fa-solid fa-heart" style="color:#FF6C80"></i>
+                <button type="button"
+                        class="wishlist-btn"
+                        onclick="toggleWishlist(${product.id}, this)">
+                    <i class="fa-solid fa-heart ${isWishlisted ? 'active-heart' : ''}"></i>
                 </button>
             </div>
 
