@@ -15,11 +15,14 @@ public class User {
     private Date createDate;
     private String verifyToken;
     private boolean isVerified;
+    private String avatar;
+    private String gender;
+    private Date birthday;
 
     public User() {
     }
 
-    public User(int id, String fullName, String email, String phoneNumber, String address, String role, String status, String userName, String password, Date createDate, String verifyToken, boolean isVerified) {
+    public User(int id, String fullName, String email, String phoneNumber, String address, String role, String status, String userName, String password, Date createDate, String verifyToken, boolean isVerified, String avatar, String gender, Date birthday) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
@@ -32,6 +35,9 @@ public class User {
         this.createDate = createDate;
         this.verifyToken = verifyToken;
         this.isVerified = isVerified;
+        this.avatar = avatar;
+        this.gender = gender;
+        this.birthday = birthday;
     }
 
     public int getId() {
@@ -121,4 +127,17 @@ public class User {
     public boolean isVerified() {return isVerified; }
 
     public void setVerified(boolean verified) {isVerified = verified; }
+
+    public String getAvatar() { return avatar; }
+
+    public void setAvatar(String avatar) { this.avatar = avatar; }
+
+    public String getGender() { return gender;}
+
+    public void setGender(String gender) { this.gender = gender; }
+
+
+    public Date getBirthday() { return birthday; }
+
+    public void setBirthday(Date birthday) { this.birthday = birthday; }
 }
