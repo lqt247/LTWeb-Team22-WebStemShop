@@ -132,9 +132,18 @@
                                     <ul class="dropdown-menu-user">
 
                                         <li>
-                                            <a href="${pageContext.request.contextPath}/profile">
-                                                <i class="fa-solid fa-user"></i> Hồ sơ
-                                            </a>
+                                            <c:choose>
+                                                <c:when test="${sessionScope.user.role == 'admin'}">
+                                                    <a href="${pageContext.request.contextPath}/admin/dashboard">
+                                                        <i class="fa-solid fa-gauge"></i> Dashboard
+                                                    </a>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <a href="${pageContext.request.contextPath}/profile">
+                                                        <i class="fa-solid fa-user"></i> Hồ sơ
+                                                    </a>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </li>
 
                                         <li>
