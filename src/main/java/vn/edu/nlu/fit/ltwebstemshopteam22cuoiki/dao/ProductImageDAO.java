@@ -76,4 +76,16 @@ public class ProductImageDAO {
         }
         return false;
     }
+    // thêm xóa ảnh
+    public boolean deleteByProductId(int productId) {
+        String sql = "DELETE FROM product_image WHERE ProductID = ?";
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, productId);
+            return ps.executeUpdate() >= 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

@@ -135,4 +135,32 @@ public class ProductDAO {
         }
         return false;
     }
+
+
+     // Thêm sản phẩm mới, sau đó sẽ trả về id
+    public int addProduct(Product product) {
+        String sql = "INSERT INTO products (ProductName, Description, Price, Quantity, CategoryID, BrandID) VALUES (?, ?, ?, ?, ?, ?)";
+
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+
+            ps.setString(1, product.getProductName());
+            ps.setString(2, product.getDescription());
+            ps.setDouble(3, product.getPrice());
+            ps.setInt(4, product.getQuantity());
+            ps.setInt(5, product.getCategoriesID());
+            ps.setInt(6, product.getBrandID());
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows > 0) {
+
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

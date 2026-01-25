@@ -123,7 +123,7 @@
                     <input type="text" name="search" placeholder="Tìm sản phẩm..." class="search-input" >
                 </form>
 
-                <a href="${pageContext.request.contextPath}/admin/admin-product-add" class="btn-action" style="background: #28a745; padding: 10px 20px;">
+                <a href="${pageContext.request.contextPath}/admin/admin-product-add" class="btn-action" style="background: #ff8ab8;; padding: 10px 20px;">
                     <i class="fas fa-plus"></i> Thêm sản phẩm mới
                 </a>
             </div>
