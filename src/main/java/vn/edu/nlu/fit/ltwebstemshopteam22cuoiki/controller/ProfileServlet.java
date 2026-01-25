@@ -5,6 +5,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.UserDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.User;
+import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.util.PasswordUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,9 +35,34 @@ public class ProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phoneNumber");
 
         if (user == null) {
             response.sendRedirect(request.getContextPath() + "/dang-nhap");
+            return;
+        }
+
+        // check sdt
+        if (phone != null && !phone.trim().isEmpty()) {
+            if (!PasswordUtil.isValidPhone(phone)) {
+                request.setAttribute("error", "Số điện thoại không hợp lệ");
+                request.getRequestDispatcher("/view/user/profile.jsp").forward(request, response);
+                return;
+            }
+        }
+
+        // check email không được để trống
+        if (email == null || email.trim().isEmpty()) {
+            request.setAttribute("error", "Email không được để trống");
+            request.getRequestDispatcher("/view/user/profile.jsp").forward(request, response);
+            return;
+        }
+
+        // check định dạng email
+        if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,6}$")) {
+            request.setAttribute("error", "Email không hợp lệ");
+            request.getRequestDispatcher("/view/user/sign-up.jsp").forward(request, response);
             return;
         }
 
@@ -66,7 +92,6 @@ public class ProfileServlet extends HttpServlet {
 
             user.setAvatar(newFileName); // lưu tên file vào DB
         }
-
 
         UserDAO dao = new UserDAO();
         boolean updated = dao.updateProfile(user);

@@ -25,4 +25,9 @@ public class PasswordUtil {
         String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@#$%^&*!]).{8,}$";
         return password.matches(regex);
     }
+
+    public static boolean isValidPhone(String phone) {
+        return phone != null &&
+                phone.matches("^(0|\\+84)(3|5|7|8|9)[0-9]{8}$");
+    }
 }
