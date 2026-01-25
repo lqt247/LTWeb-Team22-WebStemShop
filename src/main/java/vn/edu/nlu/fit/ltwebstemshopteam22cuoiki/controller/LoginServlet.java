@@ -49,17 +49,9 @@ public class LoginServlet  extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/admin/dashboard");
                 return;
             } else {
-                response.sendRedirect(request.getContextPath() + "/index");
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
             }  return;
 
-        }
-
-        if (username == null || username.trim().isEmpty()
-                || password == null || password.trim().isEmpty()) {
-
-            request.setAttribute("error2", "Vui lòng nhập đầy đủ username và password");
-            request.getRequestDispatcher("/view/user/sign-in.jsp").forward(request, response);
-            return;
         }
 
         if (dao.isUnverifiedUser(username, hashedPassword)) {

@@ -58,9 +58,22 @@ public class ProductManagementServlet extends HttpServlet {
 
         try {
             if ("delete".equals(action)) {
-                // Xóa sản phẩm - chức năng sẽ implement sau
+                // Xóa sản phẩm
                 int id = Integer.parseInt(request.getParameter("id"));
-                // productDAO.deleteProduct(id);
+                productDAO.deleteProduct(id);
+
+            } else if ("update".equals(action)) {
+                // Cập nhật sản phẩm
+                Product product = new Product();
+                product.setId(Integer.parseInt(request.getParameter("id")));
+                product.setProductName(request.getParameter("productName"));
+                product.setDescription(request.getParameter("description"));
+                product.setPrice(Double.parseDouble(request.getParameter("price")));
+                product.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+                product.setCategoriesID(Integer.parseInt(request.getParameter("categoryID")));
+                product.setBrandID(Integer.parseInt(request.getParameter("brandID")));
+
+                productDAO.updateProduct(product);
             }
 
             response.sendRedirect(request.getContextPath() + "/admin/admin-products");

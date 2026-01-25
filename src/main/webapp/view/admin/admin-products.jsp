@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
@@ -14,6 +13,9 @@
     <style>
         .table-actions {
             margin-bottom: 20px;
+        }
+        .search-form {
+            display: inline-block;
         }
         .search-input {
             padding: 10px 15px;
@@ -31,6 +33,8 @@
             font-size: 12px;
             margin-right: 5px;
             transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
         .btn-edit {
             background: #ffc107;
@@ -40,6 +44,8 @@
         }
         .btn-delete {
             background: #dc3545;
+            border: none;
+            cursor: pointer;
         }
         .btn-delete:hover {
             background: #c82333;
@@ -60,6 +66,9 @@
             height: 45px;
             border-radius: 50%;
             object-fit: cover;
+        }
+        .delete-form {
+            display: inline;
         }
     </style>
 </head>
@@ -102,14 +111,21 @@
             <h1>Quản lý Sản Phẩm</h1>
             <div class="admin-info">
                 <img src="${pageContext.request.contextPath}/assets/images/user/user-male-circle.jpg" class="admin-avatar" alt="Admin">
+                <span>Admin</span>
             </div>
         </header>
 
         <!-- Content -->
         <div>
-            <!-- Tìm kiếm -->
-            <div class="table-actions">
-                <input type="text" id="searchInput" placeholder="Tìm sản phẩm..." class="search-input">
+            <!-- Tìm kiếm và thêm mới -->
+            <div class="table-actions" style="display: flex; justify-content: space-between; align-items: center;">
+                <form method="get" class="search-form">
+                    <input type="text" name="search" placeholder="Tìm sản phẩm..." class="search-input" >
+                </form>
+
+                <a href="${pageContext.request.contextPath}/admin/admin-product-add" class="btn-action" style="background: #28a745; padding: 10px 20px;">
+                    <i class="fas fa-plus"></i> Thêm sản phẩm mới
+                </a>
             </div>
 
             <!-- Bảng sản phẩm -->
@@ -143,19 +159,23 @@
                         </td>
                         <td>${product.productName}</td>
                         <td>${product.brandName}</td>
+<%--                         sửa lại giá cho hợp lý hơn--%>
                         <td>
-                            <fmt:formatNumber value="${product.price}" type="currency" currencySymbol="₫"/>
+                            <fmt:formatNumber value="${product.price}" pattern="#,###"/> Đ
                         </td>
                         <td>${product.quantity}</td>
                         <td>
-                            <button class="btn-action btn-edit"
-                                    onclick="">
+                            <a href="${pageContext.request.contextPath}/admin/admin-product-edit?id=${product.id}" class="btn-action btn-edit">
                                 <i class="fas fa-edit"></i> Sửa
-                            </button>
-                            <button class="btn-action btn-delete"
-                                    onclick="">
-                                <i class="fas fa-trash"></i> Xóa
-                            </button>
+                            </a>
+
+                            <form method="post" class="delete-form" onsubmit="return confirm('Bạn có chắc muốn xóa sản phẩm này?')">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="hidden" name="id" value="${product.id}">
+                                <button type="submit" class="btn-action btn-delete">
+                                    <i class="fas fa-trash"></i> Xóa
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 </c:forEach>
@@ -171,8 +191,6 @@
         </div>
     </main>
 </div>
-
-
 
 </body>
 </html>
