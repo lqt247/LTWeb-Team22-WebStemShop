@@ -20,6 +20,8 @@ public class LoginServlet  extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getRequestDispatcher("/view/user/sign-in.jsp")
+                .forward(request, response);
 
     }
 
@@ -51,6 +53,7 @@ public class LoginServlet  extends HttpServlet {
             }  return;
 
         }
+
         if (dao.isUnverifiedUser(username, hashedPassword)) {
             request.setAttribute("error1", "Tài khoản chưa được xác thực. Vui lòng kiểm tra email.");
             request.getRequestDispatcher("/view/user/sign-in.jsp").forward(request, response);

@@ -138,9 +138,25 @@
   .alert.success {
     color: green;
   }
+  .back {
+    background-color: #f6f5f4;
+    font-size: 13px;
+    padding: 10px;
+  }
+  .back a,
+  .back span{
+    text-decoration: none;
+    color: #a1a0a0;
+    margin-left: 20px;
+  }
 
 </style>
 <%@ include file="/WEB-INF/components/header.jsp" %>
+<div class="back">
+  <a href="${pageContext.request.contextPath}/">Trang Chủ</a>
+  <span>/</span>
+  <a href="#">Profile</a>
+</div>
 
 <div class="profile container">
   <h2>Hồ Sơ Của Tôi</h2>
@@ -171,7 +187,7 @@
 
       <div class="form-group">
         <label>Email</label>
-        <input type="text" value="${user.email}" readonly>
+        <input type="text" name="email" value="${user.email}">
       </div>
 
       <div class="form-group">
@@ -225,19 +241,22 @@
   <!-- form đổi mật khẩu-->
   <div class="password-box" id="passwordBox" style="display: ${empty error ? 'none' : 'block'};">
     <form action="${pageContext.request.contextPath}/change-password" method="post">
+      <c:if test="${not empty error1}">
+        <p class="alert" style="color:red">${error1}</p>
+      </c:if>
       <div class="form-group">
         <label>Mật khẩu hiện tại</label>
-        <input type="password" name="oldPassword" required>
+        <input type="password" name="oldPassword" >
       </div>
 
       <div class="form-group">
         <label>Mật khẩu mới</label>
-        <input type="password" name="newPassword" required>
+        <input type="password" name="newPassword" >
       </div>
 
       <div class="form-group">
         <label>Xác nhận mật khẩu mới</label>
-        <input type="password" name="confirmPassword" required>
+        <input type="password" name="confirmPassword" >
       </div>
 
       <button class="btn">Xác nhận đổi mật khẩu</button>

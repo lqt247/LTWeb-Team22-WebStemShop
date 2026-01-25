@@ -15,7 +15,7 @@
     public class SignupServlet extends HttpServlet {
         @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+            request.getRequestDispatcher("/view/user/sign-up.jsp").forward(request, response);
         }
 
         @Override
@@ -29,6 +29,25 @@
             String password = request.getParameter("password");
             String confirmPassword = request.getParameter("confirmPassword");
             UserDAO dao = new UserDAO();
+
+            //check null
+            if (username == null || username.trim().isEmpty()
+                    || email == null || email.trim().isEmpty()
+                    || password == null || password.trim().isEmpty()
+                    || confirmPassword == null || confirmPassword.trim().isEmpty()) {
+
+                request.setAttribute("error", "Vui lòng nhập đầy đủ thông tin");
+                request.getRequestDispatcher("/view/user/sign-up.jsp").forward(request, response);
+                return;
+            }
+
+            // check định dạng email
+            if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,6}$")) {
+                request.setAttribute("error", "Email không hợp lệ");
+                request.getRequestDispatcher("/view/user/sign-up.jsp").forward(request, response);
+                return;
+            }
+
 
             //check mật khẩu
             if (!password.equals(confirmPassword)) {
