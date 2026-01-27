@@ -99,4 +99,54 @@ public class ProductDAO {
         }
         return null;
     }
+
+    // Đếm tổng số sản phẩm
+    public int countProducts() {
+        String sql = "SELECT COUNT(*) FROM products";
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            if (rs.next()) return rs.getInt(1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    // Lấy sản phẩm theo trang
+    public List<Product> getProductsByPage(int offset, int limit) {
+        List<Product> list = new ArrayList<>();
+
+        String sql ="SELECT p.ID, p.ProductName, p.Price, p.CategoryID, p.BrandID, "+
+                            "(SELECT ImageURL FROM product_image WHERE ProductID = p.ID LIMIT 1) AS image_url "+
+                    "FROM products p "+
+                    "ORDER BY p.ID "+
+                    "LIMIT ? OFFSET ?";
+
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, limit);
+            ps.setInt(2, offset);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getInt("ID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setCategoriesID(rs.getInt("CategoryID"));
+                p.setBrandID(rs.getInt("BrandID"));
+                p.setImageUrl(rs.getString("image_url"));
+
+                list.add(p);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 }

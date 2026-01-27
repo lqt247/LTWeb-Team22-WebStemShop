@@ -171,7 +171,6 @@
 
             <!-- body -->
             <div class="list-product__body">
-
                 <div class="list-product__body__card">
                     <c:forEach var="p" items="${products}">
                         <a href="${pageContext.request.contextPath}/product-detail?id=${p.id}"
@@ -208,6 +207,28 @@
                             </div>
                         </a>
                     </c:forEach>
+                </div>
+                <div class="pagination" style="text-align:center;margin:40px 0">
+
+                    <c:if test="${currentPage > 1}">
+                        <a href="${pageContext.request.contextPath}/shop?page=${currentPage - 1}">
+                            &laquo;
+                        </a>
+                    </c:if>
+
+                    <c:forEach begin="1" end="${totalPages}" var="i">
+                        <a href="${pageContext.request.contextPath}/shop?page=${i}"
+                           class="${i == currentPage ? 'active' : ''}">
+                                ${i}
+                        </a>
+                    </c:forEach>
+
+                    <c:if test="${currentPage < totalPages}">
+                        <a href="${pageContext.request.contextPath}/shop?page=${currentPage + 1}">
+                            &raquo;
+                        </a>
+                    </c:if>
+
                 </div>
             </div>
 

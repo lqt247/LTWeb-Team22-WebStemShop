@@ -583,7 +583,7 @@
                         </form>
 
                         <% } else { %>
-                        <p>Vui lòng <a href="login.jsp">đăng nhập</a> để đánh giá.</p>
+                        <p>Vui lòng <a href="${pageContext.request.contextPath}/view/user/sign-in.jsp">đăng nhập</a> để đánh giá.</p>
                         <% } %>
                     </div>
 

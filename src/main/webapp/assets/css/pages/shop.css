@@ -424,3 +424,16 @@ main {
     text-decoration: none;
     color: inherit;
 }
+.pagination a {
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination a.active {
+    background: #FF6C80;
+    color: white;
+    border-color: #FF6C80;
+}
