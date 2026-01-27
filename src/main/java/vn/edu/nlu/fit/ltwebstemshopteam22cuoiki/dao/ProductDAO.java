@@ -163,4 +163,53 @@ public class ProductDAO {
         }
         return 0;
     }
+    public List<Product> getFirst6Products() {
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT p.ID, p.ProductName, p.Description, p.Price, p.Quantity, " +
+                "p.CategoryID, p.BrandID, b.BrandName, " +
+                "COALESCE(pi.ImageURL, '/assets/images/products/no-image.png') as ImageURL " +
+                "FROM products p " +
+                "LEFT JOIN brands b ON p.BrandID = b.ID " +
+                "LEFT JOIN product_image pi ON p.ID = pi.ProductID " +
+                "ORDER BY p.ID ASC " +
+                "LIMIT 6";
+
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            con = ConnectionDB.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getInt("ID"));
+                p.setCategoriesID(rs.getInt("CategoryID"));
+                p.setBrandID(rs.getInt("BrandID"));
+                p.setBrandName(rs.getString("BrandName"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setDescription(rs.getString("Description"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setImageUrl(rs.getString("ImageURL"));
+                products.add(p);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return products;
+    }
+
+
 }
