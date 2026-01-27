@@ -30,26 +30,28 @@ public class LoginServlet  extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        // debug
+        System.out.println("Username: " + username);
+        System.out.println("Password raw: " + password);
 
         UserDAO dao = new UserDAO();
         String hashedPassword = PasswordUtil.md5(password);
-        User user = dao.login(username, hashedPassword);
+        System.out.println("Password: " + hashedPassword);
 
+        User user = dao.login(username, hashedPassword);
+        System.out.println("User: " + (user != null));
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("cart", new Cart());
+            // Phân biệt admin và user -> nếu admin thì cho qua dashboard, user thì mình cho về trang chủ
+            if ("admin".equals(user.getRole())) {
+                response.sendRedirect(request.getContextPath() + "/admin/dashboard");
+                return;
+            } else {
+                response.sendRedirect(request.getContextPath() + "/index.jsp");
+            }  return;
 
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
-            return;
-        }
-
-        if (username == null || username.trim().isEmpty()
-                || password == null || password.trim().isEmpty()) {
-
-            request.setAttribute("error2", "Vui lòng nhập đầy đủ username và password");
-            request.getRequestDispatcher("/view/user/sign-in.jsp").forward(request, response);
-            return;
         }
 
         if (dao.isUnverifiedUser(username, hashedPassword)) {
@@ -63,5 +65,4 @@ public class LoginServlet  extends HttpServlet {
 
 
 
-
-}
+    }

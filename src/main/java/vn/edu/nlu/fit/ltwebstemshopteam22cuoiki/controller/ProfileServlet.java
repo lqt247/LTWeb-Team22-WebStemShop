@@ -25,7 +25,8 @@ public class ProfileServlet extends HttpServlet {
             request.getRequestDispatcher("/view/user/sign-in.jsp").forward(request, response);
             return;
         }
-
+        // Kiểm tra nếu là admin, thêm flag
+        request.setAttribute("isAdmin", "admin".equalsIgnoreCase(user.getRole()));
         request.setAttribute("user", user);
         request.getRequestDispatcher("/view/user/profile.jsp").forward(request, response);
     }
