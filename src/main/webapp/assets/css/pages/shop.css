@@ -63,8 +63,6 @@ main {
 
 }
 .product__categorys ul li {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     font-weight: 500;
     border-bottom: 1px solid #d6d6d6;

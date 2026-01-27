@@ -62,30 +62,12 @@
             <div class="product__category product__categorys">
                 <h2>Danh Mục</h2>
                 <ul>
-                    <li>
-                        <input type="checkbox" class="checkbox-category" value="lego">
-                        <span>LEGO</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" class="checkbox-category" value="robot">
-                        <span>Robot</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" class="checkbox-category" value="sang-tao">
-                        <span>Đồ chơi sáng tạo</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" class="checkbox-category" value="xe-tap-di">
-                        <span>Xe tập đi</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" class="checkbox-category" value="dat-nan">
-                        <span>Đất nặn</span>
-                    </li>
-                    <li>
-                        <input type="checkbox" class="checkbox-category" value="dung-cu-hoc-tap">
-                        <span>Dụng cụ học tập</span>
-                    </li>
+                    <c:forEach var="c" items="${categories}">
+                        <li>
+                            <input type="checkbox" class="checkbox-category" value="${c.id}">
+                            <span>${c.categoryName}</span>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
 
@@ -115,7 +97,7 @@
                 </ul>
             </div>
 
-            <div class="product__category product__age">
+<%--            <div class="product__category product__age">
                 <h2>Độ tuổi</h2>
                 <ul>
                     <li>
@@ -151,7 +133,7 @@
                         <span>Nữ</span>
                     </li>
                 </ul>
-            </div>
+            </div>--%>
 
         </div>
 
@@ -177,25 +159,18 @@
 
                 <div class="list-product__head__arrange">
                     <span>Sắp xếp theo: </span>
-                    <select name="" id="">
-                        <option selected value="">Mặc định</option>
-                        <option value="">Sản phẩm huyến mãi</option>
-                        <option value="">Bán chạy</option>
-                        <option value="">Sắp xếp theo A-Z</option>
-                        <option value="">Sắp xếp theo Z-A</option>
-                        <option value="">Giá giảm dần</option>
-                        <option value="">Giá tăng dần</option>
+                    <select id="sort-select">
+                        <option value="default">Mặc định</option>
+                        <option value="az">Sắp xếp theo A-Z</option>
+                        <option value="za">Sắp xếp theo Z-A</option>
+                        <option value="price-desc">Giá giảm dần</option>
+                        <option value="price-asc">Giá tăng dần</option>
                     </select>
                 </div>
             </div>
 
             <!-- body -->
             <div class="list-product__body">
-
-                <!-- DEBUG (có thể xóa sau) -->
-                <p style="color:red;">
-                    Tổng sản phẩm: ${products.size()}
-                </p>
 
                 <div class="list-product__body__card">
                     <c:forEach var="p" items="${products}">
