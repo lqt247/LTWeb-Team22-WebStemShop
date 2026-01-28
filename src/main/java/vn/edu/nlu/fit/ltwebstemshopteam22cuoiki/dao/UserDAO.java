@@ -28,6 +28,8 @@ public class UserDAO {
                 u.setFullName(rs.getString("FullName"));
                 u.setEmail(rs.getString("Email"));
                 u.setUserName(rs.getString("UserName"));
+                // THÊM - 23130355_LeQuangTruong - để nó lấy sdt
+                u.setPhoneNumber(rs.getString("PhoneNumber"));
                 u.setRole(rs.getString("Role"));
                 u.setStatus(rs.getString("Status"));
 
@@ -56,12 +58,14 @@ public class UserDAO {
                 u.setUserName(rs.getString("UserName"));
                 u.setFullName(rs.getString("FullName"));
                 u.setEmail(rs.getString("Email"));
-                u.setRole(rs.getString("Role"));
+                // THÊM - 23130355_LeQuangTruong - để nó lấy sdt
                 u.setPhoneNumber(rs.getString("PhoneNumber"));
-                u.setGender(rs.getString("gender"));
-                u.setBirthday(rs.getDate("birthday"));
-                u.setAddress(rs.getString("Address"));
-                u.setAvatar(rs.getString("avatar"));
+                u.setRole(rs.getString("Role"));
+
+               u.setGender(rs.getString("gender"));
+              u.setBirthday(rs.getDate("birthday"));
+              u.setAddress(rs.getString("Address"));
+               u.setAvatar(rs.getString("avatar"));
                 return u;
             }
         } catch (Exception e) {
@@ -142,6 +146,60 @@ public class UserDAO {
         return false;
     }
 
+
+
+    // 2 Phương thức này ở admin - quan ly
+    // Sửa
+    public void updateUser(User user) {
+        String sql = "UPDATE users SET FullName=?, Email=?, PhoneNumber=?, Address=?, Role=?, Status=?, UserName=? WHERE ID=?";
+        try (Connection conn = ConnectionDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, user.getFullName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPhoneNumber());
+            ps.setString(4, user.getAddress());
+            ps.setString(5, user.getRole());
+            ps.setString(6, user.getStatus());
+            ps.setString(7, user.getUserName());
+            ps.setInt(8, user.getId());
+
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    // lấy user bằng id
+    public User getUserById(int userId) {
+        String sql = "SELECT * FROM users WHERE ID=?";
+        try (Connection conn = ConnectionDB.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                User u = new User();
+                u.setId(rs.getInt("ID"));
+                u.setFullName(rs.getString("FullName"));
+                u.setEmail(rs.getString("Email"));
+                u.setPhoneNumber(rs.getString("PhoneNumber"));
+                u.setAddress(rs.getString("Address"));
+                u.setUserName(rs.getString("UserName"));
+                u.setRole(rs.getString("Role"));
+                u.setStatus(rs.getString("Status"));
+                u.setCreateDate(rs.getDate("CreateAt"));
+                return u;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     // check username và email
     public User findByUsernameAndEmail(String username, String email) {
         String sql = "SELECT * FROM users WHERE UserName=? AND Email=?";

@@ -40,6 +40,9 @@
     .bin a{
         color: black;
     }
+    .cart-container__product__title h4 {
+        font-size: 1.2rem;
+    }
 </style>
 
     <jsp:include page="/WEB-INF/components/header.jsp"/>
@@ -75,13 +78,15 @@
                 <!-- SỐ LƯỢNG -->
                 <div class="cart-container__quantity">
                     <div class="change">
-                        <a href="${pageContext.request.contextPath}/update-cart?id=${item.product.id}&action=dec">
+                        <a href="javascript:void(0)"
+                           onclick="updateQuantity(${item.product.id}, 'dec')">
                             <i class="fa-solid fa-minus"></i>
                         </a>
 
                         <span class="quantity-value">${item.quantity}</span>
 
-                        <a href="${pageContext.request.contextPath}/update-cart?id=${item.product.id}&action=inc">
+                        <a href="javascript:void(0)"
+                           onclick="updateQuantity(${item.product.id}, 'inc')">
                             <i class="fa-solid fa-plus"></i>
                         </a>
                     </div>

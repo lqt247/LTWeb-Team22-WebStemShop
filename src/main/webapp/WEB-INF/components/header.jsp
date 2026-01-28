@@ -5,6 +5,34 @@
 <!--HEADER-->
 <header class="header">
 
+    <style>
+        .cart-icon {
+            position: relative;
+            font-size: 20px;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+        #wishlist-count {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+            background: #ff4d6d;
+            color: white;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+    </style>
+
     <!-- PHẦN TRÊN -->
     <div class="header__first">
         <div class="container">
@@ -68,7 +96,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="${pageContext.request.contextPath}/view/shop/cart.jsp">Giỏ hàng</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/view/shop/wishlist.jsp">Yêu thích</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/wishlist">Yêu thích</a></li>
                                     <li><a href="${pageContext.request.contextPath}/view/shop/checkout.jsp">Thanh toán</a></li>
                                 </ul>
                             </li>
@@ -99,8 +127,16 @@
             <!-- USER + CART -->
             <div class="header__end-right">
                 <div class="header__shop">
-                    <a href="${pageContext.request.contextPath}/view/shop/wishlist.jsp"><i class="fa-solid fa-heart"></i></a>
-                    <a href="${pageContext.request.contextPath}/view/shop/cart.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="${pageContext.request.contextPath}/wishlist" class="cart-icon">
+                        <i class="fa-solid fa-heart"></i>
+                        <span id="wishlist-count">0</span>
+                    </a>
+                    <a href="${pageContext.request.contextPath}/view/shop/cart.jsp" class="cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-count">
+                            ${sessionScope.cart != null ? sessionScope.cart.totalQuantity : 0}
+                        </span>
+                    </a>
                 </div>
 
                 <div class="header__user">
@@ -125,13 +161,22 @@
                                     <ul class="dropdown-menu-user">
 
                                         <li>
-                                            <a href="${pageContext.request.contextPath}/profile">
-                                                <i class="fa-solid fa-user"></i> Hồ sơ
-                                            </a>
+                                            <c:choose>
+                                                <c:when test="${sessionScope.user.role == 'admin'}">
+                                                    <a href="${pageContext.request.contextPath}/admin/dashboard">
+                                                        <i class="fa-solid fa-gauge"></i> Dashboard
+                                                    </a>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <a href="${pageContext.request.contextPath}/profile">
+                                                        <i class="fa-solid fa-user"></i> Hồ sơ
+                                                    </a>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </li>
 
                                         <li>
-                                            <a href="${pageContext.request.contextPath}/don-hang">
+                                            <a href="${pageContext.request.contextPath}/my-orders">
                                                 <i class="fa-solid fa-box"></i> Đơn hàng
                                             </a>
                                         </li>
@@ -161,4 +206,10 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const contextPath = '${pageContext.request.contextPath}';
+    </script>
+    <script src="${pageContext.request.contextPath}/assets/js/pages/cart.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/pages/wishlist.js"></script>
 </header>

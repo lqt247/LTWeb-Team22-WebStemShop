@@ -36,5 +36,44 @@ public class ProductImageDAO {
         }
         return list;
     }
+    // Cập nhật hoặc thêm ảnh cho sản phẩm
+    public boolean updateOrAddProductImage(int productId, String imageUrl) {
+        // Kiểm tra xem đã có ảnh chưa
+        String checkSql = "SELECT ID FROM product_image WHERE ProductID = ? LIMIT 1";
+        String updateSql = "UPDATE product_image SET ImageURL = ? WHERE ProductID = ?";
+        String insertSql = "INSERT INTO product_image (ProductID, ImageURL) VALUES (?, ?)";
 
+        Connection con = null;
+        PreparedStatement checkPs = null;
+        PreparedStatement updatePs = null;
+        PreparedStatement insertPs = null;
+        ResultSet rs = null;
+
+        try {
+            con = ConnectionDB.getConnection();
+
+            // Check xem đã có ảnh chưa
+            checkPs = con.prepareStatement(checkSql);
+            checkPs.setInt(1, productId);
+            rs = checkPs.executeQuery();
+
+            if (rs.next()) {
+                // Đã có ảnh -> UPDATE
+                updatePs = con.prepareStatement(updateSql);
+                updatePs.setString(1, imageUrl);
+                updatePs.setInt(2, productId);
+                return updatePs.executeUpdate() > 0;
+            } else {
+                // Chưa có ảnh -> INSERT
+                insertPs = con.prepareStatement(insertSql);
+                insertPs.setInt(1, productId);
+                insertPs.setString(2, imageUrl);
+                return insertPs.executeUpdate() > 0;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

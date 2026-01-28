@@ -11,7 +11,7 @@ import java.io.OutputStream;
 
 @WebServlet("/avatar/*")
 public class AvatarServlet extends HttpServlet {
-    private static final String AVATAR_DIR = "E:/CuoiKyWeb/Avatars";
+    private static final String AVATAR_DIR = "E:/ProejctLapTrinhWeb/Avatar";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

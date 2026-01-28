@@ -34,6 +34,8 @@ public class AddToCartServlet extends HttpServlet {
 
         cart.add(product);
 
-        response.sendRedirect(request.getContextPath() + "/cart");
+        // khôgn senRedirect Chỉ trả status OK để JS xử lý tiếp
+        /*response.sendRedirect(request.getContextPath() + "/cart");*/
+        response.setStatus(HttpServletResponse.SC_OK);
     }
 }
