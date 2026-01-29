@@ -41,6 +41,6 @@ public class UpdateCartServlet extends HttpServlet {
             }
         }
 
-        response.sendRedirect(request.getContextPath() + "/cart");
+        response.setStatus(HttpServletResponse.SC_OK);
     }
 }

@@ -82,7 +82,7 @@ public class ProfileServlet extends HttpServlet {
 
             String fileName = Paths.get(avatarPart.getSubmittedFileName()).getFileName().toString();
             String newFileName = "user_" + user.getId() + "_" + fileName;
-            String uploadPath = "E:/CuoiKyWeb/Avatars";
+            String uploadPath = "E:/ProejctLapTrinhWeb/Avatar";
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
                 uploadDir.mkdirs();
