@@ -214,11 +214,12 @@ public class ProductDAO {
     // Lấy toàn bộ sản phẩm và thương hiệu
     public List<Product> getAllWithBrand() {
         List<Product> list = new ArrayList<>();
+
         String sql = "SELECT p.*, b.BrandName, "+
-        "(SELECT ImageURL FROM product_image WHERE ProductID = p.ID LIMIT 1) AS imageUrl "+
+               "(SELECT pi.ImageURL FROM product_image pi WHERE pi.ProductID = p.ID ORDER BY pi.ID ASC LIMIT 1) AS imageUrl "+
         "FROM products p "+
         "JOIN brands b ON p.BrandID = b.ID "+
-        "WHERE p.status=1 "+
+        "WHERE p.status = 1 "+
         "ORDER BY p.ID DESC";
 
         try (Connection con = ConnectionDB.getConnection();

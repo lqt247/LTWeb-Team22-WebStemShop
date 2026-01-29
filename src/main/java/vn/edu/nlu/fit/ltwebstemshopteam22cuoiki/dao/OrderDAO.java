@@ -125,7 +125,7 @@ public class OrderDAO {
 
     //Tính tổng doanh thu (doanh thu được tính ở những đơn hàng thành công)
     public double getTotalRevenue() {
-        String sql = "SELECT SUM(TotalAmount) FROM orders WHERE OrderStatus = 'COMPLETED'";
+        String sql = "SELECT SUM(TotalAmount) FROM orders WHERE OrderStatus = 'CONFIRMED'";
         try (Connection con = ConnectionDB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
