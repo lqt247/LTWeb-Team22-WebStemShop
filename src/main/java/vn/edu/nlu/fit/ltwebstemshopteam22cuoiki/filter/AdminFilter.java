@@ -24,7 +24,7 @@ public class AdminFilter implements Filter {
         // check user khong hop le thi ve trang danng nhap
         if (user == null || !"ADMIN".equals(user.getRole())) {
             ((HttpServletResponse) res)
-                    .sendRedirect(request.getContextPath() + "/view/user/sign-in.jsp");
+                    .sendRedirect(request.getContextPath() + "/view/error/error404.jsp");
             return;
         }
 
