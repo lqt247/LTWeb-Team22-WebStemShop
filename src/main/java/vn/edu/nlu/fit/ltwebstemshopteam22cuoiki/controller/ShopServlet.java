@@ -15,7 +15,7 @@ import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.Product;
 @WebServlet("/shop")
 public class ShopServlet extends HttpServlet {
 
-    private static final int PAGE_SIZE = 8; // số sp / trang
+    private static final int PAGE_SIZE = 16; // số sp / trang
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

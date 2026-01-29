@@ -38,6 +38,9 @@
     .add-to-cart:hover {
         background-color: #ff3e5a;
     }
+    .list-product__body__card__container{
+        justify-content: flex-end;
+    }
 </style>
 
 <body>

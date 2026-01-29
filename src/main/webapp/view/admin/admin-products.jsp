@@ -133,7 +133,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Hình ảnh</th>
+<%--                    <th>Hình ảnh</th>--%>
                     <th>Tên sản phẩm</th>
                     <th>Thương hiệu</th>
                     <th>Giá</th>
@@ -145,7 +145,7 @@
                 <c:forEach var="product" items="${products}">
                     <tr>
                         <td>${product.id}</td>
-                        <td>
+<%--                        <td>
                             <c:choose>
                                 <c:when test="${not empty product.imageUrl}">
                                     <img src="${pageContext.request.contextPath}${product.imageUrl}"
@@ -156,7 +156,7 @@
                                          alt="No image" class="product-img">
                                 </c:otherwise>
                             </c:choose>
-                        </td>
+                        </td>--%>
                         <td>${product.productName}</td>
                         <td>${product.brandName}</td>
 <%--                         sửa lại giá cho hợp lý hơn--%>
