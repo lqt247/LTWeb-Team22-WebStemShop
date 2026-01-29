@@ -76,16 +76,72 @@ public class ProductImageDAO {
         }
         return false;
     }
-    // thêm xóa ảnh
-    public boolean deleteByProductId(int productId) {
-        String sql = "DELETE FROM product_image WHERE ProductID = ?";
+
+    //thêm ảnh
+    public void insertImage(int productId, String imageUrl) {
+        String sql = "INSERT INTO product_image (ProductID, ImageURL) VALUES (?, ?)";
+
         try (Connection con = ConnectionDB.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
+
             ps.setInt(1, productId);
-            return ps.executeUpdate() >= 0;
+            ps.setString(2, imageUrl);
+            ps.executeUpdate();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
     }
+
+    // hàm lấy tất cả ảnh của 1 sp
+    public List<String> getImagesByProductId(int productId) {
+        List<String> images = new ArrayList<>();
+        String sql = "SELECT ImageURL FROM product_image WHERE ProductID = ? ORDER BY ID";
+
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, productId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                images.add(rs.getString("ImageURL"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return images;
+    }
+
+    //hàm thêm 1 ảnh mới
+    public void addImage(int productId, String imageUrl) {
+        String sql = "INSERT INTO product_image(ProductID, ImageURL) VALUES (?, ?)";
+
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, productId);
+            ps.setString(2, imageUrl);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //xáo hết ảnh theo id
+    public void deleteAllByProductId(int productId) {
+        String sql = "DELETE FROM product_image WHERE ProductID = ?";
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, productId);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

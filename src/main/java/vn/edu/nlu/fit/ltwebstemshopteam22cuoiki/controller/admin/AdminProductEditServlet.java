@@ -1,4 +1,4 @@
-package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.controller;
+package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.controller.admin;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -11,11 +11,11 @@ import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.ProductImageDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.Brand;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.Category;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.Product;
-import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.User;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.List;
 
 @WebServlet("/admin/admin-product-edit")
@@ -43,13 +43,15 @@ public class AdminProductEditServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+/*       //check ở filterAdmin
+
         HttpSession session = request.getSession();
         User admin = (User) session.getAttribute("user");
 
         if (admin == null || !"admin".equals(admin.getRole())) {
             response.sendRedirect(request.getContextPath() + "/dang-nhap");
             return;
-        }
+        }*/
 
         try {
             int id = Integer.parseInt(request.getParameter("id"));
@@ -58,10 +60,12 @@ public class AdminProductEditServlet extends HttpServlet {
             if (product != null) {
                 List<Category> categories = categoryDAO.getAllCategories();
                 List<Brand> brands = brandDAO.getAllBrands();
+                List<String> images = productImageDAO.getImagesByProductId(id);
 
                 request.setAttribute("product", product);
                 request.setAttribute("categories", categories);
                 request.setAttribute("brands", brands);
+                request.setAttribute("images", images);
                 request.getRequestDispatcher("/view/admin/admin-product-edit.jsp").forward(request, response);
             } else {
                 response.sendRedirect(request.getContextPath() + "/admin/admin-products");
@@ -91,7 +95,8 @@ public class AdminProductEditServlet extends HttpServlet {
             product.setCategoriesID(Integer.parseInt(request.getParameter("categoryID")));
             product.setBrandID(Integer.parseInt(request.getParameter("brandID")));
 
-            // Xử lý upload ảnh
+            // đỏi lại cho upload nhiều ảnh
+/*            // Xử lý upload ảnh
             Part filePart = request.getPart("productImage");
             if (filePart != null && filePart.getSize() > 0) {
                 String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
@@ -117,6 +122,31 @@ public class AdminProductEditServlet extends HttpServlet {
 
                 // Cập nhật hoặc thêm ảnh vào product_image
                 productImageDAO.updateOrAddProductImage(productId, imageUrl);
+            }*/
+            List<Part> imageParts = request.getParts().stream()
+                    .filter(p -> "productImages".equals(p.getName()) && p.getSize() > 0)
+                    .toList();
+
+            if (!imageParts.isEmpty()) {
+
+                // XÓA TẤT CẢ ẢNH CŨ TRONG DB
+                productImageDAO.deleteAllByProductId(productId);
+
+                // LƯU ẢNH MỚI
+                String uploadPath = getServletContext().getRealPath("") + "assets/images/products";
+                File uploadDir = new File(uploadPath);
+                if (!uploadDir.exists()) uploadDir.mkdirs();
+
+                for (Part part : imageParts) {
+                    String original = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                    String ext = original.substring(original.lastIndexOf("."));
+                    String fileName = "product_" + productId + "_" + System.currentTimeMillis() + ext;
+
+                    part.write(uploadPath + File.separator + fileName);
+
+                    String imageUrl = "/assets/images/products/" + fileName;
+                    productImageDAO.insertImage(productId, imageUrl);
+                }
             }
 
             // Cập nhật thông tin sản phẩm

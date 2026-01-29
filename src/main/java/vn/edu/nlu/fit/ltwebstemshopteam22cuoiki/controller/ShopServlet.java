@@ -39,11 +39,11 @@ public class ShopServlet extends HttpServlet {
 
         System.out.println("ShopServlet DOGET chạy");
         System.out.println("Products size = " + products.size());
-        System.out.println("Categories size = " + categoriDao.getAll().size());
+ /*       System.out.println("Categories size = " + CategoryDAO.getAll().size());*/
 
         // 2. Gửi sang JSP
         request.setAttribute("products", products);
-        request.setAttribute("categories", categoriDao.getAll());
+        request.setAttribute("categories", CategoryDAO.getAll());
         request.setAttribute("currentPage", page);
         request.setAttribute("totalPages", totalPages);
 

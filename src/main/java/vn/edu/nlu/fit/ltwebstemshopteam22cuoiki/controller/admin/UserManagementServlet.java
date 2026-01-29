@@ -1,11 +1,10 @@
-package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.controller;
+package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.controller.admin;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.UserDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.User;
 
@@ -25,6 +24,8 @@ public class UserManagementServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+/*
+        //check bên filterAdmin
 
         // Kiểm tra xem admin
         HttpSession session = request.getSession();
@@ -33,7 +34,7 @@ public class UserManagementServlet extends HttpServlet {
         if (admin == null || !"admin".equals(admin.getRole())) {
             response.sendRedirect(request.getContextPath() + "/dang-nhap");
             return;
-        }
+        }*/
 
         try {
             // Lấy danh sách

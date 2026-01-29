@@ -1,3 +1,4 @@
+/*
 package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.controller;
 
 import jakarta.servlet.ServletException;
@@ -88,4 +89,4 @@ public class ProductManagementServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Có lỗi xảy ra");
         }
     }
-}
+}*/

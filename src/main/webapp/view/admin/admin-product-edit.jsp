@@ -165,26 +165,23 @@
         </div>
 
         <!-- Hiển thị ảnh hiện tại -->
-        <div class="form-group">
-            <label>Ảnh hiện tại:</label>
-            <c:if test="${not empty product.imageUrl}">
-                <img src="${pageContext.request.contextPath}${product.imageUrl}"
-                     alt="${product.productName}"
-                     style="max-width: 200px; border-radius: 8px; margin-top: 10px;">
-            </c:if>
-            <c:if test="${empty product.imageUrl}">
-                <p style="color: #999;">Chưa có ảnh</p>
-            </c:if>
+        <div class="form-group full">
+            <label>Ảnh hiện tại</label>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <c:forEach var="img" items="${images}">
+                    <div style="position:relative;">
+                        <img src="${pageContext.request.contextPath}${img}"
+                             style="width:120px;height:120px;object-fit:cover;border-radius:8px">
+                    </div>
+                </c:forEach>
+            </div>
         </div>
 
         <!-- Upload ảnh mới -->
         <div class="form-group">
-            <label>Thay đổi ảnh:</label>
-            <input type="file" name="productImage" accept="image/*"
-                   style="padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
-            <small style="color: #666; display: block; margin-top: 5px;">
-                Chấp nhận: JPG, PNG, GIF (Tối đa 10MB)
-            </small>
+            <label>Ảnh sản phẩm (chọn nhiều)</label>
+            <input type="file" name="productImages" multiple accept="image/*">
+            <small>Chọn ảnh mới sẽ thay thế toàn bộ ảnh cũ</small>
         </div>
 
         <div class="form-actions">

@@ -1,3 +1,4 @@
+/*
 package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.controller;
 
 import jakarta.servlet.ServletException;
@@ -119,3 +120,4 @@ public class AdminProductAddServlet extends HttpServlet {
         }
     }
 }
+*/

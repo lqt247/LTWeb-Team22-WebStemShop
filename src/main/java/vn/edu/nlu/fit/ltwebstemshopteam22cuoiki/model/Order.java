@@ -1,12 +1,13 @@
 package vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Order {
     private int id;
     private int userId;
     private Integer promotionId;
-    private Date orderDate;
+    private Timestamp orderDate;
     private String orderStatus;
     private double shippingFee;
     private double totalAmount;
@@ -14,11 +15,14 @@ public class Order {
     private String shippingAddress;
     private String receiverName;
     private String receiverPhone;
+    // chỉ dùng cho admin view (quản lý đơn hàng)
+    private String userFullName;
+    private String userPhone;
 
     public Order() {
     }
 
-    public Order(int id, int userId, Integer promotionId, Date orderDate, String orderStatus, double shippingFee, double totalAmount, String note, String shippingAddress, String receiverName, String receiverPhone) {
+    public Order(int id, int userId, Integer promotionId, Timestamp orderDate, String orderStatus, double shippingFee, double totalAmount, String note, String shippingAddress, String receiverName, String receiverPhone, String userFullName, String userPhone) {
         this.id = id;
         this.userId = userId;
         this.promotionId = promotionId;
@@ -30,6 +34,8 @@ public class Order {
         this.shippingAddress = shippingAddress;
         this.receiverName = receiverName;
         this.receiverPhone = receiverPhone;
+        this.userFullName = userFullName;
+        this.userPhone = userPhone;
     }
 
     public int getId() {
@@ -56,11 +62,11 @@ public class Order {
         this.promotionId = promotionId;
     }
 
-    public Date getOrderDate() {
+    public Timestamp getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(Timestamp orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -118,5 +124,21 @@ public class Order {
 
     public void setReceiverPhone(String receiverPhone) {
         this.receiverPhone = receiverPhone;
+    }
+
+    public String getUserFullName() {
+        return userFullName;
+    }
+
+    public void setUserFullName(String userFullName) {
+        this.userFullName = userFullName;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 }
