@@ -236,7 +236,7 @@ main {
 .list-product__body__card__type2 .list-product__body__card__container {
     transform: scale(1.2);
     width: 350px;
-/*    height: 480px;*/
+    height: 480px;
     margin: 80px;
 }
 .list-product__body__card__type2 img {
