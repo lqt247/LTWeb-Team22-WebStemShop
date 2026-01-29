@@ -19,10 +19,6 @@ public class Category {
         return categoryName;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
