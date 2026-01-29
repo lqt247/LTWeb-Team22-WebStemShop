@@ -136,53 +136,79 @@ public class ProductDAO {
         return false;
     }
 
-    // Đếm tổng số sản phẩm
-    public int countProducts() {
-        String sql = "SELECT COUNT(*) FROM products";
+
+     // Thêm sản phẩm mới, sau đó sẽ trả về id
+    public int addProduct(Product product) {
+        String sql = "INSERT INTO products (ProductName, Description, Price, Quantity, CategoryID, BrandID) VALUES (?, ?, ?, ?, ?, ?)";
+
         try (Connection con = ConnectionDB.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
-            if (rs.next()) return rs.getInt(1);
+            ps.setString(1, product.getProductName());
+            ps.setString(2, product.getDescription());
+            ps.setDouble(3, product.getPrice());
+            ps.setInt(4, product.getQuantity());
+            ps.setInt(5, product.getCategoriesID());
+            ps.setInt(6, product.getBrandID());
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows > 0) {
 
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return 0;
     }
+    public List<Product> getFirst6Products() {
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT p.ID, p.ProductName, p.Description, p.Price, p.Quantity, " +
+                "p.CategoryID, p.BrandID, b.BrandName, " +
+                "COALESCE(pi.ImageURL, '/assets/images/products/no-image.png') as ImageURL " +
+                "FROM products p " +
+                "LEFT JOIN brands b ON p.BrandID = b.ID " +
+                "LEFT JOIN product_image pi ON p.ID = pi.ProductID " +
+                "ORDER BY p.ID ASC " +
+                "LIMIT 6";
 
-    // Lấy sản phẩm theo trang
-    public List<Product> getProductsByPage(int offset, int limit) {
-        List<Product> list = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
-        String sql ="SELECT p.ID, p.ProductName, p.Price, p.CategoryID, p.BrandID, "+
-                            "(SELECT ImageURL FROM product_image WHERE ProductID = p.ID LIMIT 1) AS image_url "+
-                    "FROM products p "+
-                    "ORDER BY p.ID "+
-                    "LIMIT ? OFFSET ?";
+        try {
+            con = ConnectionDB.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
 
-        try (Connection con = ConnectionDB.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(1, limit);
-            ps.setInt(2, offset);
-
-            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Product p = new Product();
                 p.setId(rs.getInt("ID"));
-                p.setProductName(rs.getString("ProductName"));
-                p.setPrice(rs.getDouble("Price"));
                 p.setCategoriesID(rs.getInt("CategoryID"));
                 p.setBrandID(rs.getInt("BrandID"));
-                p.setImageUrl(rs.getString("image_url"));
-
-                list.add(p);
+                p.setBrandName(rs.getString("BrandName"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setDescription(rs.getString("Description"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setImageUrl(rs.getString("ImageURL"));
+                products.add(p);
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        return list;
+
+        return products;
     }
 
     // Lấy toàn bộ sản phẩm và thương hiệu

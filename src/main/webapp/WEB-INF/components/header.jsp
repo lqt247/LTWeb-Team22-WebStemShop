@@ -63,7 +63,7 @@
 
                 <!-- LOGO -->
                 <div class="header__logo">
-                    <a href="${pageContext.request.contextPath}/index.jsp">
+                    <a href="${pageContext.request.contextPath}/">
                         <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="logo">
                     </a>
                 </div>
@@ -74,7 +74,7 @@
                         <ul class="nav__list">
 
                             <li class="nav__item">
-                                <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
+                                <a href="${pageContext.request.contextPath}/">Trang chủ</a>
                             </li>
 
                             <!-- Giới thiệu -->

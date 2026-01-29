@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.ProductDAO;
+import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.dao.ProductImageDAO;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.Product;
 import vn.edu.nlu.fit.ltwebstemshopteam22cuoiki.model.User;
 
@@ -61,6 +62,10 @@ public class ProductManagementServlet extends HttpServlet {
             if ("delete".equals(action)) {
                 // Xóa sản phẩm
                 int id = Integer.parseInt(request.getParameter("id"));
+                // Xóa ảnh trước
+                ProductImageDAO imageDAO = new ProductImageDAO();
+                imageDAO.deleteByProductId(id);
+                // Xóa sản phẩm sau
                 productDAO.deleteProduct(id);
 
             } else if ("update".equals(action)) {
