@@ -95,7 +95,7 @@ public class OrderDAO {
             while (rs.next()) {
                 Order order = new Order();
                 order.setId(rs.getInt("ID"));
-                order.setOrderDate(rs.getDate("OrderDate"));
+                order.setOrderDate(rs.getTimestamp("OrderDate"));
                 order.setTotalAmount(rs.getDouble("TotalAmount"));
 
 
@@ -105,5 +105,85 @@ public class OrderDAO {
             e.printStackTrace();
         }
         return orders;
+    }
+
+    //lấy tổng số lương đơn hàng
+    public int countOrders(){
+        String sql = "SELECT COUNT(*) FROM orders";
+        try(
+                Connection con = ConnectionDB.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                ){
+            if(rs.next()) return rs.getInt(1);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    //Tính tổng doanh thu (doanh thu được tính ở những đơn hàng thành công)
+    public double getTotalRevenue() {
+        String sql = "SELECT SUM(TotalAmount) FROM orders WHERE OrderStatus = 'COMPLETED'";
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) return rs.getDouble(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    // hàm lấy danh sách đơn hàng
+    public List<Order> getAllOrdersForAdmin() {
+        List<Order> list = new ArrayList<>();
+
+        String sql = "SELECT o.*, u.FullName, u.PhoneNumber "+
+        "FROM orders o "+
+        "JOIN users u ON o.UserID = u.ID "+
+        "ORDER BY o.OrderDate DESC";
+
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Order o = new Order();
+                o.setId(rs.getInt("ID"));
+                o.setUserId(rs.getInt("UserID"));
+                o.setOrderDate(rs.getTimestamp("OrderDate"));
+                o.setOrderStatus(rs.getString("OrderStatus"));
+                o.setShippingFee(rs.getDouble("ShippingFee"));
+                o.setTotalAmount(rs.getDouble("TotalAmount"));
+                o.setShippingAddress(rs.getString("ShippingAddress"));
+                o.setReceiverName(rs.getString("ReceiverName"));
+                o.setReceiverPhone(rs.getString("ReceiverPhone"));
+                o.setUserFullName(rs.getString("FullName"));
+                o.setUserPhone(rs.getString("PhoneNumber"));
+
+                list.add(o);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    // cập nhật trạng thái đơn hàng
+    public void updateOrderStatus(int orderId, String status) {
+        String sql = "UPDATE orders SET OrderStatus=? WHERE ID=?";
+
+        try (Connection con = ConnectionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, status);
+            ps.setInt(2, orderId);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

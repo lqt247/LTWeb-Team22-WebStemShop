@@ -67,9 +67,9 @@
                 <div class="card-info">
                     <h3>Tổng Số Người Dùng</h3>
                     <div class="card-value">${totalUsers}</div>
-                    <div class="card-trend up">
+<%--                    <div class="card-trend up">
                         <i class="fa-solid fa-arrow-up"></i> +12% tháng này
-                    </div>
+                    </div>--%>
                 </div>
             </div>
 
@@ -80,9 +80,9 @@
                 <div class="card-info">
                     <h3>Tổng Số Sản Phẩm</h3>
                     <div class="card-value">${totalProducts}</div>
-                    <div class="card-trend up">
+<%--                    <div class="card-trend up">
                         <i class="fa-solid fa-arrow-up"></i> +8% tháng này
-                    </div>
+                    </div>--%>
                 </div>
             </div>
 
@@ -93,14 +93,14 @@
                 <div class="card-info">
                     <h3>Tổng Số Đơn Hàng</h3>
                     <div class="card-value">${totalOrders}</div>
-                    <div class="card-trend up">
+<%--                    <div class="card-trend up">
                         <i class="fa-solid fa-arrow-up"></i> +15% tháng này
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>
 
-        <!-- Second Row Cards -->
+<%--        <!-- Second Row Cards -->
         <div class="dashboard-cards" style="grid-template-columns: repeat(2, 1fr); margin-top: 20px;">
             <div class="card card-posts">
                 <div class="card-icon">
@@ -113,7 +113,7 @@
                         <i class="fa-solid fa-arrow-up"></i> +5% tháng này
                     </div>
                 </div>
-            </div>
+            </div>--%>
 
             <div class="card card-revenue">
                 <div class="card-icon">
@@ -124,9 +124,9 @@
                     <div class="card-value">
                         <fmt:formatNumber value="${totalRevenue}" type="number" groupingUsed="true"/>đ
                     </div>
-                    <div class="card-trend up">
+<%--                    <div class="card-trend up">
                         <i class="fa-solid fa-arrow-up"></i> +22% so với tháng trước
-                    </div>
+                    </div>--%>
                 </div>
             </div>
         </div>

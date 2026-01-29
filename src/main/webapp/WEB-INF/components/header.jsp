@@ -184,7 +184,7 @@
 
                                         <c:if test="${sessionScope.user.role == 'ADMIN'}">
                                             <li>
-                                                <a href="${pageContext.request.contextPath}/admin">
+                                                <a href="${pageContext.request.contextPath}/admin/dashboard">
                                                     <i class="fa-solid fa-gear"></i> Quản lý
                                                 </a>
                                             </li>
