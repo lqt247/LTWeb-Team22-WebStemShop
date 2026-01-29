@@ -189,10 +189,9 @@
                                    class="product-link">
 
                                     <img src="${pageContext.request.contextPath}/${p.imageUrl}"
-                                         alt="${p.productName}">
+                                         alt="${p.productName}" style="display: flex">
 
                                     <div class="list-product__body__card__content">
-                                        <p class="brand">Brand ID: ${p.brandID}</p>
                                         <h5>${p.productName}</h5>
                                         <h4>${p.price} Đ</h4>
                                     </div>
